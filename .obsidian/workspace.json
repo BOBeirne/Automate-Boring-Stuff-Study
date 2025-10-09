@@ -1,0 +1,231 @@
+{
+  "main": {
+    "id": "6589c02eb7d9e28d",
+    "type": "split",
+    "children": [
+      {
+        "id": "5ff33ef6d73f0d6c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fe90350bf6bf8b78",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PART 2 - PROJECTS/mod 10/MOD10 - reading and writing files.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "MOD10 - reading and writing files"
+            }
+          },
+          {
+            "id": "52199bcc0eb5102e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PART 2 - PROJECTS/mod 10/MOD10 - reading and writing files.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "MOD10 - reading and writing files"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7a64df63275d8c62",
+    "type": "split",
+    "children": [
+      {
+        "id": "030592219738ed8e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b798fdb16ecde15a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "439bf7aab9452193",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "4545a26e565bc460",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 349.5
+  },
+  "right": {
+    "id": "d244f457be89f56c",
+    "type": "split",
+    "children": [
+      {
+        "id": "d3dd49783b56509e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e2f839124c914e27",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "PART 2 - PROJECTS/mod 10/MOD10 - reading and writing files.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for MOD10 - reading and writing files"
+            }
+          },
+          {
+            "id": "59704cdef7a532b0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "PART 2 - PROJECTS/mod 9 - txt pattern matching with reg expressions/MOD9 - REGEX.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from MOD9 - REGEX"
+            }
+          },
+          {
+            "id": "8a03e46b2f5c2583",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "332db67771196666",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "PART 2 - PROJECTS/mod 9 - txt pattern matching with reg expressions/MOD9 - REGEX.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of MOD9 - REGEX"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "52199bcc0eb5102e",
+  "lastOpenFiles": [
+    "desktop.ini",
+    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz_answ35.txt",
+    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz35.txt",
+    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz_answ34.txt",
+    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz34.txt",
+    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz_answ33.txt",
+    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz33.txt",
+    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz_answ32.txt",
+    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz32.txt",
+    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz_answ31.txt",
+    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz31.txt",
+    "PART 2 - PROJECTS/mod 10/tempCodeRunnerFile.md",
+    "PART 2 - PROJECTS/mod 9 - REGEX/MOD9 NOTES - REGEX.md",
+    "PART 1 - FUNDAMENTALS/mod 5 - debugging/MOD5 NOTES - Logging.md",
+    "PART 1 - FUNDAMENTALS/mod 6 - lists/MOD6 NOTES - Lists.md",
+    "PART 2 - PROJECTS/mod 9 - REGEX/MOD9 - NOTES Humre.md",
+    "PART 1 - FUNDAMENTALS/mod 8 - strings and text editing/MOD8 NOTES - Strings.md",
+    "PART 1 - FUNDAMENTALS/mod 7 - dictionaries and data structure/MOD7 NOTES - Dictionaries.md",
+    "PART 2 - PROJECTS/mod 10/MOD10 - reading and writing files.md",
+    "Project Ideas/info.md",
+    "Project Ideas/Augmentative and Alternative Communication.md",
+    "Pasted image 20251007124502.png",
+    "Project Ideas/MyRecipes App.md",
+    "Project Ideas/cooking unit calculator.md",
+    "Project Ideas/Going green lies.md",
+    "PART 1 - FUNDAMENTALS/mod 1 - basics/MOD1 - Q.md",
+    "PART 2 - PROJECTS/mod 9 - REGEX/MOD9 - Q.md",
+    "PART 1 - FUNDAMENTALS/mod 8 - strings and text editing/MOD8 - Q.md",
+    "PART 1 - FUNDAMENTALS/mod 7 - dictionaries and data structure/MOD7 - Q.md",
+    "PART 1 - FUNDAMENTALS/mod 6 - lists/MOD6 - Q.md",
+    "PART 1 - FUNDAMENTALS/mod 5 - debugging/MOD5 - Q.md",
+    "PART 1 - FUNDAMENTALS/mod 4 - functions/MOD4 - Q.md",
+    "PART 1 - FUNDAMENTALS/mod 3 - loops/MOD3 - Q.md",
+    "PART 1 - FUNDAMENTALS/mod 2 - if else flow control/MOD2 - Q.md",
+    "PART 2 - PROJECTS/mod 9 - txt pattern matching with reg expressions/Untitled.md",
+    "Untitled 1.canvas",
+    "2025-10-05.md",
+    "Untitled.canvas",
+    "PART 2 - PROJECTS/mod 9 - txt pattern matching with reg expressions/tempCodeRunnerFile.md"
+  ]
+}
