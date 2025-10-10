@@ -339,7 +339,7 @@ There are 2 ways to specify a filepath
 	* **_._** (dot) indicates **_current** folder_
 	* **_.._** (dot-dot) indicates **_parent** folder_
 
-![[Pasted image 20251007124502.png]]
+![[image.png]]
 
 ```python
 from pathlib import Path

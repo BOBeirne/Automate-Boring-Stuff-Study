@@ -14,3 +14,4 @@ for file in current_folder.glob('*.txt'):
     for line in lines: # search each line
         if REGEX.search(line): # if there is a match
             print(line) # print it
+print('Search complete.')
