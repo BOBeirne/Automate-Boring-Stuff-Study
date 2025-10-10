@@ -109,7 +109,7 @@ trying to match caterpillar, catastrophe, catch or category
 
 ``` python
 import re
-pattern = re.compile(r'cat(erpillar|astrophe|ch|egory)')~~~~~~~~
+pattern = re.compile(r'cat(erpillar|astrophe|ch|egory)')
 match = pattern.search('catch me if you can')
 match.group()
 ```
@@ -236,7 +236,7 @@ There are many shorthand regular expressions such as \d standing for any numeric
 
 **! Remember to use escape characters!**
 
-**There is no shorthand that matches **only letters** (\w matches also underscore) but you can use [a-zA-Z] instead!**
+**There is no** shorthand that matches **only letters** (\w matches also underscore) but you can **use [a-zA-Z] instead!**
 
 ### Proceeding character set 
 
@@ -463,18 +463,20 @@ match.group()
 
 These meanings are entirely unrelated.
 
-#### You could get by without using the optional "?" quantifier, or even the "*" and "+" quantifiers
+#### Alternatives
+
+You could theoretically get by without using the optional "?" quantifier, or even the `"*"` and `"+"` quantifiers
 
 * The ? quantifier is the same as {0,1}.
 * The * quantifier is the same as {0,}.
 * The + quantifier is the same as {1,}.
 
-However, the ?, *, and + quantifiers are common shorthand.
+However, the `?`, `*`, and + quantifiers are common shorthand.
 
 ### Matching EVERYTHING
 
 * Sometimes you may want to match everything and anything
-for example: match str'First name' followed by any and all txt and then followed by str'last name' followed by any text
+for example: match `str'First name'` followed by any and all txt and then followed by `str'last name'` followed by `any text`
 * **you can use ".*" for that "everything"** (greedy mode)
   * "." char means "any single char except newline"
   * "*" means 0 + of the proceeding chars
@@ -483,16 +485,10 @@ for example: match str'First name' followed by any and all txt and then followed
 import re
 name_pattern = re.compile(r'First name: (.*) Last name: (.*)')
 name_match = name_pattern.search('First name: Al Last Name: Sweigart')
-name_match.group(1)
+name_match.group(1) # 'Al'
+Name_match.group(2) # Sweigart
 ```
 
-'Al'
-
-``` python
-Name_match.group(2)
-```
-
-Sweigart
 
 * To match in Non-Greedy (Lazy) way use (.*?)
 * Both regexes roughly translate to: 'Match an opening angle bracket followed by anything, followed by a closing angle bracket.
@@ -504,9 +500,8 @@ Sweigart
 import re
 lazy_pattern = re.compile(r'<.*?>')
 match1 = lazy_pattern.search('<To Serve man> for dinner.')
-match.group()
+match.group() # '\<To Serve Man>'
 ```
-'\<To Serve Man>'
 
 #### Matching **GREEDY** way
 
@@ -514,80 +509,67 @@ match.group()
 import re
 lazy_pattern = re.compile(r'<.*>')
 match1 = lazy_pattern.search('<To Serve man> for dinner.')
-match.group()
+match.group() # '\<To Serve man> for dinner.'
 ```
-
-'\<To Serve man> for dinner.'
 
 ### Matching All, incl. Newline characters
 
-* by passing **re.DOTALL** as a 2nd arg in re.compile() it will allow "." char to match all chars, including newline
+passing **re.DOTALL** as a 2nd arg in `re.compile()` it will allow `'.'`char to match all chars, including newline
 
 #### * Without .DOTALL
 
 ``` python
 import re
 no_newline = re.compile(r'.*')
-no_newline.search('Serve the public trust.\nProtect the innocent. \nUphold the law.').group()
+no_newline.search('Serve the public trust.\nProtect the innocent. \nUphold the law.').group() 
+# 'Serve the public trust.'
 ```
-
-'Serve the public trust.'
-
 #### * With re.DOTALL
 
 ``` python
 import re
 with_newline = re.compile(r'.*', re.DOTALL)
 with_newline.search('Serve the public trust.\nProtect the innocent. \nUphold the law.').group()
+# 'Serve the public trust.\nProtect the innocent. \nUphold the law.'
 ```
-
-'Serve the public trust.\nProtect the innocent. \nUphold the law.'
 
 ### Matching Start end End of a str
 
-* Caret "^" symbol at the start of regex filters for matches at the **beginning** of the searched str
-* Dollar sign "$" at the end of regex filters for ending with the regex pattern
-* You can use both ^ and $ to enforce the whole str to match the regex
+* Caret **"^"** symbol at the start of regex filters for matches at the **beginning** of the searched str
+* Dollar sign **"$"** at the end of regex filters for ending with the regex pattern
+* You can use both **^ and $ to enforce the whole str to match the regex**
 
 ``` python
 import re
 begin_hello = re.compile(r'^Hello')
-begin_hello.search('Hello World')
+begin_hello.search('Hello World') # <re.Match object; span=(0, 5), match='Hello'>
 ```
-
-<re.Match object; span=(0, 5), match='Hello'>
 
 * using ``` r'\d$' ``` matches string ending with numeric chars 0-9
 
 ``` python
 import re
 ends_nr = re.compile(r'\d$')
-ends_nr.search('Your nr is 445689')
+ends_nr.search('Your nr is 445689') # <re.Match object; span=(16, 17), match='**9**'>
 ```
-
-<re.Match object; span=(16, 17), match='**9**'>
 
 * to find whole nr string use "+" sign ```(r'\d+$')```
 
 ``` python
 import re
 ends_nr = re.compile(r'\d+$')
-ends_nr.search('Your nr is 445689')
+ends_nr.search('Your nr is 445689') #<re.Match object; span=(11, 17), match='445689'>
 ```
-
-<re.Match object; span=(11, 17), match='**445689**'>
 
 * match strings that match at both beginning and end using ```(r'^\d+$')```
 
 ``` python
 import re
 str_nr = re.compile(r'^\d+$')
-str_nr.search('123456789')
+str_nr.search('123456789') # <re.Match object; span=(0, 9), match='123456789'>
 ```
 
-<re.Match object; span=(0, 9), match='**123456789**'>
-
-* using "\b" in regex make it match only word boundary
+* using **"\b"** in regex make it **match only word boundary**
   * start of a word
   * end of a word
   * both start and end
@@ -597,9 +579,8 @@ str_nr.search('123456789')
 import re
 pattern = re.compile(r'\bcat.*?\b')
 pattern.findall('the cat found a catapult catalog in the catacombs.')
+# ['cat', 'catapult', 'catalog', 'catacombs']
 ```
-
-['cat', 'catapult', 'catalog', 'catacombs']
 
 * "\B" matches everything that is not in the word boundary (in the middle of word)
 
@@ -607,15 +588,10 @@ pattern.findall('the cat found a catapult catalog in the catacombs.')
 import re
 pattern = re.compile(r'\Bcat\B')
 pattern.findall('certifi**cat**e')
-```
-
-['cat']
-
-``` python
+# ['cat']
 pattern.findall('category')
+# []
 ```
-
-[]
 
 ## Summary
 

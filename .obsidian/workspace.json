@@ -4,37 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "5ff33ef6d73f0d6c",
+        "id": "21f6b740c889ab7d",
         "type": "tabs",
         "children": [
           {
-            "id": "fe90350bf6bf8b78",
+            "id": "f1181dbdac7ea1f7",
             "type": "leaf",
-            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PART 2 - PROJECTS/mod 10/MOD10 - reading and writing files.md",
+                "file": "PART 2 - PROJECTS/mod 10 - FILES/MOD10 - reading and writing files.md",
                 "mode": "source",
                 "source": false
               },
-              "pinned": true,
               "icon": "lucide-file",
               "title": "MOD10 - reading and writing files"
             }
           },
           {
-            "id": "52199bcc0eb5102e",
+            "id": "88c65f0a597efaa2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PART 2 - PROJECTS/mod 10/MOD10 - reading and writing files.md",
+                "file": "PART 2 - PROJECTS/mod 9 - REGEX/MOD9 NOTES - REGEX.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MOD10 - reading and writing files"
+              "title": "MOD9 NOTES - REGEX"
             }
           }
         ],
@@ -111,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "PART 2 - PROJECTS/mod 10/MOD10 - reading and writing files.md",
+                "file": "PART 2 - PROJECTS/mod 9 - REGEX/MOD9 NOTES - REGEX.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for MOD10 - reading and writing files"
+              "title": "Backlinks for MOD9 NOTES - REGEX"
             }
           },
           {
@@ -186,27 +184,32 @@
       "bases:Create new base": false
     }
   },
-  "active": "52199bcc0eb5102e",
+  "active": "88c65f0a597efaa2",
   "lastOpenFiles": [
-    "desktop.ini",
-    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz_answ35.txt",
-    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz35.txt",
-    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz_answ34.txt",
-    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz34.txt",
-    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz_answ33.txt",
-    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz33.txt",
-    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz_answ32.txt",
-    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz32.txt",
-    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz_answ31.txt",
-    "PART 2 - PROJECTS/mod 10/PROJECT4/capitalsquiz31.txt",
-    "PART 2 - PROJECTS/mod 10/tempCodeRunnerFile.md",
+    "PART 2 - PROJECTS/mod 10 - FILES/MOD10 - reading and writing files.md",
+    "PART 2 - PROJECTS/mod 10 - FILES/tempCodeRunnerFile.py",
     "PART 2 - PROJECTS/mod 9 - REGEX/MOD9 NOTES - REGEX.md",
+    "PART 2 - PROJECTS/mod 10 - FILES/MadLibs_new.txt",
+    "PART 2 - PROJECTS/mod 10 - FILES/madlibs.txt",
+    "PART 2 - PROJECTS/mod 10 - FILES/MOD10 - Q.md",
+    "PART 2 - PROJECTS/mod 10 - FILES/RegexSearch.py",
+    "PART 2 - PROJECTS/mod 10 - FILES/MadLibs.py",
+    "Project Ideas/AAC.md",
+    "PART 2 - PROJECTS/mod 10 - FILES/MOD10 -Q.md",
+    "PART 2 - PROJECTS/mod 10/MOD10 - reading and writing files.md",
+    "PART 2 - PROJECTS/mod 10 - FILES/PROJECT4/capitalsquiz_answ22.txt",
+    "PART 2 - PROJECTS/mod 10 - FILES/PROJECT4/tempCodeRunnerFile.py",
+    "PART 2 - PROJECTS/mod 10 - FILES/PROJECT4/PROJECT 4 - RandomQuizGenerator.py",
+    "PART 2 - PROJECTS/mod 10 - FILES/PROJECT4/capitalsquiz_answ9.txt",
+    "PART 2 - PROJECTS/mod 10 - FILES/PROJECT4/capitalsquiz_answ5.txt",
+    "Project Ideas/Hypochondria-Buster.md",
+    "Project Ideas/Rate-My-Fart.md",
+    "PART 2 - PROJECTS/mod 10/tempCodeRunnerFile.md",
     "PART 1 - FUNDAMENTALS/mod 5 - debugging/MOD5 NOTES - Logging.md",
     "PART 1 - FUNDAMENTALS/mod 6 - lists/MOD6 NOTES - Lists.md",
     "PART 2 - PROJECTS/mod 9 - REGEX/MOD9 - NOTES Humre.md",
     "PART 1 - FUNDAMENTALS/mod 8 - strings and text editing/MOD8 NOTES - Strings.md",
     "PART 1 - FUNDAMENTALS/mod 7 - dictionaries and data structure/MOD7 NOTES - Dictionaries.md",
-    "PART 2 - PROJECTS/mod 10/MOD10 - reading and writing files.md",
     "Project Ideas/info.md",
     "Project Ideas/Augmentative and Alternative Communication.md",
     "Pasted image 20251007124502.png",
@@ -219,13 +222,7 @@
     "PART 1 - FUNDAMENTALS/mod 7 - dictionaries and data structure/MOD7 - Q.md",
     "PART 1 - FUNDAMENTALS/mod 6 - lists/MOD6 - Q.md",
     "PART 1 - FUNDAMENTALS/mod 5 - debugging/MOD5 - Q.md",
-    "PART 1 - FUNDAMENTALS/mod 4 - functions/MOD4 - Q.md",
-    "PART 1 - FUNDAMENTALS/mod 3 - loops/MOD3 - Q.md",
-    "PART 1 - FUNDAMENTALS/mod 2 - if else flow control/MOD2 - Q.md",
-    "PART 2 - PROJECTS/mod 9 - txt pattern matching with reg expressions/Untitled.md",
     "Untitled 1.canvas",
-    "2025-10-05.md",
-    "Untitled.canvas",
-    "PART 2 - PROJECTS/mod 9 - txt pattern matching with reg expressions/tempCodeRunnerFile.md"
+    "Untitled.canvas"
   ]
 }
