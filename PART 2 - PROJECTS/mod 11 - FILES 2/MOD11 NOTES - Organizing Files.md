@@ -1,5 +1,5 @@
 # Copy, Move and Delete files
-## Shutil
+## [[Shutil]]
 
 * Shell Utilities
 
@@ -192,7 +192,7 @@ list(home.iterdir())
 ```
 
 
-## ZIP files
+## [[ZIP]] files
 
 ### Creating ZIP file
 #### ZipFile()
@@ -271,7 +271,7 @@ example_zip.close()
 
 Extracts a single, specified file into a cwd
 Can also optionally specify path to extract to
-If folder doesn't yet exist, P{ython will create it.
+If folder doesn't yet exist, Python will create it.
 
 ```python
 example_zip.extract('file.txt')

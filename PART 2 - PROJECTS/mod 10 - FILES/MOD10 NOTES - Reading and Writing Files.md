@@ -79,7 +79,7 @@ Path.cwd().parents[1] # WindowsPath('F:/')
 Path.cwd().parents[2]
 ```
 
-## OS module (old way)
+## [[OS]] module (old way)
 ### path.join()
 
 * it takes a bunch of str arguments and returns them as a single path
@@ -203,7 +203,7 @@ It accepts both relative or absolute paths
 import os
 os.makedirs('C:\\delicious\\walnut\\waffles') # and it does make the folders...
 ```
-## Pathlib module
+## [[Pathlib]] module
 
 * use `from pathlib import Path` otherwise you have to enter *pathlib.Path()* everywhere 
 * **Object-Oriented:** It treats paths as objects, not just strings. This is its biggest advantage. It means you can call methods directly on the path object, leading to cleaner and more readable code.
@@ -275,7 +275,7 @@ TypeError: unsupported operand type(s) for /: 'str' and 'str'
 
 Either the first or second leftmost value **_must_** be a Path object for the entire expression to evaluate to a Path object.
 
-## Current Working Directory (CWD)
+## Current Working Directory ([[CWD]])
 
 While _folder_ is the more modern name for directory, note that current working directory (or just _working directory_) is the standard term, not current working folder
 You can get the current working directory as a string value with the `Path.cwd()` function and can change it using `os.chdir()`
@@ -364,6 +364,20 @@ Os version
 import os
 os.makedris('C:\\delicious\\walnut\\waffles') # will create all those folders if any are missing
 ```
+
+#### Create series of folders and files
+
+```python
+from pathlib import Path
+h = Path.home()
+(h / 'spam').mkdir(exist_ok=True)  # exists_ok=True doesn't raise error if folder already exists
+(h / 'spam/eggs').mkdir(exist_ok=True)
+(h / 'spam/eggs2').mkdir(exist_ok=True)
+(h / 'spam/eggs/bacon').mkdir(exist_ok=True)
+for f in ['spam/file.txt','spam/eggs/file2.txt', 'spam/eggs/file3.txt', 'spam/eggs/bacon/file4.txt']:
+	with open(h / f, 'w', encoding='utf-8') as file: # opening "with" automatically closes file when exists the loop
+		file.write('Hello')
+```
 ## File Size and Timestamps
 
 ### stat() method
@@ -391,7 +405,7 @@ import time
 time.asctime(time.localtime(calc_file_stat().st_mtime)) # 'Sat Dec  7 09:09:47 2019'
 ```
 
-## Glob patterns
+## [[Glob]] patterns
 
 * You can use *`*`* and *`?`* to match folder names and filenames
 * called glob patterns aka simplified regex

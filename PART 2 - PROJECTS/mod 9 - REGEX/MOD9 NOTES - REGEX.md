@@ -11,7 +11,7 @@ official Python documentation at https://docs.python.org/3/library/re.html.
 tutorial website https://www.regular-expressions.info. 
 
 
-# REGEX module
+# [[REGEX]] module
 
 Regular expression = **[regex]**
 
