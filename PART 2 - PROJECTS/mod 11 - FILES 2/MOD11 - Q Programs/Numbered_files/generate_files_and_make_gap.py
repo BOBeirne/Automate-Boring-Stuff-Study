@@ -26,7 +26,8 @@ def create_files():
 
 
 def delete_rand_file(generated_files):
-	file_to_del = random.choice(generated_files)
+	eligible_files = generated_files[1:-1] # makes sure the first and last files are not included in the random choice for deletion
+	file_to_del = random.choice(eligible_files)
 	os.remove(file_to_del)
 	print(f'{file_to_del} deleted')
 

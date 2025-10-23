@@ -14,12 +14,69 @@ Assume the months and days always use two digits, and that files with non-date m
 Use the shutil.move() function to do the renaming.
 """
 
-# TODO import all needed modules
-from pathlib import Path
+# import all needed modules
 import os, re, shutil
 
+regex = re.compile(r'(\d\d)-(\d\d)-(\d\d\d\d)') # 3 groups, day-month-year
+file_list = []
+files_to_rename = []
+project_path = input('Please Specify the directory to analyze: ')
+if not os.path.exists(project_path):
+	print('Invalid directory')
+	exit()
+print(f'Selected folder to analyze: {project_path}')
 
-# TODO create regex looking for MM and DD
-# TODO search all filenames in cwd
-# TODO compare names of files to american format standard (MM-DD_YYYY)
-# TODO if files are found, swap the MM and DD values respectively by renaming the file
+
+# find files matching the format
+def find_matching_files(path):
+	for filename, subfolder, files in os.walk(path):
+		for file in files:
+			match = re.search(regex, file)
+			if match:
+				file_list.append(file)
+	#print(file_list)
+	return file_list
+
+# check if format is US or EU or not sure
+def determine_date_format(filename, regex):
+	match = re.search(regex, filename)
+	month = int(match.group(1))
+	day = int(match.group(2))
+	year = int(match.group(3))
+	if 1 <= month <= 12 and 1 <= day <= 31 and 2000 <= year <= 2030:
+		return "US" # matches US format
+	elif 1 <= day <=12 and 1 <= month <= 31 and 2000 <= year <= 2030:
+		return "EU" # Matches EU format
+	else:
+		return "Inconclusive" # does not match with 100% confidence
+
+file_list = find_matching_files(project_path)
+
+#compare files in a list with US format
+if file_list:
+	for file in file_list:
+		date_format = determine_date_format(file, regex)
+		if date_format == "US":
+			print(f'Found US formatting in file: {file}')
+			files_to_rename.append(file)
+		elif date_format == "EU":
+			print(f'File {file} has already EU formatting')
+		else:
+			print(f'{file} has inconclusive date, requires further investigation.')
+else:
+	print('No matches found in the selected directory.')
+
+
+def rename_files(files_to_rename):
+	for filename in files_to_rename:
+		match = re.search(regex, filename)
+		if match:
+			new_filename = f'{match.group(2)}-{match.group(1)}-{match.group(3)}'
+			old_path = os.path.join(project_path, filename)
+			new_path = os.path.join(project_path, new_filename)
+			#shutil.move(old_path, new_path) # dry run first
+			print(f'renamed {filename} to {new_filename}')
+		else:
+			print(f'Error processing the file.')
+
+rename_files(files_to_rename)

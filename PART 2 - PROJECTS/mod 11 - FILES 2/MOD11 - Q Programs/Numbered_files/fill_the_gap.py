@@ -32,9 +32,9 @@ file_list = []
 sorted_nrs = []
 regex = re.compile(r'^file+_(\d+).txt$')
 
-def find_matching_files(source_path, nrs, file_list, regex):
+def find_matching_files(project_path, nrs, file_list, regex):
 	#print(source_path)
-	for filename in os.listdir(source_path):
+	for filename in os.listdir(project_path):
 		match = re.search(regex, filename)
 		if match: # check if filename matches regex
 			#print(f'Found match: {filename}')
@@ -57,32 +57,36 @@ def find_gap(nrs):
 
 
 
-def files_to_rename(file_list, gap, regex): # TODO make a list of files to change
+def files_to_rename(file_list, gap, regex): # make a list of files to change
 	files_to_rename = []
-	for filename in file_list:
-	#print(filename)
-		match = regex.search(filename)
-		if match:
-			number = int(match.group(1))
-			if number > gap:
-				files_to_rename.append(filename)
+	try:
+		for filename in file_list:
+		#print(filename)
+			match = regex.search(filename)
+			if match:
+					number = match.group(1)
+					if int(number) > gap:
+						files_to_rename.append(filename)
+	except: # if nothing found, let me know!
+		print('No gaps found')
 	#print(files_to_rename)
 	return files_to_rename
 
-def rename_files(files_to_rename, gap, regex):
-	files_to_rename.sort(reverse=True)
-	print(files_to_rename)
-	for filename in files_to_rename:
+def rename_files(files_to_rename_list, regex): # rename the files above the gap to one less
+	files_to_rename_list.sort()
+	#print(f'{files_to_rename_list}')
+	for filename in files_to_rename_list:
 		match = regex.search(filename)
 		if match:
 			number = int(match.group(1))
 			new_nr = number - 1
 			new_filename = (f'file_{str(new_nr)}.txt')
 			shutil.move(filename, new_filename)
-			#print(new_filename)
+			print(f'renamed {filename} to {new_filename}')
+	print('Done.')
 
 find_matching_files(project_path, nrs, file_list, regex)
 gap = find_gap(nrs)
 print(f'The missing nr is: {gap}')
 files_to_rename_list = files_to_rename(file_list, gap, regex)
-rename_files(files_to_rename_list, gap, regex)
+rename_files(files_to_rename_list, regex)
