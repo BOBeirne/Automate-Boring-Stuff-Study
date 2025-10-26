@@ -71,7 +71,7 @@ def rename_files(files_to_rename):
 	for filename in files_to_rename:
 		match = re.search(regex, filename)
 		if match:
-			new_filename = f'{match.group(2)}-{match.group(1)}-{match.group(3)}'
+			new_filename = f'{match.group(2)}-{match.group(1)}-{match.group(3)}.txt'
 			old_path = os.path.join(project_path, filename)
 			new_path = os.path.join(project_path, new_filename)
 			#shutil.move(old_path, new_path) # dry run first
