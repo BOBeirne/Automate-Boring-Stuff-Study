@@ -131,6 +131,7 @@ macOs and Linux require slightly different approach due to security issues
 
 ### pip - pip installs package
 
+- Help file: `-m pip --help`
 - Every installation of Python comes with pre-installed, default modules:
 	- sys, random, os
 - Additional packages can be found in [Python Package Index aka PyPI ](https://pypi.org)
@@ -142,3 +143,17 @@ Use `-m` flag to ensure pip is ran as a module to:
 - Avoid Shell PATH issues (if pip is not directly available in PATH)
 - Ensures correct python's pip version is used (different versions for different pythons)
 `python -m pip install package_name`
+
+#### Uninstalling packages
+
+``
+#### Listing installed pip modules
+
+`python -m -pip list`
+
+#### Updating packages
+
+`-m pip install -U package_name`
+
+You can also specify a package version by adding `package==version`
+
