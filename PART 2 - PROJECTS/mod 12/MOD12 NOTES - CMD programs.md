@@ -9,7 +9,7 @@
 - App - commonly used for mobile application but can also be installed on computer
 - WebApp - Program that runs on web server interacted with via a a web browser
 
-## CLI - Command Line Interface
+## [[CLI]] - Command Line Interface
 
 ### Accessing CLI
 
@@ -51,7 +51,7 @@ While in the CLI you can run program files by entering:
 		- `dir *.exe` on Windows
 		- `file * | grep` on Linux
 
-### PATH Environment Variable
+### [[PATH]] Environment Variable
 
 The **PATH** is one of the most fundamental environment variables in any operating system, whether it's Windows, macOS, or Linux.
 It allows you to run widely-used system utilities (like `ipconfig` or `powershell`) from _any_ location on your disk without having to type the full, absolute file path every single time (e.g., `C:\Windows\System32\ipconfig.exe`).
@@ -129,15 +129,16 @@ macOs and Linux require slightly different approach due to security issues
 `source activate`
 `which python3` to confirm version
 
-### pip - pip installs package
+### [[pip]] - pip installs package
 
 - Help file: `-m pip --help`
 - Every installation of Python comes with pre-installed, default modules:
 	- sys, random, os
 - Additional packages can be found in [Python Package Index aka PyPI ](https://pypi.org)
+
 ##### DO NOT USE PIP WITH ANACONDA
 
-#### Installing packages using PyPI
+#### Installing packages using pip from [[PyPI]]
 
 Use `-m` flag to ensure pip is ran as a module to:
 - Avoid Shell PATH issues (if pip is not directly available in PATH)
@@ -146,14 +147,153 @@ Use `-m` flag to ensure pip is ran as a module to:
 
 #### Uninstalling packages
 
-``
+```
+python -m pip uninstall package_name
+```
+
 #### Listing installed pip modules
 
 `python -m -pip list`
 
+#### Checking if module is installed
+
+Al advises to use the try block and try to catch an exception
+
+```python
+try:
+	import NonExistingModule
+except ModuleNotFoundError:
+	print("Module not found") # this gives user more descriptive error
+	sys.exit()
+```
+
+You can alternatively use `python -m pip show package_name`
+
 #### Updating packages
 
 `-m pip install -U package_name`
+- U stands for update
+- You can also specify a package version by adding `package==version`
 
-You can also specify a package version by adding `package==version`
+#### Built-in variables
 
+Several built-in variables can give your Python program useful info about itself:
+- the OS it's on
+- Python interpreter version
+- `__file__` variable, which contains .py file's path as a str
+	- can be used to find out where the program is running from by using:
+	- `Path(__file__)` will return Path object of this file
+- `sys.executable` will return full path to Python interpreter program itself
+- `sys.version` will return Python interpreter version
+- `sys.versioninfo.major` and `sys.versioninfo.minor` will return major and minor versions of Python interpreter (eg. 3.13.1 -> major = 3, minor = 13)
+- `os.name` Will return `nt` for Windows or `posix` for macOS and Linux
+- `sys.platform` will return `win32` for Windows or `darwin` for macOS or `linux` for Linux
+
+#### Installing the "Automate the boring stuff" package
+
+- Windows:
+`python -m pip install AutomateTheBoringStuff3`
+- macOS and Linux:
+`python3 -m pip install AutomateTheBoringStuff3`
+
+### Text-Based program design ([[TUI]])
+
+In this book we are focusing on building small programs not using GUI, however we can still provide something similar using TUI (Text User Interface)
+
+They are quite simple to make
+
+#### Short command names
+
+- TUI is usually run by text commands
+- These commands are usually short and easy to remember like `ls` or `cd` and are usually shortened versions of longer commands like `list` or `change directory`
+
+#### Command-line Arguments
+
+To run a program from CLI simply enter it's name (like `python` on windows) and then the filename like `project.py`
+After the command you supply arguments
+- `ls` - lists contents of current directory but can also specify a specific folder to list contents of
+- `sys.argv` list contains all arguments passed to the program and Python scripts can access that list
+	- for example: if you enter `python script.py hello world` the sys.argv list will contain `['script.py', 'hello', 'world']`
+	- This can be used to specify a wide range of configurations before the program even runs
+	- You can also use `argparse module` in complicated situations when using many arguments 
+- passing following after the command: `\?` on Windows and `--help` on Linux and macOS will print help text for the program
+- a lot of programs accept `-v` or `--verbose` for verbose mode (more text output)
+- a lot of programs also accept `-q` or `--quiet` for quiet mode (no text output, sound or notifications)
+
+### Clipboard I/O
+
+You don't need to rely on the input() to read text from files or keyboard, you can instead use **pyperclip module** to read text from clipboard
+
+```python
+import pyperclip # import the module
+text = pyperclip.paste() # obtain the input text from the clipboard
+# do some operations on the text here
+pyperclip.copy(text) # copy the input text back to the clipboard
+```
+
+More info in the [pyperclip documentation](https://pypi.org/project/pyperclip/)
+Project in MOD 8 was using pyperclip 
+
+### Colorful text using Bext
+
+- Needs to be installed first
+- Only works on programs run from Terminal
+- use fg() for foreground and bg() for background to change colors
+	- they take RGB and string arguments such as: `fg(255, 0, 0)` for red or 'yellow', 'blue' etc
+- use clear() to clear the screen
+
+Bext also has some TUI-like features:
+- bext.clear() - clears the screen
+- bext.width() and bext.height() - get the width and height of the terminal
+- bext.hide() and bext.show() - hide and show the cursor
+- bext.title() - set the title of the terminal window
+- bext.goto(x, y) - move the cursor to the specified position
+- bext.get_key() - get a key press from the user and then return a string representation of the key
+	- examples of keys returned include 'a', 'z' and 5' but also 'left' 'f1' and 
+	- 'esc' TAB and Enter return '\t' and '\n' respectively
+
+Example of ASCII fish-tank program by Al featured in his other book "book of small python projects" - https://inventwithpython.com/projects/fishtank.py
+
+### Clearing the Terminal
+
+bext.clear() is useful if you want to remove any text from before it ran
+
+```python
+import bext
+bext.clear()
+```
+
+You can also use non-bext "one-liner" script:
+
+```python
+import os
+def clear():
+	os.system('cls' if os.name == 'nt' else 'clear')
+```
+
+This only works in terminal (not code editors)
+`cls` is a clear program on Windows and `clear` is a clear program on Linux
+
+##### one-liners are usually avoided because they are difficult to read and debug
+
+### Sound and text notifications
+
+- Easy to overuse just like colorful text
+
+#### Playsound3
+
+- can be used to play single audio files using playsound() function and passing it path to a file
+- accepts .mp3 and .wav
+
+Example:
+
+- Download hello.mp3 from [here](https://autbor.com/hellp.mp3) and run the following:
+
+```python
+import playsound3
+playsound3.playsound('hello.mp3')
+```
+
+- `Playsound()` function won't return until the audio file stops playing - blocks until it finished
+- If it raises an exception it may be caused by odd character in file name, to avoid this pass it a `Path object`
+- if program is running in quiet mode you can use `--beep` or `-b` to play a sound or alert beeps
