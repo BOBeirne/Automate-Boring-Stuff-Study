@@ -104,7 +104,7 @@ macOs and Linux - **Which** `al@Als-McBook Pro ~ % which python3`
 - Virtual Environments in Python will be fresh installs with only default packages 
 	- `python -m pip list` to confirm
 
-#### Creating Virtual Environment
+#### Creating Virtual Environment ([[venv]])
 
 `cd` to `\Scripts` folder and run `python -m venv .venv`
 
@@ -297,3 +297,71 @@ playsound3.playsound('hello.mp3')
 - `Playsound()` function won't return until the audio file stops playing - blocks until it finished
 - If it raises an exception it may be caused by odd character in file name, to avoid this pass it a `Path object`
 - if program is running in quiet mode you can use `--beep` or `-b` to play a sound or alert beeps
+
+### PyMsgBox
+
+- Instead of using full GUI toolkit like **Tkinter, wxPython, PyQt or PySimpleGUI** you can use `PyMsgBox` module to display a message box
+- if you only require occasional notifications or input it can be a suitable replacement for print() and input()
+- Needs to be installed with pip
+	- On macOS and Linux you first need to install it on OS by running `sudo apt install python3-tk`
+
+- PyMsgBox functions mirror JS message box functions
+	- pymsgbox.alert(text) - displays a message box with OK button, pressing it returns a str of value 'ok'
+	- pymsgbox.confirm(text) - displays a message box with OK and Cancel buttons and returns a str of value 'ok' or 'cancel'
+	- pymsgbox.prompt(text) - displays a message along with a field text. returns text user entered as str or None if they cancelled
+	- pymsgbox.password(text) - same as prompt but text user enters is masked with asterisks
+
+### Deploying Python Programs
+
+- First make sure your [[PATH]] environment variable is set correctly with `Scripts` folder
+- You will also need to create a virtual environment with [[venv]]
+
+#### Windows
+
+1. Place the program.py into `Scripts` folder
+2. Create a program.bat file in `Scripts` folder to run the Python script with the following content:
+	```bat
+	@call %HOMEDRIVE%%HOMEPATH%\Scripts\.venv\Scripts\activate.bat REM activate venv
+	@python %HOMEDRIVE%%HOMEPATH%%\Scripts\program.py %* REM run python.exe which then runs the program. %* is added to forward any additional arguments
+	@pause REM wait for user to press enter, prevents window from closing prematurely
+	@deactivate REM deactivates venv in case windo remained open after running the program
+	```
+3. Press `Win+R` key will bring up the Run dialog window
+4. Type `program` and press enter
+	- you can optionally add any additional arguments to run the program with
+
+#### macOS
+
+1. Place the program.py into `Scripts` folder
+2. create a text file named `program.command` to run the Python script.
+	```bash
+	source ~/Scripts/.venv/bin/activate # activate venv
+	python3 ~/Scripts/program.py # run python.exe which then runs the program
+	deactivate # deactivates venv
+	```
+3. Run `chmod u_x program.command` to add execute permissions to the file
+4. press COMMAND + spacebar -> spotlight -> enter name of the program to run
+
+##### macOs Spotlight has no way of passing arguments to the program. They need to be defined in a .command file
+
+#### Linux
+
+Ubuntu linux Dash search can be brought up by pressing windows key and entering the name of the program you want to run 
+
+1. Place the program.py into `Scripts` folder
+2. create a text file named `program.sh` to run the Python script.
+	```bash
+	source ~/Scripts/.venv/bin/activate # activate venv
+	python3 ~/Scripts/program.py # run python.exe which then runs the program
+	read -p "press any key to continue...." # wait for user to press enter, prevents window from closing prematurely
+	deactivate # deactivates venv
+	```
+3. Run `chmod u+x program.sh` to add execute permissions to the file
+4. create `program.desktop` file in `~/.local/share/applications` folder to add the program to the menu
+	```bash
+	[Desktop Entry]
+	Name=Program 
+	Exec=gnome-terminal -- /home/al/Scripts/program.py # the path need to be full path
+	Type=Application 
+	```
+
