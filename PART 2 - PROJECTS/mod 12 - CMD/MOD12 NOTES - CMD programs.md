@@ -364,4 +364,20 @@ Ubuntu linux Dash search can be brought up by pressing windows key and entering 
 	Exec=gnome-terminal -- /home/al/Scripts/program.py # the path need to be full path
 	Type=Application 
 	```
+### PyInstaller
 
+[Documentation](https://pyinstaller.org/en/stable/usage.html)
+
+- can be installed with pip `pip install pyinstaller`
+	- this will create program **ONLY** for the same system that created it (create it on windows for windows.exe, linux for linux, macOS for macOS)
+- Python programs are mostly run by interpreters but it's also possible to create executable .exe with python programs
+- They tend to be quite large due to the fact that they contain the copy of the program and interpreter itself (like 8MB for simple hello world program)
+- Benefit of creating .exe is that you can share it with others who don't have Python installed
+
+#### "Compiling" a program
+`python -m PyInstaller --onefile program.py`
+- This will create 2 folders
+	- `build` folder which can be deleted
+	- `dist` folder which contains the .exe file
+
+ 
