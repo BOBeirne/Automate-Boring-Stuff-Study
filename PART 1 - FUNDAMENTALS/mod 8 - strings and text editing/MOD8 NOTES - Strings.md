@@ -1,17 +1,20 @@
-## ESCAPE characters
+# ESCAPE characters
 
-* \'  -   single quote        ('say hi to bob\' mother)
-* \"  -   double quote        
-* \t  -   Tab
-* \n  -   Newline             ("Hello there\nHow are You?\nI\'m fine.)
-* \\  -   Backslash           
+* `\'`  -   single quote        ('say hi to bob\' mother)
+* `\"`  -   double quote        
+* `\t`  -   Tab
+* `\n`  -   Newline             ("Hello there\nHow are You?\nI\'m fine.)
+* `\\`  -   Backslash           
 
-## RAW string - makes string literal
+# RAW string
+
+- Type of a string that makes string literal
+
 ```python
 print(r'The file path is F:\Python\Automate boring stuff')
 ```
 
-## MULTILINE strings
+# MULTILINE strings
 
 ```python
 '''
@@ -25,7 +28,7 @@ Babs
 '''
 ```
 
-## MULTILINE Comment
+# MULTILINE Comment
 
 ```python
 """
@@ -38,12 +41,13 @@ starts with triple quote and end with triple quote
 ```
 ## Indexes and slices
 
-[WIP]
+WIP
 ## in and not operators
 
-[WIP]
+WIP
 
-## F-STRINGS (after ver 3.6)
+# F-STRINGS (after ver 3.6)
+
 ``` python
 name = 'Al'
 age = 40
@@ -52,14 +56,15 @@ print(f'in 10 years I will be {age+10} years old')
 # F-string alternatives (before ver 3.6) 
 ```
 
-## string INTERPOLATION (using %s)
+# string INTERPOLATION (using %s)
+
 ``` python
 name = 'Al'
 age = 40
 print('My name is %s and I\'m %s years old.' % (name, age))
 print('in 10 years I will be %s years old' % (age +10))
 ```
-## .format() METHOD
+# .format() METHOD
 
 ```python
 name = 'Al'
@@ -69,6 +74,7 @@ print('in 10 years I will be {} years old'.format(age +10))
 ```
 
 ## .format method INDEX
+
 ``` python
 name = 'Al'
 age = 40
@@ -76,7 +82,7 @@ print('{1} years ago {0} was born and named {0}.'.format(name, age))
 ```
 ## Useful string METHODS
 
-### upper() and lower()
+### `upper()` and `lower()`
 
 ``` python
 spam = 'Hello world'
@@ -90,7 +96,8 @@ print(spam)
 
 ### BOOL
 
-* isupper() and islower() returns BOOL value
+* `isupper()` and `islower()` returns BOOL value
+* 
 ``` python
 spam = 'Hello'
 spam = spam.lower()
@@ -99,21 +106,23 @@ print(spam.isupper())
 ```
 ## other methods
 
-* .isalpha()      -       True if str has only letter and isn't blank
-* .isalnum()      -       True if str is only letters and num and isn't blank 
-* .isdecimal()    -       True if only numbers and not blank
-* .isspace()      -       True if str consists of only: spaces, tabs and newlines and isn't blank
-* .istitle()      -       True if all words start with uppercase followed by only lowercases
+* `.isalpha()`      -       True if str has only letter and isn't blank
+* `.isalnum()`      -       True if str is only letters and num and isn't blank 
+* `.isdecimal()`    -       True if only numbers and not blank
+* `.isspace()`      -       True if str consists of only: spaces, tabs and newlines and isn't blank
+* `.istitle()`      -       True if all words start with uppercase followed by only lowercases
 
 
 # Start and end of string check
+
 ```python
 print(('Hello World!').startswith('Hello'))
 print(('Hello World!').endswith('World!'))
 print(('Hello World!').endswith('!'))
 ```
-## Joining and splitting
+# Joining and splitting
 ## JOINING strings
+
 ```python
 print(', '.join(['cats', 'bats', 'rats'])) # remember we start with list and then turn it into a str!
 ```
@@ -220,7 +229,7 @@ print(ord('A') < ord('B'))
 
 ## copying and pasting strings
 
-## [[PYPERCLIP]]
+## [[PYPERCLIP]] module
 
 * need to be installed first!
 

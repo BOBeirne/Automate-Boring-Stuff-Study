@@ -1,5 +1,5 @@
 ## Q1 Write an assert statement that triggers an AssertionError if the variable spam is an integer less than 10.
-```
+```python
 print('enter a nr')
 spam = int(input('>'))
 
@@ -8,7 +8,7 @@ print(spam)
 ```
 
 ## Q2 Write an assert statement that triggers an AssertionError if the variables eggs and bacon contain strings that are the same as each other, even if their cases are different. (That is, 'hello' and 'hello' are considered the same, as are 'goodbye' and 'GOODbye'.)
-```
+```python
 print('enter 2 different words')
 eggs = input('>').lower()
 spam = input('>').lower()
@@ -16,16 +16,16 @@ spam = input('>').lower()
 assert eggs != spam # words are the same!!
 ```
 ## Q3 Write an assert statement that always triggers an AssertionError.
-```
+```python
 assert False # assertion error
 ```
 ## Q4 What two lines must your program have to be able to call logging.debug()?
-```
+```python
 import logging 
 logging.basicConfig(level=logging.DEBUG)
 ```
 ## Q5 What two lines must your program have to make logging.debug() send a logging message to a file named programLog.txt?
-```
+```python
 import logging 
 logging.basicConfig(filename='programlog.txt')
 ```

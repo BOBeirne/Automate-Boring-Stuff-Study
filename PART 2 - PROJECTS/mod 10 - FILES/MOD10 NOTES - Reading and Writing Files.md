@@ -1,13 +1,13 @@
-## Files and File paths
+# Files and File paths
 
-### File
+## File
 
 * **Filename**
 * **Filepath**
 * **Extension**
-### Filepath
+## Filepath
 
-#### Root folder (Anchor)
+### Root folder (Anchor)
 
 * contains all other folders on that hard drive
 * Different for OS  
@@ -18,7 +18,7 @@
 	* MacOS : separate folders in `/Volumes` folder
 	* Linux: separate folders under `/mnt` folder (mount)
 
-#### Path Separators
+### Path Separators
 
 * Windows paths are using backslash `\`, while MacOS and Linux use forward slash `/`
 * `path()` function in `pathlib` handles all OS types
@@ -31,7 +31,7 @@ WindowsPath("spam/bacon/eggs") # WindowsPath("spam/bacon/eggs")
 str(Path("spam","bacon","eggs)) #"spam\\bacon\\eggs"
 ```
 
-#### Parts of a filepath
+### Parts of a filepath
 
 * You can extract filepath's different paths using several Path obj attributes
 * This can be useful in creating new filepaths based of old ones
@@ -55,7 +55,7 @@ p.stem # # 'base'
 p.suffix # 'base'
 ```
 
-#### p.parts
+### p.parts
 
 * Splitting up path by it's separator
 
@@ -67,7 +67,7 @@ p.parts[3] # 'base.base'
 p.parts[0:2] # ('F:\\', 'Python')
 ```
 
-#### parents (NOT parent)
+### parents (NOT parent)
 
 * Evaluates ancestor's folders of a Path obj with Int index*
 
@@ -79,7 +79,7 @@ Path.cwd().parents[1] # WindowsPath('F:/')
 Path.cwd().parents[2]
 ```
 
-## [[OS]] module (old way)
+# [[OS]] module (old way)
 ### path.join()
 
 * it takes a bunch of str arguments and returns them as a single path
@@ -221,9 +221,9 @@ for filename in my_files:
 	print(Path(r'C:\\Users\\Al', filename))
 ```
 
-C:\Users\Al\accounts.txt
-C:\Users\Al\details.csv
-C:\Users\Al\invite.docx
+`C:\Users\Al\accounts.txt`
+`C:\Users\Al\details.csv`
+`C:\Users\Al\invite.docx`
 ### The Golden Rule for joining paths
 
 * To join path components with the **`/`** operator, **at least one of the items you are joining must be a `Path` object**. 

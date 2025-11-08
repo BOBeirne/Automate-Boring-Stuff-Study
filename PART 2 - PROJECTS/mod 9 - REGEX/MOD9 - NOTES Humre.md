@@ -11,7 +11,7 @@ regex = exactly(3, DIGIT) + '-' + exactly(3,DIGIT) + '-' + exactly(4,DIGIT)
 phone
 ```
 
-'\\d{3}-\\d{3}-\\d{4}'
+`\\d{3}-\\d{3}-\\d{4}`
 
 ### Humre’s constants for the shorthand character classes:
 

@@ -6,9 +6,9 @@
 - Selenium - launches and controls the webbrowser (filling in forms, simulating mouse clicks)
 - json - used to parse json files
 
-## Downloading Web Pages
+# Downloading Web Pages
 
-### requests module
+## requests module
 
 [Docs](https://requests.readthedocs.io/en/latest/)
 
@@ -33,7 +33,7 @@ print(response.text[:200])
 #almost no restrictions whatsoever.  You may copy it, give it a
 ```
 
-#### Checking for errors
+### Checking for errors
 
 - You can compare the `response.status_code` to `requests.codes.ok`
 - **Easier** way is to use `call_for_status()` method on the `response` object to check for errors
@@ -47,7 +47,7 @@ response = requests.get('https://inventwithpython.com/page_that_does_not_exist')
 print(response.raise_for_status())
 ```
 
-#### Saving Downloaded Files to the Hard Drive
+### Saving Downloaded Files to the Hard Drive
 
 - once the page is downloaded, you can save it to the hard drive using open() and write() methods 
 	- they **must be opened in binary mode** by passing `wb` as a  second attribute to open() to maintain the Unicode encoding
@@ -68,7 +68,7 @@ print('File RomeoAndJuliet.txt has been saved to the hard drive.')
 	- Each chunk is of the `bytes` data type, and you get to specify how many bytes each chunk will contain. 
 	- One hundred thousand bytes (100000) is generally a good size, so pass 100000 as the argument to `iter_content()`.
 
-### API
+## API
 
 - [[API]] - Application Programming Interface
 	- specification that defines how one piece of software (eg. Python program) can communicate with another piece of software (eg. web server with weather information)
@@ -77,7 +77,7 @@ print('File RomeoAndJuliet.txt has been saved to the hard drive.')
 	- `json.loads(response.text)` returns a Python data structure of lists and dictionaries containing the JSON data in response.text.
 
 
-#### Breaking down the API URL formatting
+### Breaking down the API URL formatting
 
 - We will be using [OpenWeatherMap](https://openweathermap.org/) API to get weather information
 	- [API docs](https://openweathermap.org/api)
@@ -107,7 +107,7 @@ print('File RomeoAndJuliet.txt has been saved to the hard drive.')
 	- https://pypi.org/project/openweathermapy/
 
 
-#### Using the API
+### Using the API
 
 ```python
 import requests
@@ -136,7 +136,7 @@ response_data[0]['lon']
 - if we didn't use f-strings, we would have to replace the city name, state code, and country code into the URL manually like this:
 	`direct?q=San Francisco,CA,US&appid=30ee784a80d81480dab1749d33980112'`
 
-#### Finding temperature of San Francisco
+### Finding temperature of San Francisco
 
 - We can use the latitude and longitude of San Francisco to make another API request to OpenWeatherMap to get the temperature of San Francisco
 - The temperature returned will be in Kelvin
@@ -158,7 +158,7 @@ rounded_temp_F = round(response_data['main']['temp'] * (9/5) - 459.67) # convert
 print(f'Temperature in San Francisco is {rounded_temp_F} F') # 54.1
 ```
 
-#### Requesting a Latitude and Longitude
+### Requesting a Latitude and Longitude
 
 - Endpoint: `https://api.openweathermap.org/geo/1.0/direct?q={city_name},{state_code},{country_code}&appid={API_key}`
 - If OpenWeather is unable to locate the city, response_data will be an empty list.
@@ -170,7 +170,7 @@ response_data[0]['lat'] # returns latitude as a float
 response_data[0]['lon'] # returns longitude as a float
 ```	
 
-#### Fetching the Current Weather
+### Fetching the Current Weather
 
 - Endpoint: `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_key}`
 - After converting the response JSON text into a Python data structure in a variable named response_data, you can retrieve the following information:
@@ -186,7 +186,7 @@ response_data['wind']['speed'] # Holds the wind speed in meters per second
 
 If you supplied an incorrect latitude or longitude argument, response _data will be a dictionary, like {"cod":"400","message":"wrong latitude"}.
 
-#### Getting a Weather Forecast
+### Getting a Weather Forecast
 
 Endpoint for 5-day forecast is `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API_key}`
 
@@ -197,7 +197,7 @@ response_data['list'][0]['main'] # Holds a dictionary with keys like 'temp', '
 response_data['list'][0]['weather'][0] # Holds a dictionary of descriptions with keys like 'main', 'description', and others.
 ```
 
-### HTML
+## HTML
 
 - Use of webscraping requires at least basic knowledge of HTML and CSS
 - you can learn more about HTML here
@@ -207,12 +207,12 @@ response_data['list'][0]['weather'][0] # Holds a dictionary of descriptions wi
 
 - Some HTML elements have an `id` attribute used to uniquely identify the element in the page. You’ll often instruct your programs to seek out an element by its id attribute, so finding this attribute using the browser’s Developer Tools is a common task when writing web scraping programs.
 
-#### Viewing a Web Page’s Source Code
+### Viewing a Web Page’s Source Code
 
 - To see page's HTML code right-click any web page in your web browser (or CTRL-click it on macOS), and select View Source or View page source
 - It’s fine if you don’t fully understand what you’re seeing. You just need enough knowledge to pick out data from an existing site.
 
-#### Web Browser Developer Tools
+### Web Browser Developer Tools
 
 - Press F12 to make the toolbar appear
 - Pressing F12 again will make it disappear.
@@ -226,7 +226,7 @@ HTML can be formatted in many ways and still be considered valid, but trying to 
 Using a module developed specifically for parsing HTML, such as bs4, is less likely to result in bugs.
 You can find an extended argument for why you shouldn’t parse HTML with regular expressions at https://stackoverflow.com/a/1732454/1893164.
 
-#### Finding HTML Elements
+### Finding HTML Elements
 
 - Once you have web page HTML as a string value using `requests` module you can start looking for specific HTML elements that interest you.
 - This is where Developer Tools can help.
@@ -250,14 +250,15 @@ For example:
 	- or Selenium’s find_element() method
 - CSS selector syntax used in this string specifies which HTML elements to retrieve from a web page
 
-##### when a website changes its layout, you’ll need to update the HTML tags your scripts check. Be sure to keep an eye on your program in case it suddenly displays errors about not being able to find elements.
+#### when a website changes its layout, you’ll need to update the HTML tags your scripts check. Be sure to keep an eye on your program in case it suddenly displays errors about not being able to find elements.
 
-### Parsing HTML with BeautifulSoup
+## Parsing HTML with BeautifulSoup
 
+- Documentation can be found [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 - Requires to be installed with `pip install beautifulsoup4` , `bs4` to import
 - BeautifulSoup is a Python library that makes it easy to parse HTML and XML documents.
 
-#### Creating BS4 Objects
+### Creating BS4 Objects
 
 - `bs4.BeautifulSoup()` function accepts a string containing the HTML it will parse, then returns a `BeautifulSoup object`
 
@@ -281,7 +282,7 @@ print(type(example_soup)) # <class 'bs4.BeautifulSoup'>
 
 - Once we have a BeautifulSoup object, we can use it to find specific HTML elements
 
-#### Finding HTML Elements with BeautifulSoup
+### Finding HTML Elements with BeautifulSoup
 
 - You can retrieve web page element from BeautifulSoup object using `select()` method and pass it CSS selector string for the element you're looking for
 - Method will return a `tag` objects which will represent matching HTML elements
@@ -338,18 +339,18 @@ p_elems = example_soup.select('p') # find all <p> elements and store them in p_e
 print(str(p_elems[0])) # '<p>This <p> tag puts <b>content</b> into a <i>single</i> paragraph.</p>'
 print(p_elems[0].get_text()) # 'This <p> tag puts content into a single paragraph.'
 
-print(str(p_elems[1])) # '<p> <a href="https://inventwithpython.com/”>This text is a link</a> to books by <span id="author">Al Sweigart</span>.</p>'
+print(str(p_elems[1])) # '<p> <a href="https://inventwithpython.com/" >This text is a link</a> to books by <span id="author">Al Sweigart</span></p>'
 print(p_elems[1].get_text()) # 'This text is a link to books by Al Sweigart.'
 
 print(str(p_elems[2])) # '<p><img alt="Close-up of my cat Zophie." src="wow_such_zophie_thumb.webp"/></p>'
-print(p_elems[2].get_text()) # ''
+print(p_elems[2].get_text()) #
 ```
 
 - `select()` gives us a list of three matches, which we store in `p_elems`
 - Using str() on p_elems[0], p_elems[1], and p_elems[2] shows each element as a string
 - using get_text() on each element shows it's text.
 
-# Getting Data from an Element’s Attributes
+### Getting Data from an Element’s Attributes
 
 - `get()` method for `Tag objects` allows us to access HTML attribute values from an element.
 - pass the method an attribute name as a string to get the value of that attribute as a string
@@ -368,3 +369,89 @@ print(span_elem.attrs) # {'id': 'author'} - those are the attributes of the elem
 
 - use `select()` to find any `<span>` elements and then store the first matched element in `span_elem`
 - Passing the attribute name `'id'` to `get()` returns the attribute’s value: `'author'`
+
+## Selenium module
+
+- Selenium is a tool for automating web browsers
+- [Docs](https://selenium-python.readthedocs.io/)
+- needs to be installed: `pip install selenium`
+- instead of importing the module we use `from selenium import webdriver`
+- Selenium supports:
+    - FireFox `webdriver.Firefox()`
+    - Chrome `webdriver.Chrome()` 
+    - Edge `webdriver.Edge()`
+    - Safari `webdriver.Safari()`
+    - Internet Explorer `webdriver.Ie()`
+
+```python
+from selenium import webdriver
+browser = webdriver.Chrome()
+type(browser) # <class 'selenium.webdriver.chrome.webdriver.WebDriver'>
+browser.get('https://inventwithpython.com/') # open a page in the browser
+```
+
+### Browser buttons
+
+- Selenium can simulate the user clicking the browser’s back, forward, refresh, and quit buttons
+- `browser.back()` - goes back to the previous page
+- `browser.forward()` - goes forward to the next page
+- `browser.refresh()` - refreshes the page
+- `browser.quit()` - closes the browser
+
+### Finding Elements on the Page
+
+- The **WebDriver object** has the `find_element()` method and `find_elements()` methods to find elements on the page.
+    
+    - `find_element()` returns the **first element** that matches the CSS selector.
+        
+    - `find_elements()` returns a **list of all elements** that match the CSS selector.
+        
+    - The results of `find_element()` and `find_elements()` are **`WebElement` objects**.
+        
+- Selenium can find elements on the page using CSS selectors, class names, or IDs and store them in a `By` object.
+    
+    - To get the `By` object, first run `from selenium.webdriver.common.by import By`.
+        
+    - You can then pass it to `find_element()` or `find_elements()`.
+        
+- **Key Fact:** If no elements exist on the page that match what the method is looking for, Selenium will raise **`NoSuchElementException`**.
+    
+
+---
+
+### `WebElement` Attributes and Methods
+
+|**Attribute/Method**|**Description**|**Example/Return Type**|
+|---|---|---|
+|`tag_name`|The tag name of the element.|`a` for an `<a element>`|
+|`get_attribute(name)`|Returns the value of the attribute named `name`.|`href` in an `<a>` element|
+|`get_property(name)`|Returns the value of the property named `name`.|`innerHTML` in an `<a>` element|
+|`text`|The text inside the element.|`'hello'` in `<span>hello</span>`|
+|`clear()`|Clears the text inside the text field or text area.|`None` (performs action)|
+|`is_displayed()`|Returns `True` if the element is visible.|`Boolean`|
+|`is_enabled()`|Returns `True` if the element is enabled.|`Boolean`|
+|`is_selected()`|Returns `True` if the element is selected.|`Boolean`|
+|`location`|The location of the element on the page.|`{'x': 100, 'y': 200}`|
+|`size`|The size of the element.|`{'width': 100, 'height': 200}`|
+
+---
+
+### Selenium’s `By` Constants for Finding Elements
+
+- **`By.CLASS_NAME`**: Elements that use the CSS class `name`.
+    
+- **`By.CSS_SELECTOR`**: Elements that match the CSS `selector`.
+    
+- **`By.ID`**: Elements with a matching `id` attribute value.
+    
+- **`By.LINK_TEXT`**: `<a>` elements that **completely** match the text provided.
+    
+- **`By.PARTIAL_LINK_TEXT`**: `<a>` elements that **contain** the text provided.
+    
+- **`By.NAME`**: Elements with a matching `name` attribute value.
+    
+- **`By.TAG_NAME`**: Elements with a matching `tag name` (case-insensitive).
+
+
+
+

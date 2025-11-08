@@ -31,7 +31,6 @@ These objects have several methods:
 ## Regex testers
 
 https://regex101.com
-
 https://pythex.org
 
 ---

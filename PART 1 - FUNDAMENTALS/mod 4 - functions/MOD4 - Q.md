@@ -59,7 +59,7 @@ use try and except to raise an exception if there is an issue to avoid program c
 in try clause goes the code to try, in except clause goes the code to run if the code fails
 
 ## 15. Write the following program in a file named notrandomdice.py and run it. Why does each function call return the same number?
-```
+```python
 import random 
 def get_random_dice_roll():
     random_nr = random.randint(1,6) # this needs to be inside function

@@ -5,7 +5,7 @@
 
 ### 1.  What is the function that returns Regex objects?
 
-re.compile()
+`re.compile()`
 
 ### 2.  Why are raw strings often used when creating Regex objects?
 
@@ -19,54 +19,54 @@ it returns "Match" object in the provided string if it finds a match
 
 ### 4.  How do you get the actual strings that match the pattern from a Match object?
 
-.group()
+`.group()`
 
 ### 5.  In the regex created from r'(\d\d\d)-(\d\d\d-\d\d\d\d)', what does group 0 cover? Group 1? Group 2?
 
-* group 0 is the whole length of the regex (\d\d\d)-(\d\d\d-\d\d\d\d)
-* group 1 (\d\d\d)
-* group 2 (\d\d\d-\d\d\d\d)
+* group 0 is the whole length of the regex `(\d\d\d)-(\d\d\d-\d\d\d\d)`
+* group 1 `(\d\d\d)`
+* group 2 `(\d\d\d-\d\d\d\d)`
 
 ### 6.  Parentheses and periods have specific meanings in regular expression syntax. How would you specify that you want a regex to match actual parentheses and period characters?
 
-* if i want to match actual dot i need to escape it using backslash \.
-* to escape parentheses you would use \( and \)
-* . matches any character except for a newline
+* if i want to match actual dot i need to escape it using backslash `\.`
+* to escape parentheses you would use `\(` and `\)`
+* `.` matches any character except for a newline
 
-### 7.  The findall() method returns a list of strings or a list of tuples of strings. What makes it return one or the other?
+### 7.  The `findall()` method returns a list of strings or a list of tuples of strings. What makes it return one or the other?
 
 * if regex has no groups it will return list of strings
 * it will return tuples if regex has groups
 
-### 8.  What does the | character signify in regular expressions?
+### 8.  What does the `|` character signify in regular expressions?
 
 * pipe means "either or"
 * it can be used to search for multiple options of regex at once
 
 ### 9.  What two things does the ? character signify in regular expressions?
 
-* "?" is used in regex to specify an optional character or making a match lazy
+* `?` is used in regex to specify an optional character or making a match lazy
 
-### 10.  What is the difference between the + and * characters in regular expressions?
+### 10.  What is the difference between the `+` and `*` characters in regular expressions?
 
-* symbol + matches one or more same type of specified condition, so \d+ would mean "one or more digits", equivalent of {1,}
-* * it means "0 or more" equivalent of {0,}
+* symbol `+` matches one or more same type of specified condition, so \d+ would mean "one or more digits", equivalent of `{1,}`
+* `*` it means "0 or more" equivalent of `{0,}`
 
-### 11.  What is the difference between {3} and {3,5} in regular expressions?
+### 11.  What is the difference between `{3}` and `{3,5}` in regular expressions?
 
-* {3} means "match exactly 3"
-* {3,5} means "match from 3 to 5 of instances"
+* `{3}` means "match exactly 3"
+* `{3,5}` means "match from 3 to 5 of instances"
 
-### 12.  What do the \d, \w, and \s shorthand character classes signify in regular expressions?
+### 12.  What do the `\d`, `\w`, and `\s` shorthand character classes signify in regular expressions?
 
-* \d is digit
-* \s is single whitespace character
-* \w is word character and underscore
+* `\d` is digit
+* `\s` is single whitespace character
+* `\w` is word character and underscore
 
-### 13.  What do the \D, \W, and \S shorthand character classes signify in regular expressions?
+### 13.  What do the `\D`, `\W`, and `\S` shorthand character classes signify in regular expressions?
 
-* they are the opposites of \d, \s and \w
-* so \d matches all digits, \D will match everything but digits
+* they are the opposites of `\d`, `\s` and `\w`
+* so `\d` matches all digits, `\D` will match everything but digits
 
 ### 14.  What is the difference between the `.*` and `.*?` regular expressions?
 
@@ -74,11 +74,11 @@ it changes result from greedy mode to lazy mode
 
 ### 15.  What is the character class syntax to match all numbers and lowercase letters?
 
-[a-z0-9]
+`[a-z0-9]`
 
 ### 16.  How do you make a regular expression case-insensitive?
 
-re.IGNORECASE or re.I
+`re.IGNORECASE` or `re.I`
 
 ### 17.  What does the . character normally match? What does it match if re.DOTALL is passed as the second argument to re.compile()?
 
@@ -91,9 +91,9 @@ num_re = re.compile(r'\d+')
 num_re.sub('X', '12 drummers, 11 pipers, five rings, 3 hens')
 ```
 
-it will replace any digits with "X"
+it will replace any digits with `X`
 
-### 19.  What does passing re.VERBOSE as the second argument to re.compile() allow you to do?
+### 19.  What does passing `re.VERBOSE` as the second argument to `re.compile()` allow you to do?
 
 * it allows to split the regex over multiple lines for easier readability
 * it also allows you use python syntax inside a regex so you can add comments
@@ -145,7 +145,7 @@ print(f"Has lower letters: {lowercase(pw)}")
 print(f"Has digits: {digit_check(pw)}")
 ```
 
-### Regex Version of the strip() Method
+### Regex Version of the `strip()` Method
 
 Write a function that takes a string and does the same thing as the strip() string method. If no other arguments are passed other than the string to strip, then the function should remove whitespace characters from the beginning and end of the string. Otherwise, the function should remove the characters specified in the second argument to the function.
 

@@ -9,7 +9,7 @@ True and False
 AND NOT OR 
 
 ## 3. Write out the truth tables of each Boolean operator (that is, every possible combination of Boolean values for the operator and what they evaluate to).
-```
+```python
 AND
 
 1 AND 1 = 1
@@ -38,7 +38,7 @@ print((not False) or (not True)) # True or False = True
 ```
 
 ## 5. What are the six comparison operators?
-```
+```python
 !=
 ==
 >=
@@ -56,7 +56,7 @@ same thing as expression but always evaluates Boolean values (True or False)
 you would use them in flow control statements (eg loops)
 
 ## 8. Identify the three blocks in this code:
-```
+```python
 spam = 0
 if spam == 10: 
 #1st block starts
@@ -72,7 +72,7 @@ print('spam')
 print('Done') # not part of the loop
 ```
 ## 9. Write code that prints Hello if 1 is stored in spam, prints Howdy if 2 is stored in spam, and prints Greetings! if anything else is stored in spam.
-```
+```python
 print('enter the number')
 spam = int(input('>'))
 
