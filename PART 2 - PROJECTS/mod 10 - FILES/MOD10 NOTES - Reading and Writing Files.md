@@ -339,7 +339,41 @@ There are 2 ways to specify a filepath
 	* **_._** (dot) indicates **_current** folder_
 	* **_.._** (dot-dot) indicates **_parent** folder_
 
-![[image.png]]
+#### Directory Structure Overview
+
+The root of the file system is designated as `C:\`.
+
+* **C:\** (Root Directory)
+    * **bacon** (Directory)
+        * **fizz** (Directory)
+            * `spam.txt` (File)
+        * `spam.txt` (File)
+    * **eggs** (Directory)
+        * `spam.txt` (File)
+    * `spam.txt` (File)
+
+#### Path Comparison Table
+
+The current working directory is **C:\bacon\fizz**. The following table shows how to reference various files and directories from this position using both relative and absolute addressing.
+
+| Current Working Directory (CWD) | Relative Paths | Absolute Paths |
+| :---: | :---: | :--- |
+| **C:\bacon\fizz** | `..\` | `C:\bacon\` |
+| **C:\bacon\fizz** | `.. \` | `C:\` |
+| **C:\bacon\fizz** | `.\fizz` | `C:\bacon\fizz` |
+| **C:\bacon\fizz** | `.\fizz\spam.txt` | `C:\bacon\fizz\spam.txt` |
+| **C:\bacon\fizz** | `..\spam.txt` | `C:\bacon\spam.txt` |
+| **C:\bacon\fizz** | `..\..\eggs` | `C:\eggs` |
+| **C:\bacon\fizz** | `..\..\eggs\spam.txt` | `C:\eggs\spam.txt` |
+| **C:\bacon\fizz** | `..\..\spam.txt` | `C:\spam.txt` |
+
+####  Key Path Facts
+
+* **Absolute Paths** always start from the **root** of the file system (e.g., `C:\`) and uniquely define the location of a file or directory.
+* **Relative Paths** are defined **relative to the Current Working Directory (CWD)**.
+    * **`.\`** (or implied) refers to the **Current Directory**.
+    * **`..\`** refers to the **Parent Directory** (one level up).
+    * The path `..\..\` moves **two levels up** from the CWD.
 
 ```python
 from pathlib import Path
