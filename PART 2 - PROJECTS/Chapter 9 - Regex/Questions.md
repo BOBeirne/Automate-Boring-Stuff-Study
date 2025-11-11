@@ -1,6 +1,3 @@
-
-# Practice Test
-
 ## Questions
 
 ### 1.  What is the function that returns Regex objects?

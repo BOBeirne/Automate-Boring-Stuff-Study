@@ -1,11 +1,11 @@
-# Files and File paths
+# File and File paths
 
 ## File
 
-* **Filename**
-* **Filepath**
-* **Extension**
-## Filepath
+- Files consist of:
+	* Filename
+	* Filepath
+	* Extension
 
 ### Root folder (Anchor)
 
@@ -439,7 +439,7 @@ import time
 time.asctime(time.localtime(calc_file_stat().st_mtime)) # 'Sat Dec  7 09:09:47 2019'
 ```
 
-## [[Glob]] patterns
+## Glob patterns
 
 * You can use *`*`* and *`?`* to match folder names and filenames
 * called glob patterns aka simplified regex
@@ -594,31 +594,3 @@ sonnet_file.close()
 It is important to release system resources
 and to flush buffer after writing to the file
 f
-## Shelve module
-
-Uses **binary** files to store **variables data**
-
-```python
-import shelve
-shelfFile = shelve.open('mydata')
-shelfFile['cats'] = ['Zophie', 'Pooka', 'Simon', 'Fuzzball']
-shelfFile.close()
-
-shelfFile = shelve.open('mydata')
-shelfFile['cats'] # ['Zophie', 'Pooka', 'Simon', 'Fuzzball']
-```
-
-You can make changes to it as if it were a dictionary
-
-### .keys() & .values()
-
-Returns a list of key values in shelve file
-
-```python
-shelfFile = shelve.open('mydata')
-shelfFile.keys()
-list(shelfFile.keys()) # display the keys as a list
-
-shelfFile.values()
-list(shelfFile.values()) # display values as a list
-```

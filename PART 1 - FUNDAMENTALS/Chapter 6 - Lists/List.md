@@ -1,5 +1,5 @@
 
-# Simple [list]
+# Simple list
 
 ```python
 spam = ['cat', 'dog', 'bat']
