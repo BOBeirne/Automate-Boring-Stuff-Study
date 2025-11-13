@@ -1,8 +1,12 @@
 # This program goes to image website and searches for a specified category and downloads the first 10 images.
-# unfortunately im having problem getting this to work on imgur dues to the 429 error even with time pause (too many requests)
-# flickr doesnt seem to work either due to use of dynamic yahoo user interface Id
+# unfortunately im having problem getting this to work on imgur due to the 429 error even with time pause (too many requests)
+# flickr doesn't seem to work either due to use of dynamic yahoo user interface ID, which dynamically creates a different image ID every time it's loaded.
+# WIP until i find compatible site
+
 
 import requests, os, bs4, time, random
+
+headers = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' } # included in hope to avoid the 429 error but it did't help
 
 search_term = input('Enter search term: ')
 url = 'https://500px.com/search?q=/'
@@ -18,7 +22,7 @@ except requests.exceptions.RequestException as errormsg:
 
 soup = bs4.BeautifulSoup(response.text, 'html.parser') # create a BeautifulSoup object with the search results page as a string
 img_tags = soup.select('img[data-src]') # find all <img> elements with data-src attribute
-
+print(img_tags) # see if search results are found
 num_downloaded = 0 # initialize counter
 
 # Loop through the found tags and download each image found
@@ -47,10 +51,3 @@ for image in img_tags[0:10]: # for each image in the list
     time.sleep(5) # wait 1 second before downloading the next image
 
 print(f'Downloaded {num_downloaded} images')
-
-
-# 500px WIP
-# body > div:nth-child(15) > div.mainContent > div > div.bottom > rejectAll
-#browser.find_element(By.ID, 'a.rejectAll').click() # reject all cookies
-# #gwt-debug-close_id
-#browser.find_element(By.ID, 'gwt-debug-close_id').click() # close window
