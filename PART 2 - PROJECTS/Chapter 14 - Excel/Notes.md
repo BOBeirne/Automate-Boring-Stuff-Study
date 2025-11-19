@@ -92,7 +92,8 @@ for i in range (1, 8, 2): # Go through every other row
 # 7 Strawberries
 ```
 
-- You can check the size of the sheet with `Worksheet object`'s `max_row` and `max_column` attributes
+- You can check the **size** of the sheet with `Worksheet object`'s `max_row` and `max_column` attributes
+- `max_column` will return and `integer` value instead of a letter of the column
 
 ```python
 import openpyxl
@@ -103,3 +104,243 @@ print(sheet.max_row)
 print(sheet.max_column) 
 # 3
 ```
+
+### Converting between column letters and numbers
+
+- You can use `openpyxl.utils.get_column_letter()` function to convert from column number to column letter
+- Use `openpyxl.utils.column_index_from_string()` function to convert from column letter to column number
+
+```python
+import openpyxl
+from openpyxl.utils import get_column_letter, column_index_from_string
+
+print(get_column_letter(1))
+# 'A'
+print(get_column_letter(2))
+# 'B'
+print(get_column_letter(27))
+# 'AA'
+print(get_column_letter(900))
+# 'AHP'
+print(column_index_from_string('A')) # Get 'A''s column number
+# 1
+print(column_index_from_string('AA')) # Get 'AA''s column number
+# 27
+
+wb = openpyxl.load_workbook('example3.xlsx')
+sheet = wb['Sheet1']
+get_column_letter(sheet.max_column)
+# 'C'
+```
+
+### Getting rows and columns
+
+- You can **slice** `worksheet object` to get all `cell objects` in a row, column or rectangle of cells.
+	- You can loop over the cells in the slice
+	- The slice of `cell objects` contains a **tuple** of `cell objects`
+
+- In this example (slice `['A1':'C3']`):
+	- **cell object tuple** contains **3 **tuples**** - one for each **row**
+	- **Each row tuple** contains **all cell objects** in the row 
+
+```python
+import openpyxl
+wb = openpyxl.load_workbook('example3.xlsx') # load workbook from file example3.xlsx
+sheet = wb['Sheet1'] # get the sheet named 'Sheet1' from a  workbook object
+
+sheet['A1':'C3'] # Get cells from A1 to C3
+# ((<Cell 'Sheet1'.A1>, <Cell 'Sheet1'.B1>, <Cell 'Sheet1'.C1>), (<Cell 'Sheet1'.A2>, <Cell 'Sheet1'.B2>, <Cell 'Sheet1'.C2>), (<Cell 'Sheet1'.A3>, <Cell 'Sheet1'.B3>, <Cell 'Sheet1'.C3>))
+
+for row_of_cell_objects in sheet['A1':'C3']:
+	for cell_object in row_of_cell_objects:
+		print(cell_object.coordinate, cell_object.value)
+	print('--- End of row ---')
+"""
+A1 2035-04-05 13:34:02
+B1 Apples
+C1 73
+--- END OF ROW ---
+A2 2035-04-05 03:41:23
+B2 Cherries
+C2 85
+--- END OF ROW ---
+A3 2035-04-06 12:46:51
+B3 Pears
+C3 14
+--- END OF ROW ---
+"""
+```
+
+- To access **values** of cells in a particular row or column, you can use `Worksheet object`'s `.rows` and `.columns` attributes
+	- They need to be first converted to a list using `list()` function
+	- this is a list of **tuples**, so you can use `index` to get the value of the cell
+		- Each of these **tuples** represents a row and contains the `Cell objects` in that row
+		- If we pass `columns` attribute to al `list()` will also give a list of tuples, one for cells in each column
+	 - To access one particular tuple, you can refer to it by its **index in the larger tuple**. 
+	 	 - For example: 
+	 		- to get the tuple that represents column B, you’d use list(sheet.columns)[1]
+			- To get the tuple containing the Cell objects in column A, you’d use list(sheet.columns)[0]
+
+```python
+import openpyxl
+wb = openpyxl.load_workbook('example3.xlsx') # load workbook from file example3.xlsx
+sheet = wb['Sheet1'] # get the sheet named 'Sheet1' from a  workbook object
+print(list(sheet.columns)[1]) # get second column's cells as a list
+#(<Cell 'Sheet1'.B1>, <Cell 'Sheet1'.B2>, <Cell 'Sheet1'.B3>, <Cell 'Sheet1'.B4>, <Cell 'Sheet1'.B5>, <Cell 'Sheet1'.B6>, <Cell 'Sheet1'.B7>)
+
+for cell_object in list(sheet.columns)[1]:
+	print(cell_object.value)
+"""
+Apples
+Cherries
+Pears
+Oranges
+Apples
+Bananas
+Strawberries
+"""
+```
+
+### Summary:
+
+1.  Import the `openpyxl` module.
+
+2.  Call the `openpyxl.load_workbook()` function to get a Workbook object.
+
+3.  Use the `active` or `sheetnames` attribute.
+
+4.  Get a `Worksheet object`.
+
+5.  Use `indexing` or the `cell()` sheet method with `.rows` and `.columns` keyword arguments.
+
+6.  Get a `Cell object`.
+
+7.  Read the `Cell` object’s `.value` attribute.
+
+
+## Creating and saving Excel Files
+
+- `openpyxl` module allows you to create and save Excel files
+- use `title` to modify the title of the sheet
+- Anytime you modify the `Workbook object` or its `sheets` and `cells`, the spreadsheet file will **not be saved** until you call the `save()` workbook method
+
+```python
+import openpyxl
+wb = openpyxl.Workbook() # create a Workbook object
+print(wb.sheetnames) # Workbook starts with one sheet
+# ['Sheet']
+sheet = wb.active # get the active sheet
+print(sheet.title) # get the title of the active sheet
+# 'Sheet'
+sheet.title = 'Spam Bacon Eggs Sheet' #  change the title of the sheet
+print(wb.sheetnames) # get the names of all the sheets in the workbook
+# ['Spam Bacon Eggs Sheet']
+
+sheet.title = 'spam spam spam' # change the title of the sheet again
+print(wb.sheetnames)
+
+wb.save('example3_copy.xlsx') # save the workbook as example3_copy.xlsx
+```
+
+### Create and Remove sheets
+
+- use `create_sheet()` method to create sheets
+	- it returns a new `worksheet object` named `SheetX`, 
+	- `SheetX` object is **by default the last sheet* in the workbook
+	- You can specify index and title of the sheet passing it arg:
+		- `index=` to specify index location
+		- `title=' '`to specify the title of the sheet
+- use `del` operator to remove sheets, for eg. `del wb['Sheet']`
+
+```python
+import opennpyxl
+wb = openpyxl.Workbook() # create a Workbook object in wb variable
+wb.sheetnames 
+# ['Sheet']
+
+wb.create_sheet() # create a new sheet 
+# <Worksheet "Sheet1">
+wb.sheetnames # get the list of sheetnames 
+# ['Sheet', 'Sheet1'] 
+
+wb.create_sheet(index=0, title='First Sheet') #  create new sheet at the index id=0 called First Sheet
+wb.sheetnames # get the list of sheetnames 
+# ['First Sheet', 'Sheet', 'Sheet1']
+
+wb.create_sheet(index=2, title='Middle Sheet') #  create new sheet at the index id=2 called Middle Sheet
+# <Worksheet "Middle Sheet">
+
+wb.sheetnames
+# ['First Sheet', 'Sheet', 'Middle Sheet', 'Sheet1']
+
+del wb['Middle Sheet']
+del wb['Sheet']
+wb.sheetnames
+# ['First Sheet', 'Sheet']
+```
+
+### Writing values to cells
+
+- Very **similar to writing values to keys in a Dictionary**
+
+```python
+import openpyxl
+wb =openpyxl.Workbook()
+
+sheet = wb['Sheet'] #  specify the sheet to work on
+
+sheet['A1'] = 'Hello, World!' # edit the A1 cell's value
+print(sheet['A1'].value) # 'Hello, world!'
+```
+
+### Font Style of Cells
+
+- You can change formatting inside cells to highlight important areas
+- to do that you need to use the `Font()` 
+	- it needs to be imported using `from openpyxl.styles import Font`
+	- Use `size=` to change the font size
+	- To change font type to bold/italic/underscore etc assign them `True` value, more in the table below:
+
+| Keyword Argument | Data Type | Description |
+| :--- | :--- | :--- |
+| **name** | String | The font name, such as 'Calibri' or 'Times New Roman'. |
+| **size** | Integer | The point size of the font. |
+| **bold** | Boolean | Set to `True` for bold font styling. |
+| **italic** | Boolean | Set to `True` for italic font styling. |
+
+
+```python
+import openpyxl
+from openpyxl.styles import Font
+
+wb = openpyxl.Workbook() # Create new workbook object
+sheet = wb['Sheet'] # select the sheet
+
+italic_24_font = Font(size=24, italic=True) # store Font object in the variable
+
+sheet['A1'].font = italic_24_font
+sheet['A1'] = 'Hello, world!'
+wb.save('styles3.xlsx')
+```
+
+- You can call `Font()` to create a `Font object` and store that Font object in a variable. You then assign that variable to a `Cell object’s` font `attribute`
+
+```python
+import openpyxl
+from openpyxl.styles import Font
+wb = openpyxl.Workbook() # Create new workbook object
+sheet = wb['Sheet'] # select the sheet
+
+bold_font = Font(name='Times New Roman', bold=True) # store TNR styled, bold Font object in the variable
+
+sheet['A1'].font = bold_font
+sheet['A1'] = 'Bold times new roman'
+
+italic_24_font = Font(size=24, italic=True) # store Font object in the variable
+
+sheet['B3'].font = italic_24_font
+sheet['B3'] = '24 pt Italic`
+
+wb.save('styles3.xlsx')
+```
+
