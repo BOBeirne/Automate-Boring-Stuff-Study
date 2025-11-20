@@ -139,7 +139,7 @@ get_column_letter(sheet.max_column)
 	- You can loop over the cells in the slice
 	- The slice of `cell objects` contains a **tuple** of `cell objects`
 
-- In this example (slice `['A1':'C3']`):
+- In this example slice `['A1':'C3']` :
 	- **cell object tuple** contains **3 **tuples**** - one for each **row**
 	- **Each row tuple** contains **all cell objects** in the row 
 
@@ -175,7 +175,7 @@ C3 14
 	- They need to be first converted to a list using `list()` function
 	- this is a list of **tuples**, so you can use `index` to get the value of the cell
 		- Each of these **tuples** represents a row and contains the `Cell objects` in that row
-		- If we pass `columns` attribute to al `list()` will also give a list of tuples, one for cells in each column
+		- If we pass `columns` attribute to a `list()` will also give a list of tuples, one for cells in each column
 	 - To access one particular tuple, you can refer to it by its **index in the larger tuple**. 
 	 	 - For example: 
 	 		- to get the tuple that represents column B, you’d use list(sheet.columns)[1]
@@ -204,20 +204,12 @@ Strawberries
 ### Summary:
 
 1.  Import the `openpyxl` module.
-
 2.  Call the `openpyxl.load_workbook()` function to get a Workbook object.
-
 3.  Use the `active` or `sheetnames` attribute.
-
 4.  Get a `Worksheet object`.
-
 5.  Use `indexing` or the `cell()` sheet method with `.rows` and `.columns` keyword arguments.
-
 6.  Get a `Cell object`.
-
 7.  Read the `Cell` object’s `.value` attribute.
-
-
 ## Creating and saving Excel Files
 
 - `openpyxl` module allows you to create and save Excel files
@@ -323,7 +315,7 @@ sheet['A1'] = 'Hello, world!'
 wb.save('styles3.xlsx')
 ```
 
-- You can call `Font()` to create a `Font object` and store that Font object in a variable. You then assign that variable to a `Cell object’s` font `attribute`
+- You can call `Font()` to create a `Font object` and store that Font object in a variable. You then assign that `.font` variable to a `Cell object’s` font `attribute`
 
 ```python
 import openpyxl
@@ -342,5 +334,128 @@ sheet['B3'].font = italic_24_font
 sheet['B3'] = '24 pt Italic`
 
 wb.save('styles3.xlsx')
+```
+
+### Formulas
+
+- Formulas start with `=` sign, you can add them to the cells
+- The `openpyxl module` **can't calculate Excel formulas** and populate cells with the results.
+	- If you open this `writeFormula3.xlsx` file in Excel, Excel itself will populate the cells with the formula results.
+	- to see **only** calculation results you can use `data_only=true` when using `openpyxl.load_workbook()` and cell values should show as a **calculated result**
+
+```python
+import openpyxl
+wb = openpyxl.Workbook() # Create new workbook object
+sheet = wb['Sheet'] # select the sheet
+
+sheet['A1'] = 200
+sheet['A2'] = 300
+sheet['A3'] = '=SUM(A1:A2)' # set the formula
+wb.save('writeFormula3.xlsx')
+
+wb.active['A3'].value  # Get the formula string.
+# '=SUM(A1:A2)'
+wb = openpyxl.load_workbook('writeFormula3.xlsx', data_only=True)  # Open with data_only.
+wb.active['A3'].value  # Get the formula result only
+# 500
+```
+
+### Adjusting Rows Height and Columns Width
+
+- You can adjust the size of rows and columns using `row_dimensions` and `column_dimensions` attributes in `Worksheet object`
+
+```python
+import openpyxl
+wb = openpyxl.Workbook() # Create new workbook object
+sheet = wb['Sheet'] # select the sheet
+
+sheet['A1'] = 'Tall Row'
+sheet['B2'] = 'Wide Column'
+
+sheet.row_dimensions[1].height = 70
+sheet.column_dimensions['B'].width = 20
+
+wb.save('dimensions3.xlsx')
+```
+
+### Merging and un-merging cells
+
+- You can merge cells using `merge_cells()` and `unmerge_cells()`
+- To merge cells, you need to pass the **top_left_cell** and **bottom_right_cell** parameters to the `merge_cells()` method
+
+```python
+import openpyxl
+wb = openpyxl.Workbook() # Create new workbook object
+sheet = wb['Sheet'] # select the sheet
+
+sheet.merge_cells('A1:D3') # Merge all these cells.
+sheet['A1'] = 'Twelve cells merged together.'
+sheet.merge_cells('C5:D5') # Merge these two cells.
+sheet['C5'] = 'Two merged cells.'
+wb.save('merged3.xlsx')
+
+sheet.unmerge_cells('A1:D3') # Split these cells up.
+sheet.unmerge_cells('C5:D5') # Split these cells up.
+wb.save('unmerged3.xlsx')
+```
+
+### Freezing Panes
+
+- Sometimes it's helpful to **"freeze"** the top row and left column of a spreadsheet, so that the user doesn't have to scroll around to see the data, they are called **Freeze Panes**
+- This attribute will **freeze all rows above this cell and all columns to the left of it**, but **not the row and column of the cell itself**
+- To **unfreeze** all panes, set `freeze _panes` to `None` or `'A1'`
+
+| Setting Input | Frozen Rows | Frozen Columns |
+| :--- | :--- | :--- | 
+| **`sheet.freeze_panes = 'A2'`** | Row 1 | None | 
+| **`sheet.freeze_panes = 'B1'`** | None | Column A | 
+| **`sheet.freeze_panes = 'C1'`** | None | Columns A and B |
+| **`sheet.freeze_panes = 'C2'`** | Row 1 | Columns A and B | 
+| **`sheet.freeze_panes = 'A1'`** or **`sheet.freeze_panes = None`** | None | None |
+
+```python
+import openpyxl
+wb = openpyxl.Workbook() # Create new workbook object
+sheet = wb['Sheet'] # select the sheet
+
+sheet.freeze_panes = 'A2' # Freeze the rows above A2
+wb.save('freezeExample3.xlsx')
+```
+
+### Charts
+
+- You can make charts using `openpyxl.chart` module
+
+1) Create a `Reference object` from **rectangular section of cells**
+2) Create a `Series object` by passing in `Reference object`
+3) Create `Chart object`
+4) Append `Series object` to `Chart object`
+5) Add the `Chart object` to the `Worksheet object`, optionally specyfying which **cell** should be **top-left** corner of the chart
+
+#### Reference object
+
+- To create `Reference objects`, you must call the `openpyxl.chart.Reference()` function and pass **five arguments**:
+	1) `Worksheet object`
+	2) `Column` and `Row` **Integer** of the **top-left cell** of the selection (tuple = row, column)
+	3) `Column` and `Row` **Integer** of the **bottom-right cell** of the selection (tuple = row, column)
+
+```python
+import openpyxl
+wb = openpyxl.Workbook() # Create new workbook object
+sheet = wb.active
+
+for i in range(1,11): # create some data in col A
+	sheet['A' + str(i)] = i * i
+
+ref_obj = openpyxl.chart.Reference(sheet, 1, 1, 1, 10) # pass the 5 arguments
+
+series_obj = openpyxl.chart.Series(ref_obj, title='first series') # create a series object
+chart_obj = openpyxl.chart.BarChart() # create a chart object in BarChart type
+chart_obj.title = 'My chart'
+chart_obj.append(series_obj) # append the series object to the chart object
+
+sheet.add_chart(chart_obj, 'C5') # add the chart object to the sheet at the location C5
+
+wb.save('chartExample3.xlsx')
 ```
 
