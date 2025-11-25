@@ -11,6 +11,7 @@ pip-selfcheck.json
 # VS Code
 .vscode/
 tempcoderunnerfile.py
+tempCodeRunnerFile.md
 
 # Other
 .DS_Store
@@ -25,3 +26,8 @@ Thumbs.db
 # Obsidian
 .obsidian/
 Base.base
+
+# API credentials
+credentials-sheets.json
+token-sheets.pickle
+token-drive.pickle

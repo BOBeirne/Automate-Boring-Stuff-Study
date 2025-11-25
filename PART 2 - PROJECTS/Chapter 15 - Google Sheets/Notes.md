@@ -2,7 +2,7 @@
 
 - Docs: https://github.com/AlSweigart/EZSheets
 - needs to be installed `python -m pip install EZSheets`
-- **Requires a setup** to obtain a **token** file from Google to access the API and to grant the API access to your account for Sheets and Drive
+- **Requires a setup** to obtain **Credentials .json and tokens** files from [Google Cloud Console](https://console.cloud.google.com/) to grant the API access to your account for Sheets and Drive
 
 ## Setting Up EZSheets
 
@@ -58,10 +58,11 @@
 3) Create access for Desktop application and name it whatever you want
 4) Click on the **Save** button
 5) Download the **credentials.json** file to a safe location
-6) rename the file to something more simple to understand as the name of the file is long and hard to remember / understand
+6) rename the file to `credentials-sheets.json`
 
 ### 7) Generate token files
 
+- Open the python CLI in the same folder as your credentials JSON file
 - Navigate to location of the .json file and run `import ezsheets`. 
 	- EZSheets automatically checks the current working directory for the credentials JSON file by calling the `ezsheets.init() function`. 
 - If the file is found, EZSheets launches your **web browser** to the **OAuth consent** screen to generate token files. 
@@ -71,10 +72,113 @@
 	- You will receive a message "“Google hasn’t verified this app”" which you can ignore as it is not an actual app and you are the creator.
 	- needs to be repeated for each API (in this case the Sheets and Drive APIs)
 	- After closing the second window, you should now see token-drive.pickle and token-sheets.pickle files in the same folder as your credentials JSON file.
---- 
 
-### Revoking the Credentials File
+#### Revoking the Credentials File
 
 - If ever needed to delete the credentials you need to remove the link to them in console.
 - In the [Google Console](https://console.developers.google.com/) go to credentials and click the **bin icon** to delete the credentials associated with the project. 
 - This will revoke any connection between the **.json and token files** and the project. There is no need to delete the token files.
+
+---
+
+## google Sheets
+
+- [Google Sheets API](https://developers.google.com/workspace/sheets/api/guides/concepts)
+
+### Spreadsheet object
+
+- Exactly same concept as **Excel spreadsheets** from Chapter 14
+	- A `spreadsheet` is a collection of one or more **worksheets**.
+	- A `worksheet` is a collection of **one or more rows** and one or more **columns**.
+	- A `row` or a `column` is a collection of one or more cells.
+	- A `cell` is a container for a single value.
+- an example of a `spreadsheet` object can be viewed in the browser [https://autbor.com/examplegs]
+
+#### Creating, Uploading and Listing Spreadsheets
+
+
+- You can make a **new Spreadsheet object** from an existing Google Sheets spreadsheet, a new blank spreadsheet, or an uploaded Excel spreadsheet.
+- All Google Sheets spreadsheets have a unique ID that can be found in their URL, after the spreadsheets/d/ part and before the /edit part.
+	- in example `https://docs.google.com/spreadsheets/d/1TzOJxhNKr15tzdZxTqtQ3EmDP6em_elnbtmZIcyu8vI/edit#gid=0/`
+	- The ID is `1TzOJxhNKr15tzdZxTqtQ3EmDP6em_elnbtmZIcyu8vI`
+- Google Sheets spreadsheet is represented as an `ezsheets.Spreadsheet object`, which has **id, url, and title** attributes. 
+
+```python
+import ezsheets
+ss = ezsheets.Spreadsheet()
+
+ss.title
+# 'Title of My New Spreadsheet'
+ss.url
+# 'https://docs.google.com/spreadsheets/d/1gxz-Qr2-RNtqi_d7wWlsDlbtPLRQigcEXvCtdVwmH40/'
+ss.id
+# '1gxz-Qr2-RNtqi_d7wWlsDlbtPLRQigcEXvCtdVwmH40'
+```
+
+#### Loading an Existing Spreadsheet
+
+- Pass `ezsheets.Spreadsheet()` either:
+	- ID
+	- IRL
+	- URL that redirects to the spreadsheet
+
+```python
+import ezsheets
+ss1 = ezsheets.Spreadsheet('https://autbor.com/examplegs')
+ss2 = ezsheets.Spreadsheet('https://docs.google.com/spreadsheets/d/1TzOJxhNKr15tzdZxTqtQ3EmDP6em_elnbtmZIcyu8vI/')
+ss3 = ezsheets.Spreadsheet('1TzOJxhNKr15tzdZxTqtQ3EmDP6em_elnbtmZIcyu8vI')
+
+ss1 == ss2 == ss3
+# True (they are the same spreadsheet object)
+```
+
+#### Upload existing spreadsheet
+
+- Pass the filename to `ezsheets.upload()` function
+- You can upload Excel, OpenOffice, CSV, or TSV spreadsheet to Google Sheets
+
+```python
+import ezsheets
+ss = ezsheets.upload('examplegs.xlsx')
+ss.title
+# 'examplegs'
+```
+
+#### List Spreadsheets
+
+- list the spreadsheets in your **Google account** by calling the `listSpreadsheets()`
+- Returns a **dictionary** whose **keys are spreadsheet IDs** and whose **values are the titles** of each spreadsheet
+	- It **includes deleted spreadsheets** in your account’s Trash folder
+
+```python
+import ezsheets
+ezsheets.listSpreadsheets()
+# {} # empty dictionary
+```
+
+### Spreadsheet Attributes
+
+- Data lives in actual sheets within spreadsheet objects, we can manipulate spreadsheet itself using following attributes:
+	- `title`
+	- `url`
+	- `id`
+	- `sheets`
+	- `sheetTitles`
+
+```python
+import ezsheets
+example_ss = ezsheets.Spreadsheet('https://autbor.com/examplegs') # load spreadsheet from URL
+ss = ezsheets.Spreadsheet() # create new spreadsheet
+example_ss.sheets[0].copyTo(ss) # copy first sheet from example spreadsheet to new spreadsheet
+ss.sheets[0].delete() # delete first sheet from new spreadsheet
+
+ss.url # retrieve url for the new spreadsheet
+# 'https://docs.google.com/spreadsheets/d/1HWAuHENWqVToRWyPA1r0QL7mGJY2UCJKV4I5ei2jEDk/'
+ss.id 
+# '1HWAuHENWqVToRWyPA1r0QL7mGJY2UCJKV4I5ei2jEDk'
+ss.title
+
+
+
+
+```
