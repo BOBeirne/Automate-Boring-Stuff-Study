@@ -1,6 +1,6 @@
 # EZSheets 
 
-- Docs: https://github.com/AlSweigart/EZSheets
+- [EZSheets Docs](https://ezsheets.readthedocs.io/)
 - needs to be installed `python -m pip install EZSheets`
 - **Requires a setup** to obtain **Credentials .json and tokens** files from [Google Cloud Console](https://console.cloud.google.com/) to grant the API access to your account for Sheets and Drive
 
@@ -81,7 +81,7 @@
 
 ---
 
-## google Sheets
+## Google Sheets
 
 - [Google Sheets API](https://developers.google.com/workspace/sheets/api/guides/concepts)
 
@@ -385,6 +385,7 @@ ss.url
 ```python
 import ezsheets
 ss = ezsheets.Spreadsheet('https://docs.google.com/spreadsheets/d/1uJJrUralRlGM92hIAV3eNK4FQ2-DwkvU4O46zyprKl0/') # lets work on last uploaded spreadsheet
+sheet = ss.sheets[0] # get the first sheet in the spreadsheet
 
 sheet.rowCount # get the number of rows in the spreadsheet
 # 23758
@@ -445,3 +446,37 @@ ss.sheetTitles # The titles of all the Sheet objects in this Spreadsheet
 ### Copying Sheets
 
 - You can **copy a sheet** using the `.copyTo()` method on the sheet object.
+- Pass it the **destination Spreadsheet object as an argument**
+
+```python
+import ezsheets
+ss1 = ezsheets.Spreadsheet() # create new spreadsheet
+ss2 = ezsheets.Spreadsheet() # create new spreadsheet
+
+ss1.title = 'first spreadsheet' # set the title of the first spreadsheet to 'first spreadsheet'
+ss2.title = 'second spreadsheet' # set the title of the second spreadsheet to 'second spreadsheet'
+
+ss2.sheets[0].title = 'Eggs' # set the title of the first sheet in the second spreadsheet to 'Eggs'
+
+ss1[0]
+# <Sheet sheetId=0, title='Sheet1', rowCount=1000, columnCount=26>
+ss1[0].updateRow(1, ['Some', 'data', 'in', 'the', 'first', 'row']) # update the first row in the first spreadsheet
+ss1[0].copyTo(ss2) # copy the first sheet in the first spreadsheet to the first sheet in the second spreadsheet
+ss2.sheetTitles # ss2 now contains a copy of ss1's sheet1
+# ('Eggs', 'Copy of Sheet1')
+```
+
+
+### Using google forms with Google Sheets
+
+- Located [here](https://docs.google.com/forms/)
+- Google forms can be used to collect data from users and send it to a Google Sheet.
+
+
+### Google Sheets Quotas
+
+- [Docs regarding API limit](https://developers.google.com/sheets/api/limits)
+- [Check your quota usage](https://console.developers.google.com/iam-admin/quotas)
+- Google users are restricted to **creating 250 new spreadsheets a day**, and can perform a **few hundred requests per minute**
+- **Exceeding** this quota will raise the `googleapiclient.errors.HttpError “Quota exceeded for quota group”`
+	- EZSheets will **automatically** catch this exception and **retry the request**, this can take between a **few seconds to a few minutes**.
