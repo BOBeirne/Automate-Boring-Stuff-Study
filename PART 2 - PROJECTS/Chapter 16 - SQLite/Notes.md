@@ -157,7 +157,7 @@ UPDATE cats SET fur = "gray tabby" WHERE rowid = 1
 DELETE FROM cats WHERE rowid = 1
 ```
 
-### Inserting Data into the Database
+### INSERT
 
 - The parentheses are **mandatory** for `INSERT` queries
 - The sqlite3 module uses either single or double quotes for its TEXT values.
@@ -182,12 +182,10 @@ conn.execute('INSERT INTO cats VALUES ("Zophie", "2021-01-24", "black", 5.6)') #
 # <sqlite3.Cursor object at 0x0000013FB13EDA40>
 ```
 
-### SQL Injection Attacks
+#### SQL Injection Attacks
 
 - **Not really a problem with SQLite** since it doesn't require internet connection
 - But it's still a **good practice** to avoid SQL injection attacks by using `?` question mark syntax whenever you **reference variables when inserting or updating data in your database**
-
-#### Example
 
 **BAD EXAMPLE**
 If you want to **insert a new cat record** based on data stored in variables, **do not insert these variables directly into the query string using Python**, like this:
@@ -212,7 +210,7 @@ cat_weight = 5.6
 conn.execute('INSERT INTO cats VALUES (?, ?, ?, ?)', [cat_name, cat_bday,fur_color, cat_weight])
 ```
 
-### Reading Data from the Database
+### SELECT
 
 - Once there’s data inside the database, you can read it with a `SELECT` query
 - You need to use `.fetchall()` to actually get the data, otherwise it will only return the **cursor object**
@@ -244,7 +242,7 @@ conn.execute('SELECT rowid, name FROM cats').fetchall() # get rowid and name col
 # [(1, 'Zophie')]
 ```
 
-### Looping over Query Results
+#### Looping over Query Results
 
 - You can loop over the results of a query with a `for` loop.
 - No need to use `.fetchall()` because the cursor object is iterable
@@ -381,7 +379,7 @@ cur = conn.execute('SELECT * FROM cats ORDER BY fur ASC, birthdate DESC') # Sort
 pprint.pprint(cur.fetchall())
 ```
 
-#### SELECT
+### SELECT
 
 - You can **limit the number of the returned `SELECT` results** with the `LIMIT` keyword.
 	- **Theoretically** you could slice a list of results with `[:3]` to see only the first 3 rows but it's **inefficient** because it has to iterate over the entire list to get the first 3 rows and discards the rest.
@@ -422,6 +420,7 @@ print(f"First 4 cats with fur color 'orange' and sorted by birthdate: {cat4}")
 ### UPDATE
 
 - you can change a row with an `UPDATE` statement
+- **Remember to include the `WHERE` clause to specify which rows to update**, otherwise all rows will be updated with the new values!!!
 
 | Part | Keyword/Clause | Description | Key Action |
 | :--- | :--- | :--- | :--- |
@@ -441,4 +440,297 @@ conn.execute('SELECT * FROM cats WHERE rowid = 1').fetchall() # Returns the firs
 ```
 
 - You can `UPDATE` **multiple columns at a time by separating them with commas**. 
-- For example, `'UPDATE cats SET fur = "black", weight_kg = 6 WHERE rowid = 1'` updates the value in the **fur and weight** columns to "black" and 6, respectively.
+	- For example, `'UPDATE cats SET fur = "black", weight_kg = 6 WHERE rowid = 1'` updates the value in the **fur and weight** columns to "black" and 6, respectively.
+
+```python
+conn.execute('UPDATE cats SET fur = "black", weight_kg = 6 WHERE rowid = 1') # Changes the fur color of the first cat to black and the weight to 6
+# [('Zophie', '2021-01-24', 'black', 6)]
+```
+- In** most update queries**, the `WHERE` clause uses the **primary key from the `rowid` column** to specify an individual record to update instead of for example `WHERE name = "Zophie"` which may update **all the rows with the same name** "zophie"
+- IF you do want to populate all the rows with new data, use `WHERE 1` as the condition in the `WHERE` clause, which **always evaluates to true** and avoids bugs
+
+### DELETE
+
+- you can delete a row with a `DELETE` statement
+- **Remember to include the `WHERE` clause to specify which rows to delete**, otherwise all rows will be deleted!!!
+-  If you intend to **delete every row**, use `WHERE 1` so that you can identify any `DELETE `statement without a `WHERE `clause as a bug.
+
+| Component | Keywords | Purpose |
+| :--- | :--- | :--- |
+| **Command** | `DELETE FROM` | Specifies the action to remove rows and indicates which table to act upon. |
+| **Target** | *Table Name* | The name of the table containing the rows to delete. |
+| **Filter** | `WHERE` clause | **Crucial for safety.** Specifies the exact rows that should be deleted. If omitted, all rows in the table are deleted. |
+
+- **Example Query Structure:** `DELETE FROM table_name WHERE condition;`
+
+- **To delete a row by its primary key, use `DELETE FROM table_name WHERE rowid = <primary key>`**
+
+```python
+import sqlite3
+conn = sqlite3.connect('sweigartcats.db', isolation_level=None)
+conn.execute('SELECT rowid, * FROM cats WHERE rowid = 1').fetchall() # Returns the first cat
+# [(1, 'Zophie', '2021-01-24', 'gray tabby', 5.6)]
+conn.execute('DELETE FROM cats WHERE rowid = 1') # Deletes the first cat
+conn.execute('SELECT * FROM cats WHERE rowid = 1').fetchall() # Returns the first cat again
+# []
+```
+
+## ROLLBACK
+
+- you can use `conn.rollback()` to undo changes made to the database before you `conn.commit()` them
+
+**Example:**
+
+```python
+import sqlite3
+conn = sqlite3.connect('sweigartcats.db', isolation_level=None)
+
+conn.execute('BEGIN') # Starts a transaction
+conn.execute('INSERT INTO cats VALUES ("Socks", "2022-04-04", "white", 4.2)') # Adds a new cat record
+conn.execute('INSERT INTO cats VALUES ("Fluffy", "2022-10-30", "gray", 4.5)') # Adds another cat record
+conn.rollback()  # This undoes the INSERT statements.
+conn.execute('SELECT * FROM cats WHERE name = "Socks"').fetchall()
+# []
+conn.execute('SELECT * FROM cats WHERE name = "Fluffy"').fetchall()
+# []
+# The new cats, Socks and Fluffy, were not inserted into the database because the transaction was rolled back.
+```
+
+## COMMIT
+
+- if you want to **apply all of the queries you’ve run**, call `conn.commit()` to commit the changes to the database:
+
+```python
+import sqlite3
+conn = sqlite3.connect('sweigartcats.db', isolation_level=None)
+
+conn.execute('INSERT INTO cats VALUES ("Socks", "2022-04-04", "white", 4.2)') # Adds a new cat record
+conn.execute('INSERT INTO cats VALUES ("Fluffy", "2022-10-30", "gray", 4.5)') # Adds another cat record
+conn.commit() # Commits the changes to the database
+
+conn.execute('SELECT * FROM cats WHERE name = "Socks"').fetchall()
+# [('Socks', '2022-04-04', 'white', 4.2)]
+conn.execute('SELECT * FROM cats WHERE name = "Fluffy"').fetchall()
+# [('Fluffy', '2022-10-30', 'gray', 4.5)]
+# The new cats, Socks and Fluffy, were inserted into the database successfully.
+```
+
+## Backup Databases
+
+- If a program isn’t currently accessing the SQLite database, you can back it up by simply copying the database file to another location
+	- for example use `shutil.copy('sweigartcats.db', 'backup.db')`
+- If program is actively accessing the database, you must use `Connection object’s backup()` method instead
+	- The `backup()` method safely backs up the contents of the database to the `backup.db` file in between the other queries being run on it.
+
+```python
+import sqlite3
+conn = sqlite3.connect('sweigartcats.db', isolation_level=None)
+backup_conn = sqlite3.connect('backup.db', isolation_level=None) # Create the backup database
+conn.backup(backup_conn) # Copy the database to the backup database
+```
+
+## ALTER TABLE
+
+Common `ALTER TABLE` Actions
+
+| Action Type | SQL Command Structure | Purpose | 
+| :--- | :--- | :--- | 
+| **Adding a Column** | `ALTER TABLE table_name ADD COLUMN column_name data_type;` | Adds a new column with a specified name and data type to the table. | 
+| **Removing a Column** | `ALTER TABLE table_name DROP COLUMN column_name;` | Deletes a column and all its data from the table structure. | 
+| **Renaming a Column** | `ALTER TABLE table_name RENAME COLUMN old_name TO new_name;` | Changes the name of an existing column. |
+| **Renaming a Table** | `ALTER TABLE old_name RENAME TO new_name;` | Changes the name of the entire table. | The full, common syntax is `RENAME TO ...`. |
+| **Deleting a Table** | `DROP TABLE table_name;` | Permanently removes an entire table and all its data. |
+
+```python
+import sqlite3
+conn = sqlite3.connect('sweigartcats.db', isolation_level=None)
+
+# Renaming a Table
+conn.execute('SELECT name FROM sqlite_schema WHERE type="table"').fetchall() # SQL query for all tables in the database
+# [('cats',)]
+conn.execute('ALTER TABLE cats RENAME TO felines') # Rename the cats table to felines
+conn.execute('SELECT name FROM sqlite_schema WHERE type="table"').fetchall()
+# [('felines',)]
+
+# Renaming a Column 
+conn.execute('PRAGMA TABLE_INFO(felines)').fetchall()[2]  # List the third column.
+# (2, 'fur', 'TEXT', 0, None, 0)
+conn.execute('ALTER TABLE felines RENAME COLUMN fur TO description') # Rename the fur column to description
+conn.execute('PRAGMA TABLE_INFO(felines)').fetchall()[2]  # List the third column again.
+# (2, 'description', 'TEXT', 0, None, 0)
+
+# Adding a Column
+conn.execute('ALTER TABLE felines ADD COLUMN is_loved INTEGER DEFAULT 1') # Add the is_loved column
+print(conn.execute('SELECT * FROM felines LIMIT 3').fetchall())
+# [('Zophie', '2021-01-24', 'gray tabby', 5.6, 1), ('Miguel', '2016-12-24', 'siamese', 6.2, 1), ('Jacob', '2022-02-20', 'orange and white', 5.5, 1)]
+
+# Removing a Column
+conn.execute('PRAGMA TABLE_INFO(felines)').fetchall()  # List all columns.
+# [(0, 'name', 'TEXT', 1, None, 0), (1, 'birthdate', 'TEXT', 0, None, 0), (2, 'description', 'TEXT', 0, None, 0), (3, 'weight_kg', 'REAL', 0, None, 0), (4, 'is_loved', 'INTEGER', 0, '1', 0)
+conn.execute('ALTER TABLE felines DROP COLUMN is_loved')  # Delete the column.
+conn.execute('PRAGMA TABLE_INFO(felines)').fetchall()  # List all columns.
+# [(0, 'name', 'TEXT', 1, None, 0), (1, 'birthdate', 'TEXT', 0, None, 0), (2, 'description', 'TEXT', 0, None, 0), (3, 'weight_kg', 'REAL', 0, None, 0)]
+
+# Deleting a Table
+conn.execute('SELECT name FROM sqlite_schema WHERE type="table"').fetchall() # SQL query for all tables in the database
+# [('felines',)]
+conn.execute('DROP TABLE felines') # Delete the felines table
+conn.execute('SELECT name FROM sqlite_schema WHERE type="table"').fetchall() # SQL query for all tables in the database
+# []
+```
+
+- Try to limit how often you change your tables and columns, as you’ll also have to update the queries in your program to match.
+
+## Foreign Keys & INNER JOIN
+
+- A `foreign key` is a column in a table that **references** the `primary key` of **another table.**
+- The `primary key` is a **unique value** that is used to **identify each row in a table**.
+- `INNER JOIN`s use the **primary key of one table to match the foreign key of another table**
+
+**Example**
+
+```python
+import sqlite3
+conn = sqlite3.connect('sweigartcats.db', isolation_level=None)
+
+# Lets add a new vaccination table and reference it with a foreign key
+conn.execute('PRAGMA foreign_keys = ON') # Enable foreign key support
+conn.execute('CREATE TABLE IF NOT EXISTS vaccinations (vaccine TEXT, date_administered TEXT, administered_by TEXT, cat_id INTEGER, FOREIGN KEY(cat_id) REFERENCES cats(rowid)) STRICT') # Create the new table and add a foreign key 
+
+# Add some vaccinations to the vaccinations table
+conn.execute('INSERT INTO vaccinations VALUES ("rabies", "2023-06-06", "Dr. Echo", 1)')
+conn.execute('INSERT INTO vaccinations VALUES ("FeLV", "2023-06-06", "Dr. Echo", 1)')
+conn.execute('SELECT * FROM vaccinations').fetchall() # SQL query for all vaccinations in the database in the vaccinations table
+# [('rabies', '2023-06-06', 'Dr. Echo', 1), ('FeLV', '2023-06-06', 'Dr. Echo', 1)]
+
+# Now lets find cat named Mango
+conn.execute('SELECT rowid, * FROM cats WHERE name = "Mango"').fetchall() # SQL query for all cats in the database in the cats table with the name Mango
+# [(23, 'Mango', '2017-02-12', 'tuxedo', 6.8)]
+conn.execute('INSERT INTO vaccinations VALUES ("rabies", "2023-07-11", "Dr. Echo", 23)') # . The "cat_id" value references the primary key of the "cats" table. 
+#The "STRICT" keyword ensures that the foreign key constraint is enforced and an error is raised if the referenced row does not exist.
+
+# We can also perform a type of `SELECT` query called an inner join, which returns the linked rows from both tables
+conn.execute('SELECT * FROM cats INNER JOIN vaccinations ON cats.rowid = vaccinations.cat_id').fetchall()
+# [('Zophie', '2021-01-24', 'gray tabby', 5.6, 'rabies', '2023-06-06', 'Dr. Echo', 1), 
+# ('Zophie', '2021-01-24', 'gray tabby', 5.6, 'FeLV', '2023-06-06', 'Dr. Echo', 1),
+# ('Mango', '2017-02-12', 'tuxedo', 6.8, 'rabies', '2023-07-11', 'Dr. Echo', 23)]
+```
+
+Data safety features in SQLite for foreign keys in above db example:
+- Need to be enabled manually: `conn.execute('PRAGMA foreign_keys = ON')`
+- you **can’t insert or update** a vaccination **record** using a `cat_id` for a **nonexistent** cat. 
+- SQLite also **forces** you to **delete all vaccination records for a cat before deleting the cat** to avoid “orphaned” vaccination records.
+
+### In-Memory Databases and Backups
+
+- **In-memory databases** are databases that are stored in RAM (random access memory) and don’t need to be saved to disk.
+- They improve performance because there is no need to read and write to disk, RAM is faster than disk.
+- **Backups** are copies of databases that are stored on disk to avoid loss of data if the database is corrupted or deleted in case of a power failure.
+
+- **MAJOR DOWNSIDE** of in-memory databases: If your program **crashes from an unhandled exception, you’ll lose the database**
+	- use `Try` statements to **avoid exceptions from crashing your program and losing all data**
+	- if exception is handled, you can use `backup()` method to **save the database to disk**
+
+**Example**:
+
+```python
+import sqlite3
+
+memory_db_conn = sqlite3.connect(':memory:', isolation_level=None) # Create an in-memory database
+memory_db_conn.execute('CREATE TABLE test (name TEXT, number REAL)') # Create a table in the in-memory database called test
+memory_db_conn.execute('INSERT INTO test VALUES ("foo", 3.14)') # Insert data into the table
+
+file_db_conn = sqlite3.connect('test.db', isolation_level=None) # Create a file-based database called test.db
+memory_db_conn.backup(file_db_conn)  # Save the copy of the in-memory database to test.db.
+
+
+#  load a SQLite database file into memory with the backup() method
+file_db_conn = sqlite3.connect('sweigartcats.db', isolation_level=None)
+memory_db_conn = sqlite3.connect(':memory:', isolation_level=None)
+file_db_conn.backup(memory_db_conn) # Copy the database to the in-memory database
+memory_db_conn.execute('SELECT * FROM cats LIMIT 3').fetchall() # Query the in-memory database
+# [('Zophie', '2021-01-24', 'gray tabby', 5.6), ('Miguel', '2016-12-24', 'siamese', 6.2), ('Jacob', '2022-02-20', 'orange and white', 5.5)]
+```
+
+## Copying Databases
+
+- Copy of the DB can be made by calling `iterdump()` method on the original `DB comnnection object`
+	- This creates an `iterator` that you can use to copy the database - It's a **text file** that contains the **SQL commands** to **recreate the database**
+	- You can use iterators in `for loop` or pass them to the `list()` function.
+
+```python
+import sqlite3
+conn = sqlite3.connect('sweigartcats.db', isolation_level=None)
+
+# create a text file called sweigartcats_queries.txt that contains the SQL commands to recreate the database
+with open('sweigartcats_queries.txt', 'w', encoding='utf-8') as fileObj: # Open a text file for writing 
+	for line in conn.iterdump(): # Copy the database queries line by line
+		fileObj.write(f'{line}\n') # Write each line to the text file
+```
+
+Example of how it looks inside the text file:
+
+```sql
+BEGIN TRANSACTION;
+CREATE TABLE "cats" (name TEXT NOT NULL, birthdate TEXT, fur TEXT, weight_kg REAL) STRICT;
+INSERT INTO "cats" VALUES('Zophie','2021-01-24','gray tabby',5.6);
+INSERT INTO "cats" VALUES('Miguel','2016-12-24','siamese',6.2);
+INSERT INTO "cats" VALUES('Jacob','2022-02-20','orange and white',5.5);
+--snip--
+INSERT INTO "cats" VALUES('Spunky','2015-09-04','gray',5.9);
+INSERT INTO "cats" VALUES('Shadow','2021-01-18','calico',6.0);
+COMMIT;
+```
+
+- This file will be larger than the original database file, but it will still be a valid SQLite database file.
+- It is human-readable and can be used to **recreate the database** or even edit it before recreating it or passing into Python code or SQLite App.
+
+## SQLite Apps
+
+- You can **edit SQLite databases** directly from **CLI** instead of using Python - [Docs here](https://sqlite.org/cli.html)
+- You can also download a **SQLite App**, which is a GUI collection of tools for your OS - [Download here](https://sqlite.org/download.html)
+	- for Windows place `sqlite3.exe` file in system `PATH`
+	- Linux use `sudo apt install sqlite3`
+	- macOS this is pre-installed as `sqlite3` command
+
+In CLI run `sqlite3 database_name.db` to connect to that db
+- If file doesn't exist, it will be created
+- You have to add semicolons `;` at the end of each command to execute it
+
+```sql
+C:\Users\BOBeirne>sqlite3 example.db
+SQLite version 3.xx.xx
+Enter ".help" for usage hints.
+sqlite> CREATE TABLE IF NOT EXISTS cats (name TEXT NOT NULL, birthdate TEXT, fur TEXT, weight_kg REAL) STRICT;
+sqlite> INSERT INTO cats VALUES ('Zophie', '2021-01-24', 'gray tabby', 4.7);
+sqlite> SELECT * from cats;
+Zophie|2021-01-24|gray tabby|4.7
+--- You can also use .tables (which shows the tables in the database) and .headers (which lets you turn column headers on or off): ---
+sqlite> .tables
+cats
+sqlite> .headers on
+sqlite> SELECT * from cats;
+name|birthdate|fur|weight_kg
+Zophie|2021-01-24|gray tabby|4.7
+```
+
+#### You can also use Open Souce apps:
+
+- [DB Browser for SQLite](https://sqlitebrowser.org/)
+- [SQLite Studio](https://sqlitebrowser.org/dl/)
+- [DBeaver Community](https://dbeaver.com/)
+
+This table compares those three popular database management tools linked above
+
+
+| Feature | DB Browser for SQLite | SQLite Studio | DBeaver Community |
+| :--- | :--- | :--- | :--- |
+| **Core Focus** | Dedicated SQLite Tool | Dedicated SQLite Tool | **Universal Database Client** |
+| **Supported DBs** | **SQLite only** | **SQLite only** (via extensions) | **All Major DBs** (MySQL, PostgreSQL, SQL Server, Oracle, etc.) |
+| **Interface** | Clean, basic, and **intuitive** | Modern, feature-rich, tabbed | Professional, feature-packed, Java-based |
+| **Key Features** | Basic SQL editor, data editing, import/export (CSV, SQL) | Advanced SQL editor, data manipulation, stored procedures support, **visual query builder** | **Advanced visual editors**, powerful schema management, **ER diagrams**, data transfer, **multiple simultaneous connections** |
+| **Installation** | Standard install | **Portable version available** | Standard install |
+| **Licensing** | Open Source (Public Domain) | Open Source (GPLv3) | Open Source (Apache License) |
+| **Best For** | Quick edits, viewing data, **simple data manipulation**. Ideal for non-developers. | Developers and Sysadmins needing a powerful, **feature-rich SQLite-only environment.** | **Professionals managing diverse environments** and needing one tool for everything from SQLite to Enterprise DBs. |
+
+
