@@ -16,7 +16,7 @@
 
 - SQL database, tables often have an **ID column for each record’s primary key** - a **unique** identifier for each record called `rowid`
 - `rowid` does not change if you delete or add a record to the table unlike in a spreadsheet
-- Databases aren't visually pleasing, they just contain raw data. Spreadsheets give you the flexibility of putting any data into any cell, **databases have a 			stricter structure to make data retrieval easier for software.**
+- Databases aren't visually pleasing, they just contain raw data. Spreadsheets give you the flexibility of putting any data into any cell, **databases have a  stricter structure to make data retrieval easier for software.**
 
 ## SQLite vs. Other SQL Databases
 
@@ -84,13 +84,13 @@ conn.execute('CREATE TABLE IF NOT EXISTS cats (name TEXT NOT NULL, birthdate TEX
 
 ## SQL Data Types
 
-| Data Type | Description | Python Analogy |
-| :--- | :--- | :--- |
-| **NULL** | Represents a missing or unknown value. | `None` |
-| **INT** or **INTEGER** | A signed integer, stored as 1, 2, 3, 4, 6, or 8 bytes. | `int` type |
-| **REAL** | A floating-point value. | `float` type |
-| **TEXT** | A text string, stored using the database encoding (UTF-8, UTF-16BE, or UTF-16LE). | `str` type |
-| **BLOB** | Short for **Binary Large Object**. Used for storing raw binary data, such as images or entire files. | `bytes` type |
+| Data Type              | Description                                                                                          | Python Analogy |
+| :--------------------- | :--------------------------------------------------------------------------------------------------- | :------------- |
+| **NULL**               | Represents a missing or unknown value.                                                               | `None`         |
+| **INT** or **INTEGER** | A signed integer, stored as 1, 2, 3, 4, 6, or 8 bytes.                                               | `int` type     |
+| **REAL**               | A floating-point value.                                                                              | `float` type   |
+| **TEXT**               | A text string, stored using the database encoding (UTF-8, UTF-16BE, or UTF-16LE).                    | `str` type     |
+| **BLOB**               | Short for **Binary Large Object**. Used for storing raw binary data, such as images or entire files. | `bytes` type   |
 
 - **SQLite is not strict about the data types of its columns.** This means SQLite will, by default, gladly store the string 'Hello' in an INTEGER column without raising an exception.
 - SQLite **automatically casts the data type** of the column based on the first value inserted into the column. This is called **data type affinity**
@@ -164,12 +164,12 @@ DELETE FROM cats WHERE rowid = 1
 - `INSERT` statement begins a **transaction** , also triggered by `UPDATE`, or `DELETE`. 
 	- To ensure data integrity, every transaction must adhere to the **ACID** properties:
 
-| Property | Definition | Description |
-| :--- | :--- | :--- |
-| **Atomic** | All or Nothing | The transaction is treated as a single, complete operation. It is carried out **either completely or not at all**. If any part fails, the entire transaction is rolled back. |
-| **Consistent** | State Integrity | The transaction must not violate any defined rules or constraints (e.g., **`NOT NULL`**, foreign keys). It guarantees that the database moves from one valid state to another valid state. |
-| **Isolated** | Independent Execution | The concurrent execution of multiple transactions results in a system state that is equivalent to one where the transactions were executed sequentially. **One transaction does not affect others.** |
-| **Durable** | Permanent Record | Once a transaction has been **committed**, its results are permanently written to persistent storage (like the hard drive) and will survive subsequent system failures (e.g., power loss). |
+| Property       | Definition            | Description                                                                                                                                                                                          |
+| :------------- | :-------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Atomic**     | All or Nothing        | The transaction is treated as a single, complete operation. It is carried out **either completely or not at all**. If any part fails, the entire transaction is rolled back.                         |
+| **Consistent** | State Integrity       | The transaction must not violate any defined rules or constraints (e.g., **`NOT NULL`**, foreign keys). It guarantees that the database moves from one valid state to another valid state.           |
+| **Isolated**   | Independent Execution | The concurrent execution of multiple transactions results in a system state that is equivalent to one where the transactions were executed sequentially. **One transaction does not affect others.** |
+| **Durable**    | Permanent Record      | Once a transaction has been **committed**, its results are permanently written to persistent storage (like the hard drive) and will survive subsequent system failures (e.g., power loss).           |
 
 - A SQLite query will **either completely insert data into the database or not insert it at all**
 
@@ -533,13 +533,13 @@ conn.backup(backup_conn) # Copy the database to the backup database
 
 Common `ALTER TABLE` Actions
 
-| Action Type | SQL Command Structure | Purpose | 
-| :--- | :--- | :--- | 
-| **Adding a Column** | `ALTER TABLE table_name ADD COLUMN column_name data_type;` | Adds a new column with a specified name and data type to the table. | 
-| **Removing a Column** | `ALTER TABLE table_name DROP COLUMN column_name;` | Deletes a column and all its data from the table structure. | 
-| **Renaming a Column** | `ALTER TABLE table_name RENAME COLUMN old_name TO new_name;` | Changes the name of an existing column. |
-| **Renaming a Table** | `ALTER TABLE old_name RENAME TO new_name;` | Changes the name of the entire table. | The full, common syntax is `RENAME TO ...`. |
-| **Deleting a Table** | `DROP TABLE table_name;` | Permanently removes an entire table and all its data. |
+| Action Type           | SQL Command Structure                                        | Purpose                                                             |                                             |
+| :-------------------- | :----------------------------------------------------------- | :------------------------------------------------------------------ | ------------------------------------------- |
+| **Adding a Column**   | `ALTER TABLE table_name ADD COLUMN column_name data_type;`   | Adds a new column with a specified name and data type to the table. |                                             |
+| **Removing a Column** | `ALTER TABLE table_name DROP COLUMN column_name;`            | Deletes a column and all its data from the table structure.         |                                             |
+| **Renaming a Column** | `ALTER TABLE table_name RENAME COLUMN old_name TO new_name;` | Changes the name of an existing column.                             |                                             |
+| **Renaming a Table**  | `ALTER TABLE old_name RENAME TO new_name;`                   | Changes the name of the entire table.                               | The full, common syntax is `RENAME TO ...`. |
+| **Deleting a Table**  | `DROP TABLE table_name;`                                     | Permanently removes an entire table and all its data.               |                                             |
 
 ```python
 import sqlite3
