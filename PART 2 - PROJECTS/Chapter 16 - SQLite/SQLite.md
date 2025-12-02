@@ -723,14 +723,14 @@ Zophie|2021-01-24|gray tabby|4.7
 This table compares those three popular database management tools linked above
 
 
-| Feature | DB Browser for SQLite | SQLite Studio | DBeaver Community |
-| :--- | :--- | :--- | :--- |
-| **Core Focus** | Dedicated SQLite Tool | Dedicated SQLite Tool | **Universal Database Client** |
-| **Supported DBs** | **SQLite only** | **SQLite only** (via extensions) | **All Major DBs** (MySQL, PostgreSQL, SQL Server, Oracle, etc.) |
-| **Interface** | Clean, basic, and **intuitive** | Modern, feature-rich, tabbed | Professional, feature-packed, Java-based |
-| **Key Features** | Basic SQL editor, data editing, import/export (CSV, SQL) | Advanced SQL editor, data manipulation, stored procedures support, **visual query builder** | **Advanced visual editors**, powerful schema management, **ER diagrams**, data transfer, **multiple simultaneous connections** |
-| **Installation** | Standard install | **Portable version available** | Standard install |
-| **Licensing** | Open Source (Public Domain) | Open Source (GPLv3) | Open Source (Apache License) |
-| **Best For** | Quick edits, viewing data, **simple data manipulation**. Ideal for non-developers. | Developers and Sysadmins needing a powerful, **feature-rich SQLite-only environment.** | **Professionals managing diverse environments** and needing one tool for everything from SQLite to Enterprise DBs. |
+| Feature           | DB Browser for SQLite                                                              | SQLite Studio                                                                               | DBeaver Community                                                                                                              |
+| :---------------- | :--------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------- |
+| **Core Focus**    | Dedicated SQLite Tool                                                              | Dedicated SQLite Tool                                                                       | **Universal Database Client**                                                                                                  |
+| **Supported DBs** | **SQLite only**                                                                    | **SQLite only** (via extensions)                                                            | **All Major DBs** (MySQL, PostgreSQL, SQL Server, Oracle, etc.)                                                                |
+| **Interface**     | Clean, basic, and **intuitive**                                                    | Modern, feature-rich, tabbed                                                                | Professional, feature-packed, Java-based                                                                                       |
+| **Key Features**  | Basic SQL editor, data editing, import/export (CSV, SQL)                           | Advanced SQL editor, data manipulation, stored procedures support, **visual query builder** | **Advanced visual editors**, powerful schema management, **ER diagrams**, data transfer, **multiple simultaneous connections** |
+| **Installation**  | Standard install                                                                   | **Portable version available**                                                              | Standard install                                                                                                               |
+| **Licensing**     | Open Source (Public Domain)                                                        | Open Source (GPLv3)                                                                         | Open Source (Apache License)                                                                                                   |
+| **Best For**      | Quick edits, viewing data, **simple data manipulation**. Ideal for non-developers. | Developers and Sysadmins needing a powerful, **feature-rich SQLite-only environment.**      | **Professionals managing diverse environments** and needing one tool for everything from SQLite to Enterprise DBs.             |
 
 
