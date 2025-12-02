@@ -9,7 +9,7 @@ db_path = os.path.join(script_dir, 'meals.db') # create the path to the database
 print(db_path)
 
 # create a database called meals.db
-conn = sqlite3.connect(db_path) # connect to the database
+conn = sqlite3.connect(db_path, isolation_level=None) # connect to the database
 
 # Create 2 tables, one for meals and one for listOfIngredients
 conn.execute('CREATE TABLE IF NOT EXISTS meals (name TEXT) STRICT')
