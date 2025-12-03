@@ -4,7 +4,7 @@
 - [Docs for SQLite3 module](https://docs.python.org/3/library/sqlite3.html)
 - [SQLite Language Expression Docs](https://www.sqlite.org/lang_expr.html)
 - **SQLite** is the most widely deployed database software, as it runs on **every operating system** and is **small enough to embed within other applications**
-- **SQL** is a mini language you can work with from within Python, much like regex for regular expressions.
+- **SQL is a mini language** you can work with from within Python, much **like regex** for regular expressions.
 
 ## Spreadsheets vs. Databases
 
