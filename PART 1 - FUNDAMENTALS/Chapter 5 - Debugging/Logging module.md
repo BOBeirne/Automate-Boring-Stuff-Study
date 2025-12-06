@@ -1,5 +1,5 @@
 
-# [[Logging]] module
+# [[Logging]]
 
 ```python
 import logging

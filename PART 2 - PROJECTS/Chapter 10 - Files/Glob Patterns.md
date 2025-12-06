@@ -1,7 +1,7 @@
 ## Glob patterns
 
 * You can use *`*`* and *`?`* to match folder names and filenames
-* called glob patterns aka simplified [[REGEX]]
+* called glob patterns aka simplified [[Regex module]]
 * **`*`** matches any text
 * **`?`** matches exactly one char
 

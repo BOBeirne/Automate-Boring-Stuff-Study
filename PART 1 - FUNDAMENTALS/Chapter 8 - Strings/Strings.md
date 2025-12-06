@@ -227,4 +227,4 @@ print(ord('A') < ord('B'))
 * https://nedbatchelder.com/text/unipain.html  
 * https://www.youtube.com/watch?v=MijmeoH9LT4
 
-## copying and pasting strings - see [[Pyperclip]] module
+## copying and pasting strings - see [[Pyperclip module]]

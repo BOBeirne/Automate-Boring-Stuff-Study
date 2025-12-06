@@ -21,7 +21,7 @@ Path.cwd()
 # WindowsPath('C:/Windows/System32')
 ```
 
-Python will display an error if you try to change to a directory that does not exist:
+Python will display an **error** if you try to **change** to a **directory** that **does not exist:**
 
 
 ```python

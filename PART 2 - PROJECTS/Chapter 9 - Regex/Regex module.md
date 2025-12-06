@@ -722,4 +722,4 @@ print(f"Escaped string: {escaped_string}")
 ```
 
 
-[[Humre]]
+[[Humre module]]

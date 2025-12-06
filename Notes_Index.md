@@ -3,13 +3,13 @@
 - Chapter 2 - IF ELSE Statements
 - Chapter 3 - Loops
 - Chapter 4 - Functions
-- Chapter 5 - Debugging - [[Logging]]
-- Chapter 6 - [[List]]
-- Chapter 7 - [[Dictionary]]
-- Chapter 8 - [[String]] and [[Pyperclip]]
+- Chapter 5 - Debugging - [[Logging module]]
+- Chapter 6 - [[Lists]]
+- Chapter 7 - [[Dictionaries]]
+- Chapter 8 - [[Strings]] and [[Pyperclip module]]
 
 # Part 2 - PROJECTS
-- Chapter 9 - [[REGEX]] and [[Humre]]
+- Chapter 9 - [[Regex module]] and [[Humre module]]
 - Chapter 10 - 
 - Chapter 11 -
 - Chapter 12 -
