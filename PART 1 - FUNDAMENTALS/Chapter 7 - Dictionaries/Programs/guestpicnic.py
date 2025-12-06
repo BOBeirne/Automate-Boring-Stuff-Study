@@ -1,13 +1,13 @@
 all_guests = {'Alice' : {'apples' : 5, 'pretzels' : 12},
-              'Bob' : {'sambos' : 3, 'apples' : 2},
-              'Carol' : {'cups' : 3 , 'applepies' : 1}
-              }
+				'Bob' : {'sambos' : 3, 'apples' : 2},
+				'Carol' : {'cups' : 3 , 'applepies' : 1}
+				}
 
 def total_brought(guests, item):
-    num_brought = 0
-    for k, v in guests.items():
-        num_brought += v.get(item, 0)
-    return num_brought 
+	num_brought = 0
+	for k, v in guests.items():
+		num_brought += v.get(item, 0)
+	return num_brought 
 
 print('nr of things being brought:')
 print(' - Apples:       ' + str(total_brought(all_guests, 'apples')))

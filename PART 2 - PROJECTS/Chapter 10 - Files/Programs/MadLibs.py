@@ -34,9 +34,9 @@ placeholders = REGEX.findall(original_str) # use findall() on original string to
 user_inputs = [] # empty list ready for inputs from user
 
 def replace_words(original_str,user_inputs): # function that processes the keywords on the original string
-    for replacement in user_inputs: # go through list or replacement keywords
-        original_str = REGEX.sub(replacement, original_str, count=1) # replace the words one by one and update original string
-    return original_str
+	for replacement in user_inputs: # go through list or replacement keywords
+		original_str = REGEX.sub(replacement, original_str, count=1) # replace the words one by one and update original string
+	return original_str
 
 
 print(f'This is the original string\n')
@@ -44,8 +44,8 @@ print(f'{original_str}')
 
 # ask user for input and add each into the list for placeholder replacements
 for word_type in placeholders:
-    user_input = input(f'Enter an {word_type.lower()}: ')
-    user_inputs.append(user_input)
+	user_input = input(f'Enter an {word_type.lower()}: ')
+	user_inputs.append(user_input)
 
 print(f'This is a new string: \n')
 new_madlibs = replace_words(original_str,user_inputs)

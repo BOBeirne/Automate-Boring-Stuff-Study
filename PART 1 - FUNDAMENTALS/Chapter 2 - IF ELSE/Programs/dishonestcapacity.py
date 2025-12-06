@@ -3,10 +3,10 @@ unit = input('>')
 
 #calculate the amount that the advertised capapcity lies
 if unit == 'TB' or unit == 'tb':
-    discrepancy = 1000000000000 / 1099511627776
+	discrepancy = 1000000000000 / 1099511627776
 elif unit == 'GB' or unit == 'gb':
-    discrepancy = 1000000000 / 1073741824
-    
+	discrepancy = 1000000000 / 1073741824
+	
 print('enter advertised capacity:')
 advertised_capacity = input('>')
 advertised_capacity = float(advertised_capacity)
@@ -32,12 +32,12 @@ BINARY_TB = 2**40  # Tebibyte (TiB)
 
 #calculate the ratio between decimal (advertised) and binary (actual) values
 if unit == 'tb':
-    discrepancy_ratio = DECIMAL_TB / BINARY_TB
+	discrepancy_ratio = DECIMAL_TB / BINARY_TB
 elif unit == 'gb':
-    discrepancy_ratio = DECIMAL_GB / BINARY_GB
+	discrepancy_ratio = DECIMAL_GB / BINARY_GB
 else:
-    print(f"Error: Invalid unit '{unit}'. Please enter 'TB' or 'GB'.")
-    exit()
+	print(f"Error: Invalid unit '{unit}'. Please enter 'TB' or 'GB'.")
+	exit()
 
 print('Enter advertised capacity:')
 advertised_capacity = float(input('>'))

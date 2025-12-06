@@ -18,7 +18,7 @@ text = pyperclip.paste()
 lines = text.split('\n') #separate lines
 
 for i in range(len(lines)): #loop though all indexes in the 'lines' list
-    lines[i] = '*' + lines[i] #add stars hereat the beginning of each index in 'lines'
+	lines[i] = '*' + lines[i] #add stars hereat the beginning of each index in 'lines'
 
 text = '\n'.join(lines) #join lines back again
 pyperclip.copy(text)

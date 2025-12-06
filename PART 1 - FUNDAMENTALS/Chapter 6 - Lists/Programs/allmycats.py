@@ -19,11 +19,11 @@ print(cat1 + ', ' + cat2 + ', ' + cat3 + ', ' + cat4)
 
 names = []
 while True:
-    print('enter cat\'s name ' + str(len(names) + 1) + ' or enter nothing to stop program')
-    name = input()
-    if name == '':
-        break 
-    names = names + [name] #concatenation
+	print('enter cat\'s name ' + str(len(names) + 1) + ' or enter nothing to stop program')
+	name = input()
+	if name == '':
+		break 
+	names = names + [name] #concatenation
 print('cat names are:')
 for name in names:
-    print(' ' + name)
+	print(' ' + name)
