@@ -59,7 +59,8 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
 - Chapter 16 - SQLite
   - [[SQLite]]
 - Chapter 17 - PDF and WORD
-  - WIP
+  - [[PDF]]
+  - [[Word]]
 - Chapter 18 -
 - Chapter 19 -
 - Chapter 20 -
