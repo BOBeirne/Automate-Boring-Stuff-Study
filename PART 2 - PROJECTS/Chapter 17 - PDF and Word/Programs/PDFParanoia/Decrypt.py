@@ -1,11 +1,10 @@
-"""
-write a program that finds all encrypted PDFs in a folder (and its subfolders) and creates a decrypted copy of the PDF using a provided password. 
-If the password is incorrect, the program should print a message to the user and continue to the next PDF.
-"""
+#write a program that finds all encrypted PDFs in a folder (and its subfolders) and creates a decrypted copy of the PDF using a provided password. 
+#If the password is incorrect, the program should print a message to the user and continue to the next PDF.
+
 import os, pypdf, sys
 
 try:
-	""" Get the password from CLI argument """
+	### Get the password from CLI argument ###
 	if len(sys.argv) != 2:
 		print('Provide PDF password as a CLI argument when running this program')
 		print('Expected usage: python Encrypt.py <password>')
@@ -13,13 +12,13 @@ try:
 	pdfpwd = sys.argv[1] # password is the CLI argument
 	encrypted_pdfList = [] # list of encrypted pdf files
 
-	""" Walk the folder and subfolders looking for the pdf files"""
+	### Walk the folder and subfolders looking for the pdf files###
 	for folderName, subfolders, filenames in os.walk('.'): # check all folders and subfolders in cwd
 		#print('The folder is:' + folderName) # testing
 		#print('The subfolders in ' + folderName + ' are ' + str(subfolders)) # testing
 		#print('The filenames in ' + folderName + ' are ' + str(filenames)) # testing
 		
-		""" Find all ENCRYPTED pdfs, decrypt and rename them to _decrypted.pdf """
+		### Find all ENCRYPTED pdfs, decrypt and rename them to _decrypted.pdf ###
 		for file in filenames:
 			if file.endswith('.pdf'): # find all pdf files not yet processed
 				print(f'Processing {file} ...')
