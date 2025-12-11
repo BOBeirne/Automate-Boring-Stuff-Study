@@ -51,7 +51,7 @@ While in the CLI you can run program files by entering:
 		- `dir *.exe` on Windows
 		- `file * | grep` on Linux
 
-### [[PART 2 - PROJECTS/Chapter 10 - Files/Notes]] Environment Variable
+### PATH Environment Variable
 
 The **PATH** is one of the most fundamental environment variables in any operating system, whether it's Windows, macOS, or Linux.
 It allows you to run widely-used system utilities (like `ipconfig` or `powershell`) from _any_ location on your disk without having to type the full, absolute file path every single time (e.g., `C:\Windows\System32\ipconfig.exe`).

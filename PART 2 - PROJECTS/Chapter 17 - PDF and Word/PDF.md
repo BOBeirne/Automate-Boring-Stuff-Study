@@ -240,7 +240,12 @@ reader.decrypt('wring_pw').name
 # 'NOT_DECRYPTED'
 reader.decrypt('swordfish').name
 # 'OWNER_PASSWORD'
-writer.append(reader) # copy file content to the writer object
+""" This method below is unreliable for working on files modified (decrypted) in the memory, use page by page """
+writer.append(reader) # copy file content to the writer object - This will NOT work with decrypted files that have more than 1 pages!!!
+""" Use this instead for pdf files with 1+ pages """
+for page in reader.pages: # this works, Must use a page-by-page loop to ensure the writer copies the content after it has been unlocked/decrypted in memory
+ writer.add_page(page)
+
 with open('decrypted.pdf', 'wb') as file_obj:
 	writer.write(file_obj)
 ```
