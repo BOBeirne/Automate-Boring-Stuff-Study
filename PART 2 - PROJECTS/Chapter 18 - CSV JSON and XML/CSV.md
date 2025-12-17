@@ -128,3 +128,91 @@ output_file.close()
 ```
 
 #### Header Rows - DictReader & DictWriter
+
+- `csv.DictReader()` and `csv.DictWriter()` work **like the reader and writer objects**, but they **work with dictionaries** instead of lists
+- This helps to read the data from CSV files that have **headers in the 1st row**
+
+#### using `csv.DictReader()`
+
+Example:
+We will be using file `exampleWithHeather3.csv` that has **headers in the 1st row**
+
+```python
+import csv
+
+example_file = open('exampleWithHeader3.csv') # open the file
+example_dict_reader = csv.DictReader(example_file) # create a DictReader object
+example_dict_data = list(example_dict_reader) # read the data into a list of dictionaries
+
+print(example_dict_data) # print the list of dictionaries
+# [{'Timestamp': '4/5/2025 13:34', 'Fruit': 'Apples', 'Quantity': '73'}, {'Timestamp': '4/5/2025 3:41', 'Fruit': 'Cherries', 'Quantity': '85'}, {'Timestamp': '4/6/2025 12:46', 'Fruit': 'Pears', 'Quantity': '14'}, {'Timestamp': '4/8/2025 8:59', 'Fruit': 'Oranges', 'Quantity': '52'}, {'Timestamp': '4/10/2025 2:07', 'Fruit': 'Apples', 'Quantity': '152'}, {'Timestamp': '4/10/2025 18:10', 'Fruit': 'Bananas', 'Quantity': '23'}, {'Timestamp': '4/10/2025 2:40', 'Fruit': 'Strawberries', 'Quantity': '98'}]
+
+# you need to open the file again if you want to make another operation
+example_file = open('exampleWithHeader3.csv') # open the file
+example_dict_reader = csv.DictReader(example_file) # create a DictReader object
+
+# Use the for loop to print the data
+for row in example_dict_reader:
+	print(row['Timestamp'], row['Fruit'], row['Quantity'])
+# 4/5/2025 13:34 Apples 73
+# 4/5/2025 3:41 Cherries 85
+# 4/6/2025 12:46 Pears 14
+# 4/8/2025 8:59 Oranges 52
+# 4/10/2025 2:07 Apples 152
+# 4/10/2025 18:10 Bananas 23
+# 4/10/2025 2:40 Strawberries 98
+```
+
+##### csv.DictReader with Header-less file
+
+- If file does not have headers in the first row, it will use the 1st row as headers
+- To avoid it, you can pass `csv.DictReader()` a second argument with names for the headers
+
+```python
+import csv
+
+example_file = open('example3.csv') # open the file without headers
+example_dict_reader = csv.DictReader(example_file, ['Timestamp', 'Fruit', 'Quantity']) # create a DictReader object and pass it the header names
+
+for row in example_dict_reader:
+	print(row['Timestamp'], row['Fruit'], row['Quantity'])
+# 4/5/2025 13:34 Apples 73
+# 4/5/2025 3:41 Cherries 85
+# 4/6/2025 12:46 Pears 14
+# 4/8/2025 8:59 Oranges 52
+# 4/10/2025 2:07 Apples 152
+# 4/10/2025 18:10 Bananas 23
+# 4/10/2025 2:40 Strawberries 98
+```
+
+##### csv.DictWriter
+
+- to create a CSV file with headers, use `csv.DictWriter()`
+- `csv.DictWriter()` works **like the writer object**, but it **works with dictionaries** instead of lists
+- To insert header, use `.writeheader()` on the writer object, if you don't want the header row you can skip it completely.
+
+Example:
+
+```python
+import csv
+output_file = open('output.csv', 'w', newline='') # open the file in write mode, for windows include the newline argument!
+output_dict_writer = csv.DictWritter(output_file, ['Name','Pet','Phone']) # create a DictWriter object and pass it the header names
+output_dict_writer.writeheader() # add a row of headers, skip it if you don't want headers
+
+# write rows
+output_dict_writer.writerow({'Name': 'Alice', 'Pet': 'Cat', 'Phone': '555-5555'})
+output_dict_writer.writerow({'Name': 'Bob', 'Phone': '555-9999'}) # this will leave empty 'Pet' column
+output_dict_writer.writerow({'Phone': '555-1234', 'Name': 'Carol', 'Pet': 'dog'}) # order of key entry does not matter as long as keys are the same
+
+output_file.close() # save the file
+```
+
+Output file:
+```csv
+Name,Pet,Phone
+Alice,cat,555-1234
+Bob,,555-9999
+Carol,dog,555-5555
+```
+
+- double commas `,,` indicate a missing key (Bob's pet)
