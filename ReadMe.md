@@ -21,13 +21,20 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
 
 ### Part 1 - FUNDAMENTALS
 - Chapter 1 - Basics
+  - [[Basics]]
 - Chapter 2 - IF ELSE Statements
+  - [[Flow Control]]
 - Chapter 3 - Loops
+  - [[Loops]]
 - Chapter 4 - Functions
+  - [[Functions]]
+  - [[Try]]
 - Chapter 5 - Debugging 
   - [[Logging module]]
 - Chapter 6 - Lists
   - [[Lists]]
+  - [[Sets]]
+  - [[Tuples]]
 - Chapter 7 - Dictionaries
   - [[Dictionaries]]
 - Chapter 8 - Strings and Pyperclip module
@@ -61,7 +68,11 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
 - Chapter 17 - PDF and WORD
   - [[PDF]]
   - [[Word]]
-- Chapter 18 -
+- Chapter 18 - CSV JSON XML
+  - [[CSV]]
+  - [[TSV]]
+  - [[JSON]]
+  - [[XML]]
 - Chapter 19 -
 - Chapter 20 -
 - Chapter 21 -
