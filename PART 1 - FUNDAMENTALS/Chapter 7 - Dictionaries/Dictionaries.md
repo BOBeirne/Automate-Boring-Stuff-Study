@@ -1,4 +1,15 @@
 # Dictionaries 
+
+- In other programming languages `Dictionary` can be called as `mapping`, `hash map`, `hash table` or `associative array` (because they associate piece of data to another)
+- Like a list but stores **key-value pairs**, instead of an ordered sequence. The collection of data is **unordered**
+- Dictionaries use curly brackets, you can initialise an empty dictionary with `DictionaryName = {}`
+- To access the data inside, unlike index in [[Lists]], is accessed by `key` name.
+  - for example: `DictionaryName['key']`
+  - `MyCats = {'name': 'Zophie', 'species': 'cat', 'age': 8}`
+  - `MyCats['age']` returns `8`
+- Think of it **like real Dictionary**. You **think of a word (key) and look it up to get the meaning (value)**
+
+
 ## Example of a simple [dictionary]
 
 ``` python
