@@ -1,4 +1,13 @@
-# ESCAPE characters
+# String
+
+- A string is a series of characters surrounded by either single or double quotation marks.
+- It's how Python handles words, sentences, and other text data.
+- Strings are immutable like [[Tuples]]
+  - Once a st is created you cannot change it, to modify it you need to make a new str.
+- Use the `+` operator to concatenate (combine) strings
+- Use the `*` operator to duplicate strings
+
+## ESCAPE characters
 
 * `\'`  -   single quote        ('say hi to bob\' mother)
 * `\"`  -   double quote        
@@ -6,7 +15,7 @@
 * `\n`  -   Newline             ("Hello there\nHow are You?\nI\'m fine.)
 * `\\`  -   Backslash           
 
-# RAW string
+## RAW string
 
 - Type of a string that makes string literal
 
@@ -14,7 +23,7 @@
 print(r'The file path is F:\Python\Automate boring stuff')
 ```
 
-# MULTILINE strings
+## MULTILINE strings
 
 ```python
 '''
@@ -28,7 +37,7 @@ Babs
 '''
 ```
 
-# MULTILINE Comment
+## MULTILINE Comment
 
 ```python
 """
@@ -42,11 +51,12 @@ starts with triple quote and end with triple quote
 ## Indexes and slices
 
 WIP
+
 ## in and not operators
 
 WIP
 
-# F-STRINGS (after ver 3.6)
+## F-STRINGS (after ver 3.6)
 
 ``` python
 name = 'Al'
@@ -56,7 +66,7 @@ print(f'in 10 years I will be {age+10} years old')
 # F-string alternatives (before ver 3.6) 
 ```
 
-# string INTERPOLATION (using %s)
+## string INTERPOLATION (using %s)
 
 ``` python
 name = 'Al'
@@ -64,7 +74,7 @@ age = 40
 print('My name is %s and I\'m %s years old.' % (name, age))
 print('in 10 years I will be %s years old' % (age +10))
 ```
-# .format() METHOD
+## .format() METHOD
 
 ```python
 name = 'Al'
@@ -73,16 +83,15 @@ print('My name is {} and I\'m {} years old.'.format(name, age))
 print('in 10 years I will be {} years old'.format(age +10))
 ```
 
-## .format method INDEX
+### .format method INDEX
 
 ``` python
 name = 'Al'
 age = 40
 print('{1} years ago {0} was born and named {0}.'.format(name, age))
 ```
-## Useful string METHODS
 
-### `upper()` and `lower()`
+## `upper()` and `lower()`
 
 ``` python
 spam = 'Hello world'
@@ -94,17 +103,17 @@ spam = spam.lower()
 print(spam)
 ```
 
-### BOOL
+## isupper() and islower()
 
 * `isupper()` and `islower()` returns BOOL value
-* 
+
 ``` python
 spam = 'Hello'
 spam = spam.lower()
 print(spam.islower())
 print(spam.isupper())
 ```
-## other methods
+## other "is" methods
 
 * `.isalpha()`      -       True if str has only letter and isn't blank
 * `.isalnum()`      -       True if str is only letters and num and isn't blank 
@@ -113,21 +122,23 @@ print(spam.isupper())
 * `.istitle()`      -       True if all words start with uppercase followed by only lowercases
 
 
-# Start and end of string check
+## .startswith and .endswith
 
 ```python
 print(('Hello World!').startswith('Hello'))
 print(('Hello World!').endswith('World!'))
 print(('Hello World!').endswith('!'))
 ```
-# Joining and splitting
-## JOINING strings
+## Joining and splitting strings
+
+### JOINING strings
 
 ```python
 print(', '.join(['cats', 'bats', 'rats'])) # remember we start with list and then turn it into a str!
 ```
 
-## SPLITTING strings
+### SPLITTING strings
+
 ```python
 print('My name is Simon'.split()) #  this turns string into the list
 print('MyABCnameABCisABCSimon'.split('ABC'))
@@ -157,7 +168,7 @@ print('Hello'.ljust(10))
 print('Hello'.ljust(50))
 ```
 
-#### using fill characters
+### using "fill characters"
 
 ```python
 print('Hello'.rjust(10, '*'))
@@ -172,11 +183,14 @@ print(' Hello '.center(20, '~'))
 ## Removing whitespaces 
 
 ### strip()
+
 ```python
 longline = '            hello              '
 print(longline.strip())
 ```
+
 ### lstrip() & rstrip()
+
 ```python
 longline = '            hello              '
 print(longline.lstrip())
@@ -190,6 +204,7 @@ print(spam.strip('ampS'))
 ## Numeric Code Points of Characters ([Unicode] code points)
 
 ### ord()
+
 ```python
 print(ord('A'))
 
@@ -201,6 +216,7 @@ print(ord('9'))
 
 print(ord('@'))
 ```
+
 ### chr()
 
 ```python
@@ -215,14 +231,15 @@ print(chr(65))
 print(chr(99))
 ```
 
-### you can make math operations on those characters
+### chr() and ord() mathematic operations
+
 ```python
 print(chr(ord('A')+1))
 
 print(ord('A') < ord('B'))
 ```
 
-## more info  
+## more info about strings:
 
 * https://nedbatchelder.com/text/unipain.html  
 * https://www.youtube.com/watch?v=MijmeoH9LT4
