@@ -24,7 +24,7 @@ def findFutureFri13(start_date):
 
 
 # Function to find past dates
-def findFutureFri13(start_date):
+def findPastFri13(start_date):
 	print('Searching for the PAST dates...')
 	fridays = [] # make a list of fridays
 	current_day = start_date # start with current day
@@ -47,8 +47,8 @@ choice = input(' Enter 1 to find NEXT 10 Friday the 13th dates \n Enter 2 to fin
 if choice == '1':
 	now = dt.datetime.now()
 	findFutureFri13(now)
-if choice == '2':
+elif choice == '2':
 	now = dt.datetime.now()
-	findFutureFri13(now)
+	findPastFri13(now)
 else: 
 	print('Invalid input')
