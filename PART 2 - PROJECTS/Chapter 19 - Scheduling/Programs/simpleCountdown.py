@@ -8,7 +8,7 @@ timeLeft = 60
 # count down 60s
 while timeLeft > 0:
 	print(timeLeft)
-	time.sleep(1)
+	t.sleep(1)
 	timeLeft -= 1
 
 # At the end of countdown play .wav file
