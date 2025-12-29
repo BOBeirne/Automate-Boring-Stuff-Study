@@ -161,23 +161,30 @@ print(experiment.split('\n'))
 
 ```python
 print('Hello'.rjust(10))
+#      Hello
 print('Hello'.rjust(20))
+#               Hello
 print('Hello'.rjust(50))
-
+#                                             Hello
 print('Hello'.ljust(10))
+# Hello
 print('Hello'.ljust(50))
+# Hello
 ```
 
 ### using "fill characters"
 
 ```python
 print('Hello'.rjust(10, '*'))
+# *****Hello
 print('Hello'.ljust(20, '~'))
+# Hello~~~~~~~~~~~~~~~
 ```
 ### center() method
 
 ```python
 print(' Hello '.center(20, '~'))
+# ~~~~~~ Hello ~~~~~~~
 ```
 
 ## Removing whitespaces 
@@ -194,11 +201,14 @@ print(longline.strip())
 ```python
 longline = '            hello              '
 print(longline.lstrip())
+# hello
 longline = '            hello              '
 print(longline.rstrip())
+#             hello
 
 spam = 'SpamSpamBaconSpamEggsSpamSpam'
 print(spam.strip('ampS'))
+# BaconSpamEggs
 ```
 
 ## Numeric Code Points of Characters ([Unicode] code points)
