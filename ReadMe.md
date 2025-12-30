@@ -60,9 +60,9 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
 - Chapter 13 - Web Scraping
   - WIP
 - Chapter 14 - Excel
-  - WIP
+  - [[Openpyxl]]
 - Chapter 15 - Google Sheets
-  - WIP
+  - [[EZSheets]]
 - Chapter 16 - SQLite
   - [[SQLite]]
 - Chapter 17 - PDF and WORD
@@ -73,7 +73,10 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
   - [[TSV]]
   - [[JSON]]
   - [[XML]]
-- Chapter 19 -
+- Chapter 19 - Scheduling
+  - [[time]]
+  - [[datetime]]
+  - [[subprocess]]
 - Chapter 20 -
 - Chapter 21 -
 - Chapter 22 -
