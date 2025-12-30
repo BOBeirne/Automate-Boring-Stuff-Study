@@ -29,5 +29,7 @@ Base.base
 
 # API credentials
 credentials-sheets.json
+credentials.json
 token-sheets.pickle
 token-drive.pickle
+token.json
