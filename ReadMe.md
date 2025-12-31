@@ -77,7 +77,10 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
   - [[time]]
   - [[datetime]]
   - [[subprocess]]
-- Chapter 20 -
+- Chapter 20 - Email Push and Text notifications
+  - [[EZGmail]]
+  - [[ntfy]]
+  - [[SMS gateway]]
 - Chapter 21 -
 - Chapter 22 -
 - Chapter 23 -
