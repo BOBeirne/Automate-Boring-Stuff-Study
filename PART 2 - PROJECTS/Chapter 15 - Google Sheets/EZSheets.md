@@ -55,7 +55,7 @@
 
 1) Open the side menu -> Click on the **APIs & Services** -> Clients
 2) Select **+Create Client**
-3) Create access for Desktop application and name it whatever you want
+3) Create access for **Desktop application** and name it whatever you want
 4) Click on the **Save** button
 5) Download the **credentials.json** file to a safe location
 6) rename the file to `credentials-sheets.json`
