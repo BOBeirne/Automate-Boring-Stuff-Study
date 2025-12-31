@@ -46,7 +46,7 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
   - [[Regex module]] 
   - [[Humre module]]
 - Chapter 10 - Files
-   - [[Path]]
+   - [[File Path]]
    - [[File]] 
 	- [[OS module]]
 	- [[Pathlib module]]
@@ -58,7 +58,12 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
 - Chapter 12 - Command line
   - [[CLI]]
 - Chapter 13 - Web Scraping
-  - WIP
+  - [[HTML]]
+  - [[API]]
+  - [[requests]]
+  - [[BeautifulSoup]]
+  - [[selenium]]
+  - [[playwright]]
 - Chapter 14 - Excel
   - [[Openpyxl]]
 - Chapter 15 - Google Sheets
