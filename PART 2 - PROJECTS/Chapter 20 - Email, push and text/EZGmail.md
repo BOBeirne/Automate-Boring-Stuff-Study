@@ -8,6 +8,11 @@
 - To **install the module** use `pip -m install ezgmail`
 - To check, for **which e-mail address does `token.json` belongs to**, use `ezgmail.EMAIL_ADDRESS`
 
+## Similar modules
+
+- `imapclient`: This module lets your Python script connect to an IMAP server (like Gmail's IMAP server) and download email messages. You'll use it to select your inbox, search for messages (similar to `ezgmail.search()`), and then fetch the raw email content.
+- `pyzmail`: This module is excellent for parsing the raw email content that `imapclient` downloads. Emails are often complex, multi-part messages (e.g., one part is plaintext, another is HTML, another is an attachment). `pyzmail` can elegantly handle this and allows you to specifically ask for the HTML payload of a message if it exists.
+
 ## Gmail API
 
 - require to use `ezgmail` module

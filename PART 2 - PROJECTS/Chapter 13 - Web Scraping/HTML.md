@@ -47,8 +47,8 @@ For example:
 ```
 - It seems that the forecast information is contained inside a <div> element with the forecast-text CSS class.
 - Right-click this element in the browser’s developer console -> select Copy (CSS) Selector -> Copies a string such as `'div.row-odd:nth-child(1) > div:nth-child(2)'` to the clipboard. 
-	- You can pass it to Beautiful Soup’s select() method 
-	- or Selenium’s find_element() method
+	- You can pass it to Beautiful Soup’s select() method [[BeautifulSoup]]
+	- or Selenium’s find_element() method [[selenium]]
 - CSS selector syntax used in this string specifies which HTML elements to retrieve from a web page
 
 #### when a website changes its layout, you’ll need to update the HTML tags your scripts check. Be sure to keep an eye on your program in case it suddenly displays errors about not being able to find elements.

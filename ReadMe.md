@@ -60,6 +60,7 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
 - Chapter 13 - Web Scraping
   - [[HTML]]
   - [[API]]
+  - [[webbrowser]]
   - [[requests]]
   - [[BeautifulSoup]]
   - [[selenium]]

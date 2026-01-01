@@ -286,9 +286,9 @@ at_re.findall('The cat in the hat sat on the flat mat.')
 
 ---
 
-## [Quantifier] Syntax
+## Quantifier Syntax
 
-* In regex string, quantifiers follow qualifiers to specify how many chars to mach
+* In regex string, quantifiers follow qualifiers to specify how many chars to match
 * if there are no specified quantifiers the quantifier must appear exactly once (eg. r'\d == r'\d{1})
 
 ### Matching optional pattern (?)
@@ -477,8 +477,8 @@ However, the `?`, `*`, and + quantifiers are common shorthand.
 * Sometimes you may want to match everything and anything
 for example: match `str'First name'` followed by any and all txt and then followed by `str'last name'` followed by `any text`
 * **you can use ".*" for that "everything"** (greedy mode)
-  * "." char means "any single char except newline"
-  * "*" means 0 + of the proceeding chars
+  * `.` char means "any single char except newline"
+  * `*` means 0 + of the proceeding chars
 
 ``` python
 import re
