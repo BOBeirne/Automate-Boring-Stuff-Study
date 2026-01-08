@@ -7,8 +7,7 @@
 4. Launch qBittorrent with that link using subprocess.Popen()
 5. Send yourself confirmation that download started
 6. Optionally: use .wait() to know when download finishes, then notify again
-7. Log everything to a file
-8. Delete/mark the message as processed
+7. Delete/mark the message as processed
 """
 
 import time, subprocess, requests, json, re
