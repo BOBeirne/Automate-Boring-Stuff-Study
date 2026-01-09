@@ -370,5 +370,3 @@ draw.text((100, 150), 'Howdy', fill='gray', font=arial_font)
 img.save('text.png') # save file
 img.show() # show image
 ```
-
-## Copying and pasting images in clipboard
