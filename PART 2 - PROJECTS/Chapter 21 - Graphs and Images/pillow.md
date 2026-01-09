@@ -265,3 +265,110 @@ img.getpixel((0, 50)) # get color of pixel in the other half
 
 img.save('putPixel.png')
 ```
+
+
+## Drawing Images
+
+- [Documentation](https://pillow.readthedocs.io/en/latest/reference/ImageDraw.html)
+- You can use `Pillow module` to draw simple shapes on an image
+- It uses a `ImageDraw` part of the module, import it using `from PIL import ImageDraw`
+- It returns a `ImageDraw object` that can be used to draw on the image
+
+
+
+```python
+from PIL import Image, ImageDraw
+img = Image.new('RGBA', (200, 200), 'white') # create white image
+draw = ImageDraw.Draw(img) # create draw object
+```
+
+- It has OPTIONAL `fill` and `outline` parameters that can be used to set the color of the shape
+
+### Point
+
+- `point(xy, fill)` method draws a **point** at the specified coordinates
+- It can be a **list** of **tuples** `(x, y)` where `x` is the horizontal position and `y` is the vertical position
+- It can also have **just** `y` or `x` **coordinates** (eg. `[x1, y1, x2, y2, x3, y3 ...]` etc)
+- `fill` argument is **optional** and used for **coloring**
+
+### Line
+
+- `line(xy, fill, width)` method **draws a line between the specified coordinates**
+- It can be a **list of tuples** `(x, y)` or a **list of integers** `[x1, y1, x2, y2, x3, y3 ...]`
+- `fill` argument is **optional** and used for **coloring**
+- `width` is also **optional**, used to specify the **width of the lines** and **defaults to 1** if not specified
+
+### Rectangle
+
+- `rectangle(xy, fill, outline, width)` method draws a **rectangle between the specified coordinates**
+- The `xy` argument is a **box tuple of the form `(left, top, right, bottom)`**
+- `fill, outline, width` are **optional** and used for **coloring**, **outline** and **width** respectively
+
+### Ellipse
+
+- `ellipse(xy, fill, outline, width)` method draws an **ellipse between the specified coordinates**
+- **If the `width` and `height` of the ellipse are identical**, this method will draw a **circle**
+- The `xy` argument is a box tuple `(left, top, right, bottom)` representing a **box that precisely contains the ellipse**
+- `fill, outline, width` are **optional** and used for **coloring**, **outline** and **width** respectively
+
+### Polygon
+
+- `polygon(xy, fill, outline, width)` method draws a **polygon between the specified coordinates**
+- The `xy` argument is a list of tuples, such as` [(x, y), (x, y), ...]`, or integers, such as `[x1, y1, x2, y2, ...]`, representing the **connecting points of the polygon’s sides**
+- `fill, outline, width` are **optional** and used for **coloring**, **outline** and **width** respectively
+
+```python
+from PIL import Image, ImageDraw
+img = Image.new('RGBA', (200, 200), 'white') # create white image
+draw = ImageDraw.Draw(img) # create draw object
+
+draw.line([(0,0), (199, 199), (0,199), (0,0)], fill='black') # draw black line
+draw.rectangle((20, 30, 60, 60), fill='blue') # draw blue rectangle
+draw.ellipse((120, 30, 160, 60), fill='red') # draw red ellipse
+draw.polygon(((57, 87), (79, 62), (94, 85), (120, 90), (103, 113)), fill='brown') # draw brown polygon
+
+for i in range(100, 200, 10): # draw 10 green lines
+    draw.line([(i,0),(200, i-100)], fill='green') # draw green lines
+img.save('drawing.png') # save image
+img.show() # show image
+```
+
+## Adding Text
+
+- `ImageDraw object` also has a `text()` method for drawing text onto an image
+- It takes 4 arguments
+  - `xy` - the location of the text, upper left corner of the text box
+  - `text` - the string
+  - `fill` - color
+  - `font` - optional `ImageFont` object used to set `typeface` and `size` of text
+
+### ImageFont
+
+- You import is from `PIL import ImageFont`
+- `ImageFont object` is used to set the **typeface** and **size** of the text
+- You can **access the font** by calling `ImageFont.truetype('font.ttf', size)`, where the `.ttf` is the actual **font file**
+  - usual path is :
+    - **Windows**: `C:\Windows\Fonts` 
+    - **macOS**: `/Library/Fonts`
+    - **Linux**: ` /usr/share/fonts/truetype`
+  - You **don't need to specify path because Pillow knows where to search for it**
+- `size` is in **points** `(1 point = 1/72 inch)`
+- It returns an **ImageFont object** that can be used to draw text on an image
+
+```python
+from PIL import Image, ImageDraw, ImageFont
+import os
+
+img = Image.new('RGBA', (200, 200), 'white')
+draw = ImageDraw.Draw(img)
+
+draw.text((20, 150), 'Hello', fill='purple') # draw text
+
+arial_font = ImageFont.truetype('arial.ttf', 32) # specify arial font 32 points in size
+draw.text((100, 150), 'Howdy', fill='gray', font=arial_font)
+
+img.save('text.png') # save file
+img.show() # show image
+```
+
+## Copying and pasting images in clipboard
