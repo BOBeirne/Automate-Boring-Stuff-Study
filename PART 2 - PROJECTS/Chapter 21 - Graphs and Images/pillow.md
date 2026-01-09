@@ -1,6 +1,6 @@
-# Pillow
+# Pillow module
 
-- 3rd party module that allows you to open and edit images
+- 3rd party module that **allows you to open and edit images**
 - It **has functions such as cropping, resizing and editing image content**
 - to **install** use `pip install pillow`
 - **importing**:
@@ -28,7 +28,7 @@
 ### .getcolor()
 
 - `ImageColor.getcolor()` returns a tuple of `(R, G, B, A)` if passed a string with color name
-- get the **FULL LIST of color names** (100+) in the keys of `ImageColo,colormap` dictionary
+- get the **FULL LIST of color names** (100+) in the keys of `ImageColor.colormap` dictionary
 
 
 ```python
