@@ -53,27 +53,27 @@ While in the CLI you can run program files by entering:
 
 ### PATH Environment Variable
 
-The **PATH** is one of the most fundamental environment variables in any operating system, whether it's Windows, macOS, or Linux.
-It allows you to run widely-used system utilities (like `ipconfig` or `powershell`) from _any_ location on your disk without having to type the full, absolute file path every single time (e.g., `C:\Windows\System32\ipconfig.exe`).
-Adding installation folders for scripting languages like Python to the PATH makes those tools instantly accessible from any shell window.
+- The **PATH** is one of the **most fundamental environment variables** in any operating system, whether it's **Windows, macOS, or Linux.**
+- Allows you to run widely-used system utilities (like `ipconfig` or `powershell`) from _any_ location on your disk without having to type the full, absolute file path every single time (e.g., `C:\Windows\System32\ipconfig.exe`).
+- Allows **installation folders for scripting languages** like Python by **adding them to the PATH**, makes **instantly accessible from any shell window.**
 
-PATH behaviour is slightly different for each OS:
-- Windows - first check CWD for program of that name, then the PATH
+**PATH behaviour is slightly different for each OS:**
+- **Windows** - first **check CWD for program of that name, then the PATH**
 	- To see the contents of PATH, run `echo %PATH%`
 	- The value of PATH is **long string composed of folder names and separated by semicolons**
-- macOS & Linux - check only PATH (does not check CWD at all)
-	- To see the contents of PATH, run `echo $PATH`
+- **macOS** & **Linux** - check **only PATH** (does not check CWD at all)
+	- To see the **contents of PATH**, run `echo $PATH`
 	- PATH values are **separated by colons**
 
 #### PATH editing
 
-It is recommended to keep all your scripts in your **home folder**:
+It is recommended to **keep all your scripts** in your **home folder**:
 
-- Windows - **C:\Users\al\Scripts** 
-- macOS - **/Users/al/scripts**
-- Linux - **/home/al/Scripts**
+- **Windows** - `C:\Users\al\Scripts` 
+- **macOS** - `/Users/al/scripts`
+- **Linux** - `/home/al/Scripts`
 
-Adding "Scripts" folder to PATH
+#### Adding "Scripts" folder to PATH
 
 ##### Windows:
 
@@ -83,47 +83,47 @@ Adding "Scripts" folder to PATH
 - You can edit them by going to Start -> Edit Environment Variables -> User / System -> Edit -> Add a path for script -> OK
 
 ##### macOS & Linux:
-- To add new entries to PATH variable you need to edit the terminal start-up script.
-- Files are located in the Home folder. To add new entry simply add following to the bottom of the file:
+- To **add new entries to PATH variable** you need to edit the terminal start-up script.
+- Files are **located** in the **Home folder**. To add new entry simply add following to the bottom of the file:
 	- macOS - **.zshrc** - `export PATH=/Users/al/Scrips:$PATH`
 	- Linux - **.bashrc** - `export PATH=/home/al/Scrips:$PATH`
 
 #### Which and Where
 
-To find out location of the PATH variable you can use:
+To find out **location of the PATH variable** you can use:
 Windows - **Where** `C:\Users\Al>`
 macOs and Linux - **Which** `al@Als-McBook Pro ~ % which python3`
 
 
 ### Virtual Environments (venv)
 
-- Python can create it's own virtual environments with venv module
-- Separate installations of Python that have their own set of installed 3-rd party packages.
-- Solution to multiple programs using different Python versions to avoid reinstalling Python.
+- Python can **create it's own virtual environments** with venv module
+- **Separate installations of Python that have their own set of installed 3-rd party packages.**
+- **Solution to multiple programs using different Python versions** to avoid reinstalling Python.
 - Each Python application you create needs it's own virtual environment but for small scripts you can just run them on one venv
-- Virtual Environments in Python will be fresh installs with only default packages 
+- **Virtual Environments in Python will be fresh installs with only default packages** 
 	- `python -m pip list` to confirm
 
 #### Creating Virtual Environment ([[venv]])
 
 `cd` to `\Scripts` folder and run `python -m venv .venv`
 
-This will create venv files in `.venv` folder
+This will **create venv files** in `.venv` folder
 
 #### Activating Virtual Environment
 
-To actually use the virtual environment version of Python you need to activate it using **activate.bat** file in **.venv\Scripts** folder
+To actually use the **virtual environment version of Python** you need to activate it using **activate.bat** file in **.venv\Scripts** folder
 
 ##### Windows:
 
 `cd .venv\Scripts`
 `activate.bat`
-to confirm you're running the correct environment use where command:
+to **confirm** you're running the correct **environment** use `where` command:
 `where python.exe`
 
 ##### Linux
 
-macOs and Linux require slightly different approach due to security issues
+macOs and Linux require **slightly different approach due to security issues**
 
 `cd .venv\bin`
 `source activate`
@@ -147,13 +147,15 @@ Use `-m` flag to ensure pip is ran as a module to:
 
 #### Uninstalling packages
 
-```
+```python
 python -m pip uninstall package_name
 ```
 
 #### Listing installed pip modules
 
-`python -m -pip list`
+```python
+python -m -pip list
+```
 
 #### Checking if module is installed
 
@@ -172,39 +174,39 @@ You can alternatively use `python -m pip show package_name`
 #### Updating packages
 
 `-m pip install -U package_name`
-- U stands for update
-- You can also specify a package version by adding `package==version`
+- `U` stands for update
+- You can also **specify a package version** by adding `package==version`
 
 #### Built-in variables
 
-Several built-in variables can give your Python program useful info about itself:
-- the OS it's on
-- Python interpreter version
-- `__file__` variable, which contains .py file's path as a str
+Several built-in variables can give your Python program **useful info about itself**:
+- the **OS** it's on
+- Python **interpreter version**
+- `__file__` variable, which contains **.py file's path as a str**
 	- can be used to find out where the program is running from by using:
 	- `Path(__file__)` will return Path object of this file
-- `sys.executable` will return full path to Python interpreter program itself
-- `sys.version` will return Python interpreter version
-- `sys.versioninfo.major` and `sys.versioninfo.minor` will return major and minor versions of Python interpreter (eg. 3.13.1 -> major = 3, minor = 13)
-- `os.name` Will return `nt` for Windows or `posix` for macOS and Linux
-- `sys.platform` will return `win32` for Windows or `darwin` for macOS or `linux` for Linux
+- `sys.executable` will return **full path to Python interpreter** program itself
+- `sys.version` will return **Python interpreter version**
+- `sys.versioninfo.major` and `sys.versioninfo.minor` will return **major and minor versions of Python interpreter (eg. 3.13.1 -> major = 3, minor = 13)**
+- `os.name` Will return `nt` for **Windows** or `posix` for **macOS** and **Linux**
+- `sys.platform` will return `win32` for **Windows** or `darwin` for **macOS** or `linux` for **Linux**
 
 #### Installing the "Automate the boring stuff" package
 
-- Windows:
+- **Windows**:
 `python -m pip install AutomateTheBoringStuff3`
-- macOS and Linux:
+- **macOS** and **Linux**:
 `python3 -m pip install AutomateTheBoringStuff3`
 
 ### Text-Based program design ([[TUI]])
 
-In this book we are focusing on building small programs not using GUI, however we can still provide something similar using TUI (Text User Interface)
+In this book we are focusing on building small programs not using GUI, however we can still provide something similar using TUI (**Text User Interface**)
 
 They are quite simple to make
 
 #### Short command names
 
-- TUI is usually run by text commands
+- TUI is **usually run by text commands**
 - These commands are usually short and easy to remember like `ls` or `cd` and are usually shortened versions of longer commands like `list` or `change directory`
 
 #### Command-line Arguments
@@ -213,13 +215,23 @@ To run a program from CLI simply enter it's name (like `python` on windows) and 
 After the command you supply arguments
 - `ls` - lists contents of current directory but can also specify a specific folder to list contents of
 - `sys.argv` list contains all arguments passed to the program and Python scripts can access that list
-	- for example: if you enter `python script.py hello world` the sys.argv list will contain `['script.py', 'hello', 'world']`
-	- This can be used to specify a wide range of configurations before the program even runs
-	- You can also use `argparse module` in complicated situations when using many arguments 
 - passing following after the command: `\?` on Windows and `--help` on Linux and macOS will print help text for the program
 - a lot of programs accept `-v` or `--verbose` for verbose mode (more text output)
 - a lot of programs also accept `-q` or `--quiet` for quiet mode (no text output, sound or notifications)
 
+### SysArgv
+
+- You can use `SysArgv` to **pull out a list of variables provided when running the program via CLI**
+-  for example: if you enter `python script.py hello world` the `sys.argv` list will contain `['script.py', 'hello', 'world']`
+	- This can be used to **specify a wide range of configurations before the program even runs**
+	- You can also use `argparse module` in complicated situations when using many arguments 
+
+```python
+import sys
+if len(sys argv) > 1: # if there are more than 1 argument
+	os.chdir(sys,argv[1]) # use the additional argument to specify path where program should run
+	print(sys.argv[0]) # index 0 is the program name itself
+```
 ### Clipboard I/O
 
 You don't need to rely on the input() to read text from files or keyboard, you can instead use **pyperclip module** to read text from clipboard
@@ -334,11 +346,13 @@ playsound3.playsound('hello.mp3')
 
 1. Place the program.py into `Scripts` folder
 2. create a text file named `program.command` to run the Python script.
+
 	```bash
 	source ~/Scripts/.venv/bin/activate # activate venv
 	python3 ~/Scripts/program.py # run python.exe which then runs the program
 	deactivate # deactivates venv
 	```
+
 3. Run `chmod u_x program.command` to add execute permissions to the file
 4. press COMMAND + spacebar -> spotlight -> enter name of the program to run
 
@@ -350,14 +364,17 @@ Ubuntu linux Dash search can be brought up by pressing windows key and entering 
 
 1. Place the program.py into `Scripts` folder
 2. create a text file named `program.sh` to run the Python script.
+
 	```bash
 	source ~/Scripts/.venv/bin/activate # activate venv
 	python3 ~/Scripts/program.py # run python.exe which then runs the program
 	read -p "press any key to continue...." # wait for user to press enter, prevents window from closing prematurely
 	deactivate # deactivates venv
 	```
+
 3. Run `chmod u+x program.sh` to add execute permissions to the file
 4. create `program.desktop` file in `~/.local/share/applications` folder to add the program to the menu
+
 	```bash
 	[Desktop Entry]
 	Name=Program 
