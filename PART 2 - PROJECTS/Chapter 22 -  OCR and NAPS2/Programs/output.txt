@@ -1,0 +1,44 @@
+Amazon | Barnes and Noble | Bookshop.org | Powells | Kobo | Thriftbooks | Goodreads
+You've seen what Python can do. Now go deeper.
+
+This workbook transforms Al Sweigart's best-selling guide from a reading experience into a coding experience.
+Following Automate the Boring Stuff with Python chapter by chapter, this workbook will help you turn concepts into
+muscle memory through carefully designed exercises, projects, and real Python scripts.
+
+Every concept from Automate is reinforced through carefully sequenced questions, exercises, and projects that help you
+think like a programmer and prove to yourself that you really get it.
+
+At the end of each chapter, you'll tackle miniprojects that bring everything together. Whether you're renaming files,
+scraping websites, converting text to speech, modifying spreadsheets, or sending emails, you'll build scripts that do real
+work. Fun projects like image generators and word games are in the mix too, not just boring stuff.
+
+Every question and project come with a solution at the back of the book, so you're never stuck.
+Inside, you'll find:
+
+© Fill-in-the-blank and short-answer questions that reinforce key concepts
+
+Targeted exercises to build fluency with variables, loops, functions, regular expressions, and more
+Real Python scripts to run, tweak, and debug
+Projects that automate common tasks like organizing files, backing up data, and scheduling programs
+
+Full working code for every project so you can check your work and learn by example
+
+With over 500,000 copies sold worldwide, Automate the Boring Stuff with Python has become the go-to guide for
+learning Python. This workbook gives you the structure, feedback, and smart reinforcement to go from reading code to
+writing it with confidence.
+
+Read the Book Online
+
+¢ Eront Matter
+© Introduction
+© Chapter 1: Python Basics
+
+© Chapter 2: if-else and Flow Control
+© Chapter 3: Loops
+
+© Chapter 4: Functions
+
+© Chapter 5: Debugging
+© Chapter 6: Lists
+© Chapter 7: Dictionaries and Structuring Data
+
