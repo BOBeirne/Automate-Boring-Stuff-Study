@@ -46,13 +46,13 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
   - [[Regex module]] 
   - [[Humre module]]
 - Chapter 10 - Files
-   - [[File Path]]
-   - [[File]] 
-	- [[OS module]]
-	- [[Pathlib module]]
-	- [[Shelve module]]
-	- [[Glob Patterns]]
-- Chapter 11 - Files Part 2
+  - [[File Path]]
+  - [[File]] 
+  - [[OS module]]
+  - [[Pathlib module]]
+  - [[Shelve module]]
+  - [[Glob Patterns]]
+  - Chapter 11 - Files Part 2
   - [[Shutil module]]
   - [[Zipfile module]]
 - Chapter 12 - Command line
@@ -87,9 +87,18 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
   - [[EZGmail]]
   - [[ntfy]]
   - [[SMS gateway]]
-- Chapter 21 -
-- Chapter 22 -
-- Chapter 23 -
-- Chapter 24 -
+- Chapter 21 - Graphs and Images
+  - [[Matplotlib]]
+  - [[pillow]]
+  - [[pyperclipimg]]
+- Chapter 22 - OCR and NAPS2
+  -	[[OCR]]
+  - [[NAPS2]]
+- Chapter 23 - Controlling Keyboard and Mouse
+  - [[pyatutogui]]
+- Chapter 24 - TTS and STT
+  - [[pyttsx3]]
+  - [[Whisper]]
+  - [[yt_dlp]]
 ---
 
