@@ -21,84 +21,84 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
 
 ### Part 1 - FUNDAMENTALS
 - Chapter 1 - Basics
-  - [[Basics]]
+  - [Basics](<PART 1 - FUNDAMENTALS/Chapter 1 - Basics/Basics.md>)
 - Chapter 2 - IF ELSE Statements
-  - [[Flow Control]]
+  - [Flow Control](<PART 1 - FUNDAMENTALS/Chapter 2 - IF ELSE/Flow Control.md>)
 - Chapter 3 - Loops
-  - [[Loops]]
+  - [Loops](<PART 1 - FUNDAMENTALS/Chapter 3 - Loops/Loops.md>)
 - Chapter 4 - Functions
-  - [[Functions]]
-  - [[Try]]
-- Chapter 5 - Debugging 
-  - [[Logging module]]
+  - [Functions](<PART 1 - FUNDAMENTALS/Chapter 4 - Functions/Functions.md>)
+  - [Try](<PART 1 - FUNDAMENTALS/Chapter 4 - Functions/Try.md>)
+- Chapter 5 - Debugging
+  - [Logging module](<PART 1 - FUNDAMENTALS/Chapter 5 - Debugging/Logging module.md>)
 - Chapter 6 - Lists
-  - [[Lists]]
-  - [[Sets]]
-  - [[Tuples]]
+  - [Lists](<PART 1 - FUNDAMENTALS/Chapter 6 - Lists/Lists.md>)
+  - [Sets](<PART 1 - FUNDAMENTALS/Chapter 6 - Lists/Sets.md>)
+  - [Tuples](<PART 1 - FUNDAMENTALS/Chapter 6 - Lists/Tuples.md>)
 - Chapter 7 - Dictionaries
-  - [[Dictionaries]]
+  - [Dictionaries](<PART 1 - FUNDAMENTALS/Chapter 7 - Dictionaries/Dictionaries.md>)
 - Chapter 8 - Strings and Pyperclip module
-  - [[Strings]]
-  - [[Pyperclip Module]]
+  - [Strings](<PART 1 - FUNDAMENTALS/Chapter 8 - Strings/Strings.md>)
+  - [Pyperclip Module](<PART 1 - FUNDAMENTALS/Chapter 8 - Strings/Pyperclip module.md>)
 
 ### Part 2 - PROJECTS
 - Chapter 9 - Regex
-  - [[Regex module]] 
-  - [[Humre module]]
+  - [Regex module](<PART 2 - PROJECTS/Chapter 9 - Regex/Regex module.md>)
+  - [Humre module](<PART 2 - PROJECTS/Chapter 9 - Regex/Humre module.md>)
 - Chapter 10 - Files
-  - [[File Path]]
-  - [[File]] 
-  - [[OS module]]
-  - [[Pathlib module]]
-  - [[Shelve module]]
-  - [[Glob Patterns]]
+  - [File Path](<PART 2 - PROJECTS/Chapter 10 - Files/File Path.md>)
+  - [File](<PART 2 - PROJECTS/Chapter 10 - Files/File.md>)
+  - [OS module](<PART 2 - PROJECTS/Chapter 10 - Files/OS module.md>)
+  - [Pathlib module](<PART 2 - PROJECTS/Chapter 10 - Files/Pathlib module.md>)
+  - [Shelve module](<PART 2 - PROJECTS/Chapter 10 - Files/Shelve module.md>)
+  - [Glob Patterns](<PART 2 - PROJECTS/Chapter 10 - Files/Glob Patterns.md>)
   - Chapter 11 - Files Part 2
-  - [[Shutil module]]
-  - [[Zipfile module]]
+  - [Shutil module](<PART 2 - PROJECTS/Chapter 11 - Files pt.2/Shutil module.md>)
+  - [Zipfile module](<PART 2 - PROJECTS/Chapter 11 - Files pt.2/Zipfile module.md>)
 - Chapter 12 - Command line
-  - [[CLI]]
+  - [CLI](<PART 2 - PROJECTS/Chapter 12 - Command line/CLI.md>)
 - Chapter 13 - Web Scraping
-  - [[HTML]]
-  - [[API]]
-  - [[webbrowser]]
-  - [[requests]]
-  - [[BeautifulSoup]]
-  - [[selenium]]
-  - [[playwright]]
+  - [HTML](<PART 2 - PROJECTS/Chapter 13 - Web Scraping/HTML.md>)
+  - [API](<PART 2 - PROJECTS/Chapter 13 - Web Scraping/API.md>)
+  - [webbrowser](<PART 2 - PROJECTS/Chapter 13 - Web Scraping/webbrowser.md>)
+  - [requests](<PART 2 - PROJECTS/Chapter 13 - Web Scraping/requests.md>)
+  - [BeautifulSoup](<PART 2 - PROJECTS/Chapter 13 - Web Scraping/BeautifulSoup.md>)
+  - [selenium](<PART 2 - PROJECTS/Chapter 13 - Web Scraping/selenium.md>)
+  - [playwright](<PART 2 - PROJECTS/Chapter 13 - Web Scraping/playwright.md>)
 - Chapter 14 - Excel
-  - [[Openpyxl]]
+  - [Openpyxl](<PART 2 - PROJECTS/Chapter 14 - Excel/Openpyxl.md>)
 - Chapter 15 - Google Sheets
-  - [[EZSheets]]
+  - [EZSheets](<PART 2 - PROJECTS/Chapter 15 - Google Sheets/EZSheets.md>)
 - Chapter 16 - SQLite
-  - [[SQLite]]
+  - [SQLite](<PART 2 - PROJECTS/Chapter 16 - SQLite/SQLite.md>)
 - Chapter 17 - PDF and WORD
-  - [[PDF]]
-  - [[Word]]
+  - [PDF](<PART 2 - PROJECTS/Chapter 17 - PDF and Word/PDF.md>)
+  - [Word](<PART 2 - PROJECTS/Chapter 17 - PDF and Word/Word.md>)
 - Chapter 18 - CSV JSON XML
-  - [[CSV]]
-  - [[TSV]]
-  - [[JSON]]
-  - [[XML]]
+  - [CSV](<PART 2 - PROJECTS/Chapter 18 - CSV JSON and XML/CSV.md>)
+  - [TSV](<PART 2 - PROJECTS/Chapter 18 - CSV JSON and XML/TSV.md>)
+  - [JSON](<PART 2 - PROJECTS/Chapter 18 - CSV JSON and XML/JSON.md>)
+  - [XML](<PART 2 - PROJECTS/Chapter 18 - CSV JSON and XML/XML.md>)
 - Chapter 19 - Scheduling
-  - [[time]]
-  - [[datetime]]
-  - [[subprocess]]
+  - [time](<PART 2 - PROJECTS/Chapter 19 - Scheduling/time.md>)
+  - [datetime](<PART 2 - PROJECTS/Chapter 19 - Scheduling/datetime.md>)
+  - [subprocess](<PART 2 - PROJECTS/Chapter 19 - Scheduling/subprocess.md>)
 - Chapter 20 - Email Push and Text notifications
-  - [[EZGmail]]
-  - [[ntfy]]
-  - [[SMS gateway]]
+  - [EZGmail](<PART 2 - PROJECTS/Chapter 20 - Email, push and text/EZGmail.md>)
+  - [ntfy](<PART 2 - PROJECTS/Chapter 20 - Email, push and text/ntfy.md>)
+  - [SMS gateway](<PART 2 - PROJECTS/Chapter 20 - Email, push and text/SMS gateway.md>)
 - Chapter 21 - Graphs and Images
-  - [[Matplotlib]]
-  - [[pillow]]
-  - [[pyperclipimg]]
+  - [Matplotlib](<PART 2 - PROJECTS/Chapter 21 - Graphs and Images/Matplotlib.md>)
+  - [pillow](<PART 2 - PROJECTS/Chapter 21 - Graphs and Images/pillow.md>)
+  - [pyperclipimg](<PART 2 - PROJECTS/Chapter 21 - Graphs and Images/pyperclipimg.md>)
 - Chapter 22 - OCR and NAPS2
-  -	[[OCR]]
-  - [[NAPS2]]
+  - [OCR](<PART 2 - PROJECTS/Chapter 22 -  OCR and NAPS2/OCR.md>)
+  - [NAPS2](<PART 2 - PROJECTS/Chapter 22 -  OCR and NAPS2/NAPS2.md>)
 - Chapter 23 - Controlling Keyboard and Mouse
-  - [[pyatutogui]]
+  - [pyatutogui](<PART 2 - PROJECTS/Chapter 23 - Controlling keyboard and mouse/pyatutogui.md>)
 - Chapter 24 - TTS and STT
-  - [[pyttsx3]]
-  - [[Whisper]]
-  - [[yt_dlp]]
+  - [pyttsx3](<PART 2 - PROJECTS/Chapter 24 - TTS & STT/pyttsx3.md>)
+  - [Whisper](<PART 2 - PROJECTS/Chapter 24 - TTS & STT/Whisper.md>)
+  - [yt_dlp](<PART 2 - PROJECTS/Chapter 24 - TTS & STT/yt_dlp.md>)
 ---
 
