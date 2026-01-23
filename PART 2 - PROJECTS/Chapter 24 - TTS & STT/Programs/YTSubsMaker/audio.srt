@@ -1,0 +1,212 @@
+1
+00:00:00,000 --> 00:00:08,000
+Welcome to Lesson 1. In this lesson we're going to be covering material from the first chapter of the book Beyond the Basic Stuff with Python
+
+2
+00:00:08,000 --> 00:00:18,000
+which you can read for free online at inventwithpython.com slash beyond the material in the first chapter this book is available under a creative commons license
+
+3
+00:00:18,000 --> 00:00:20,000
+so it's free to read online.
+
+4
+00:00:23,000 --> 00:00:27,000
+Now please don't answer for more FIs computers. They really find that annoying
+
+5
+00:00:28,000 --> 00:00:34,000
+Now when a computer presents you with an error message it's not because you've offended it or because the computer thinks you're dumb
+
+6
+00:00:34,000 --> 00:00:40,000
+computers are just tools and because much of learning to program is self-directed
+
+7
+00:00:40,000 --> 00:00:48,000
+it's really common to feel frustrated or like a failure when you still need to consult the internet multiple times a day over and over
+
+8
+00:00:48,000 --> 00:00:50,000
+even if you've been studying Python for months
+
+9
+00:00:50,000 --> 00:00:57,000
+but even professional software developers search the internet or consult documentation to answer their programming questions.
+
+10
+00:00:57,000 --> 00:01:01,000
+Now fortunately your questions have almost certainly been asked before.
+
+11
+00:01:01,000 --> 00:01:08,000
+Now when they're confronted with an error messages large wall of techno-babel text
+
+12
+00:01:08,000 --> 00:01:15,000
+most programmers first impulse is to just completely ignore it but resist the urge to do that.
+
+13
+00:01:16,000 --> 00:01:23,000
+Actually take a look at the error message in full. The error message hasn't damaged the computer
+
+14
+00:01:23,000 --> 00:01:27,000
+I could do these zero divide errors all day. It's fine.
+
+15
+00:01:27,000 --> 00:01:34,000
+Don't think of it as failing to be a programmer or anything like that programmers get these error messages all the time.
+
+16
+00:01:34,000 --> 00:01:42,000
+Now Python programs show an error message like this because they've crashed whenever their code raises an exception
+
+17
+00:01:42,000 --> 00:01:51,000
+that an accept statement didn't handle and when that happens Python displays the exceptions message and trace back.
+
+18
+00:01:51,000 --> 00:01:58,000
+This is also called a stack trace but the trace back shows the place in your program where the exception happened
+
+19
+00:01:58,000 --> 00:02:06,000
+and the trail of function calls that let up to it. I'll just make a short example here with a function that looks like
+
+20
+00:02:06,000 --> 00:02:23,000
+this will create an A function and it shows it says start of A and the A function will call a B function
+
+21
+00:02:23,000 --> 00:02:31,000
+and the B function will call a C function and the C function will say start of C
+
+22
+00:02:32,000 --> 00:02:42,000
+and then it will cause a zero divide error. So this is not inside of any accept statement and it's impossible for the computer to divide a number by zero
+
+23
+00:02:42,000 --> 00:02:47,000
+so it's going to raise an exception and then crash the program and display the trace back.
+
+24
+00:02:47,000 --> 00:02:55,000
+We'll also just call the A function right here. Now I'm going to save this as ABC trace back dot pi
+
+25
+00:03:02,000 --> 00:03:13,000
+and then I'll run it. Now we can see start of A start of B start of C appeared but then our program crashed and it displayed this trace back.
+
+26
+00:03:13,000 --> 00:03:22,000
+Now don't turn away from this very mysterious and screwable looking text right here. There's important information that we should pay attention to.
+
+27
+00:03:23,000 --> 00:03:30,000
+Now the first line is trace back. This tells you this is a trace back. These two lines are called a frame summary.
+
+28
+00:03:30,000 --> 00:03:46,000
+They show the information inside a frame object. Now when a function is called the local variable data as well as where the code should return to and other information associated with the function call is stored in something called a frame object.
+
+29
+00:03:46,000 --> 00:04:01,000
+This frame summary just describes that frame object. Now what you really need to know is that this describes the trail of function calls that lead up to the final line where the exception occurred.
+
+30
+00:04:01,000 --> 00:04:19,000
+So you can see right here line 13 which is this right here. This called our A function. So the execution jumped here and printed out start of A and then called B which we can see right here on line three inside ABC trace back dot pi.
+
+31
+00:04:19,000 --> 00:04:45,000
+The B function was called. And so now the execution entered B and that finally led to line seven inside the B function which called C. And then finally here on line 11 inside the C function. This is the line that caused this error message to happen air zero division air division by zero.
+
+32
+00:04:45,000 --> 00:05:03,000
+So we sort of have a trail of function calls leading up to the line of code where the exception happened. Now these error messages are notoriously short and sort of inscrutable. This is only three words division by zero.
+
+33
+00:05:03,000 --> 00:05:10,000
+I mean that won't really mean anything to you unless you know that dividing a number by zero is mathematically impossible and a common software bug.
+
+34
+00:05:10,000 --> 00:05:23,000
+But these error messages are more like reminders rather than full explanations as a programmer you'll probably be encountering the same error messages over and over again and you'll realize oh I know how to fix this problem.
+
+35
+00:05:23,000 --> 00:05:52,000
+But if you don't if this is the first time you've encountered this error message what I recommend doing is just highlighting the text and it in control C to copy it and then going into your web browser to a search engine and then searching for the error message. You don't need to search for the entire trace back. You can just search for the error message usually I'll put it inside quotes so I get an exact match and maybe I'll add Python because that's the programming language that I'm using.
+
+36
+00:05:53,000 --> 00:06:05,000
+And you'll get a lot of search results usually to this website called stack overflow dot com that's a very popular website that has questions and answers that programmers have encountered.
+
+37
+00:06:05,000 --> 00:06:22,000
+Now searching for error messages like this is not cheating don't feel that you're a poor programmer or a failure of a programmer if you find yourself searching for error messages all the time even professional software developers search the internet for programming answers on a daily basis.
+
+38
+00:06:22,000 --> 00:06:37,000
+Now when you search for the error message you might want to exclude any part of the error message that's particular to your code something that wouldn't appear in someone else's program for example if I go back to the interactive shell here.
+
+39
+00:06:37,000 --> 00:06:49,000
+Let's say I had a line of code that had a typo in it say I wanted to print out employee record and I've misspelled employee here so this is a variable that doesn't exist and when I try to run this code.
+
+40
+00:06:49,000 --> 00:07:08,000
+I get a name error and it says name error name employee record is not defined now I could copy and paste this but employee record is part of my program so it's probably not going to appear in the questions that other people who have encountered this name error before.
+
+41
+00:07:09,000 --> 00:07:16,000
+So what I usually do is I just search for the phrases before and after.
+
+42
+00:07:17,000 --> 00:07:28,000
+This so I can that way the employee record part the part that's part of my program isn't going to confuse the search engine at all.
+
+43
+00:07:29,000 --> 00:07:45,000
+And one more thing to notice about tracebacks is that the traceback just tells you where Python first encountered this exception the actual cause of the error might be before this line or even in some other part of the program entirely.
+
+44
+00:07:46,000 --> 00:07:57,000
+I'll just create a new program right here and I'm going to on purpose put a typo so that this is syntactically not a valid program.
+
+45
+00:07:59,000 --> 00:08:04,000
+I'll say hello and how are you and I've forgotten the closing parentheses here at the end.
+
+46
+00:08:06,000 --> 00:08:18,000
+So now when I try to run this program Python's going to give me a syntax error telling me invalid syntax and it's going to tell me that the syntax error happened on this line line two.
+
+47
+00:08:18,000 --> 00:08:26,000
+But actually the real cause of the problem is on the previous line right here I've forgotten this closing parentheses.
+
+48
+00:08:26,000 --> 00:08:37,000
+So whenever you see the line 11 or something like that, the problem could be on this line or it's also very common for it to be on the line just before it.
+
+49
+00:08:38,000 --> 00:08:50,000
+So in conclusion, the traceback is displayed whenever your program crashes and that program will program so crash whenever there's an unhandled exception that's been raised.
+
+50
+00:08:50,000 --> 00:09:00,000
+There's a lot of important information in the traceback so do read through all of it and it'll give you a trail of function calls that lead to the line where the exception happened.
+
+51
+00:09:00,000 --> 00:09:12,000
+And if you don't understand the error message, the best thing to do is just put it into a search engine and find search results by other people who have already had this error message and already figured out the answer to it.
+
+52
+00:09:12,000 --> 00:09:16,000
+There's no need for you to reinvent the wheel and do your own detective for a cure.
+
+53
+00:09:17,000 --> 00:09:24,000
+In the next lesson, we're going to be looking at tools called linters and how they can help you solve errors even before you have them.
+
