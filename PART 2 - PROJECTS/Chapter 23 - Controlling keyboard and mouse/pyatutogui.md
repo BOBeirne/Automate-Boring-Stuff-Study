@@ -1,43 +1,43 @@
 # PyAutoGUI
 
-- Module used for GUI automation
-- Install using `pip install pyautogui`
-- Import using `pyautogui`
+- Module used for **GUI automation**
+- **Install** using `pip install pyautogui`
+- **Import** using `pyautogui`
 - [Docs](https://pyautogui.readthedocs.io/) 
-- Do not EVER save programs as `pyautogui.py` - python will think your program is a module
-- Only supports main monitor, no current support for multi-monitor setup.
+- **Do not EVER save programs as** `pyautogui.py` - python will think your program is a module
+- Only **supports main monitor**, no current support for multi-monitor setup.
 
 ## Fail Safes
 
-- To exit the program using PyAutoGUI, quickly move your mouse to one of the corners of the screen
+- To **exit** the program using PyAutoGUI, **quickly move your mouse to one of the corners of the screen**
   - This will raise `pyautogui.FailSafeException`
-  - To disable this fail-safe, set `pyautogui.FAILSAFE` to `False`. **DISABLING FAIL-SAFE IS NOT RECOMMENDED.**
-- You can adjust how often program executes an action using `pyautogui.PAUSE` and setting itmore than to default `0.1` seconds
-- Windows & Linux `CTRL + ALT + DEL` also works to exit the program, 
-- macOS version: `mac + shift + Q`
+  - To **disable this fail-safe**, set `pyautogui.FAILSAFE` to `False`. **DISABLING FAIL-SAFE IS NOT RECOMMENDED.**
+- You can **adjust how often program executes an action** using `pyautogui.PAUSE` and setting it more than to default `0.1` seconds
+- **Windows** & **Linux** `CTRL + ALT + DEL` also works to exit the program, 
+- **macOS** version: `mac + shift + Q`
 
 ## macOS
 
 - Mac OS doesn't usually allow programs control Keyboard or mouse
-- In order to override this security feature, PyAutoGUI must be set as an accessibility application.
-  - 1 - Open the IDE application
-  - 2 - goto `System Preferences` -> `accessibility tab`
-  - 3 - Check the IDE application checkbox
-  - 4 - provide your password to confirm changes
+- In order to **override this security feature**, PyAutoGUI must be set as an **accessibility application**.
+  - 1 - Open the **IDE** application
+  - 2 - **go** to `System Preferences` -> `accessibility tab`
+  - 3 - **Check** the IDE application **checkbox**
+  - 4 - **provide your password to confirm** changes
 
 ## Basics
 
-- `PyAutoGUI` uses `x` and `y` coordinates, just like `PIL` 
+- `PyAutoGUI` uses `x` and `y` **coordinates**, **just like** `PIL` 
 - `(0,0)` = `(x,y)` - is the top-left corner and `x` increases to the right (horizontal coordinate), while `y` increases downwards (vertical)
-- for screen **resolution** of `1920×1080` the eah corner will be:
-  - top-left: (0,0)
-  - top-right: (1920,0)
-  - bottom-left: (0,1080)
-  - bottom-right: (1920,1080)
+- for screen **resolution** of `1920×1080` the each corner will be:
+  - **top-left**: (0,0)
+  - **top-right**: (1920,0)
+  - **bottom-left**: (0,1080)
+  - **bottom-right**: (1920,1080)
 
 ## size()
 
-- To get screen size, use `pyautogui.size()` function
+- To **get screen size**, use `pyautogui.size()` function
 
 ```python
 import pyautogui
@@ -54,8 +54,8 @@ tuple(screen_size)
 
 ## moveTo()
 
-- `pyautogui.moveTo(x, y)` - moves mouse to the specified location
-- It has an optional `duration` argument, eg. `pyautogui.moveTo(100, 100, duration=0.25)` , the default is `0` if left empty
+- `pyautogui.moveTo(x, y)` - **moves mouse to the specified location**
+- It has an **optional** `duration` **argument**, e.g. `pyautogui.moveTo(100, 100, duration=0.25)` , the default is `0` if left empty
 
 ```python
 import pyautogui
@@ -68,7 +68,7 @@ for i in range(10):  # Move the mouse in a square.
 
 ## move()
 
-- similar to `MoveTo()`, BUT, moves mouse RELATIVE to it's CURRENT position
+- **similar** to `MoveTo()`, BUT, **moves mouse RELATIVE to it's CURRENT position**
 - takes 3 arguments (x,y and optional delay)
 
 ```python
@@ -82,7 +82,7 @@ for i in range(10):  # Move the mouse in a square.
 
 ## position()
 
-- Use this function to get the current xy of the `point` position of the mouse, at the time of the function call
+- Use this function to **get the current xy of the `point` position of the mouse**, at the time of the function call
 
 ```python
 import pyautogui
@@ -103,13 +103,13 @@ p.y
 
 ## click()
 
-- A full “click” is defined as pushing a mouse button down and then releasing it without moving the cursor
-- `pyautogui.click(x, y)` - clicks at the specified location
-- if x,y are not specified takes place wherever the mouse currently is.
-- by default, uses left button
-- `pyautogui.click(button='right')` - click with right mouse button
+- A **full “click”** is defined as **pushing a mouse button down and then releasing it** without moving the cursor
+- `pyautogui.click(x, y)` - **clicks** at the specified **location**
+- **if x,y are not specified** takes place wherever the mouse **currently** is.
+- by** default, uses left button**
+- `pyautogui.click(button='right')` - click with **right mouse button**
   - alternative to `pyautogui.rightClick()`
-- `pyautogui.click(button='middle')` - click with middle mouse button
+- `pyautogui.click(button='middle')` - click with **middle mouse button**
   - alternative to `pyautogui.middleClick()`
 
 ```python
@@ -121,25 +121,25 @@ pyautogui.click(active_win.left + 10, active_win.top + 20) # you can also use ar
 
 ### mouseUP and mouseDown
 
-- Only click by calling `pyautogui.mouseDown()`, which only pushes the mouse button down, without releasing it
-- and `pyautogui.mouseUp()` only releases the button.
-- `click()` function is actually a wrapper around the above 2 functions.
+- Only click by calling `pyautogui.mouseDown()`, which **only pushes the mouse button down**, without releasing it
+- and `pyautogui.mouseUp()` **only releases the button.**
+- `click()` function is actually a **wrapper around the above 2 functions.**
 
 ## doubleclick()
 
-- performs a double click with a left mouse button
+- performs a **double click with a left mouse button**
 
 ## dragTo()
 
-- Dragging, means moving the mouse while holding down the mouse button
-- there are 2 versions: `dragTo()` and `drag()`, which work the same as `moveTo()` and `move()`
-- `pyautogui.dragTo(x, y)` - drags the mouse to the specified location on the xy screen coordinates
-- while `pyautogui.drag()`, drags the mouse relative to it's current position.
-- takes 3 arguments (x,y and optional delay)
-  - macOS: need to use delay as otherwise it may cause incorrect behavior
+- Dragging, means **moving the mouse while holding down the mouse button**
+- there are **2 versions: `dragTo()` and `drag()`, which work the same as `moveTo()` and `move()`**
+- `pyautogui.dragTo(x, y)` - **drags the mouse to the specified location** on the xy screen coordinates
+- while `pyautogui.drag()`, **drags the mouse relative to it's current position.**
+- takes **3 arguments** (x,y and optional delay)
+  - **macOS: need to use delay** as otherwise it may cause incorrect behavior
 
 Example:
-- Use website [SumoPaint](https://sumopaint.com/)
+Use website [SumoPaint](https://sumopaint.com/)
 
 ```python
 import pyautogui
@@ -159,34 +159,34 @@ while distance > 0:
 
 ## sleep()
 
-- `pyautogui.sleep(5)` - pauses execution for 5 seconds
-- same as `time.sleep(5)`, built into the pyautogui module itself
+- `pyautogui.sleep(5)` - **pauses** execution for 5 seconds
+- same as `time.sleep(5)`, **built into the pyautogui** module itself
 
 ## scroll()
 
-- `pyautogui.scroll(100)` - scrolls the mouse wheel 100 times
-  - positive int scrolls up, negative scrolls down
-- the size of a scroll unit depends on your OS and/or computer configuration
-- scrolling takes place at the mouse cursor position
+- `pyautogui.scroll(100)` - **scrolls the mouse wheel** 100 times
+  - **positive int scrolls up, negative scrolls down**
+- the **size** of a scroll unit **depends on your OS and/or computer configuration**
+- scrolling **takes place at the mouse cursor** position
 
 ## mouseInfo()
 
 - [Docs](https://mouseinfo.readthedocs.io/)
 - `pyautogui.mouseInfo()` is meant to be called from **shell** rather than inside the program
-- remember, it only support 1, main monitor!
-- launches a small mouseInfo application that is included in the module
-- app provides the current mouse position as x and y and RGB color at the location
+- remember, it **only support 1, main monitor!**
+- launches a **small mouseInfo application** that is included in the module
+- app **provides the current mouse position** as x and y **and RGB color** at the location
 - Copy options usually have included 3 second delay (tick box) it can be disabled 
 
 ## screenshot()
 
-- `pyautogui.screenshot()` - takes a screenshot of the entire screen
-- `pyautogui.screenshot(region=(x,y,x,y))` - takes a screenshot of the specified region
+- `pyautogui.screenshot()` - **takes a screenshot of the entire screen**
+- `pyautogui.screenshot(region=(x,y,x,y))` - takes a **screenshot** of the **specified region**
 - You can **pass it to a variable**, which will then hold the `Pillow image object` of a screenshot
 
 ## pixel()
 
-- `pyautogui.pixel(x, y)` - returns the RGB color of the pixel at the specified location
+- `pyautogui.pixel(x, y)` - **returns the RGB color** of the pixel at the specified location
 
 ```python
 pyautogui.pixel(0, 0)
@@ -197,11 +197,11 @@ pyautogui.pixel(50,200)
 
 ### pixelMatchesColor()
 
-- Returns `rue` if picel at `xy` coordinate matches the given color
-- function takes 3 arguments:`pyautogui.pixelMatchesColor(x, y, (RGBcolorTuple))`
-  - x
-  - y
-  - (R,G,B) tuple
+- Returns `True` if pixel at `xy` coordinate **matches the given color**
+- function takes **3 arguments**:`pyautogui.pixelMatchesColor(x, y, (RGBcolorTuple))`
+  - `x`
+  - `y`
+  - `(R,G,B)` tuple
 
 ```python
 pyautogui.pixel(50,200)
@@ -214,7 +214,8 @@ pyautogui.pixelMatchesColor(50, 200, (37, 37, 38))
 
 ## locateOnScreen()
 
-- If you have taken for example a screenshot, you can use `pyautogui.locateOnScreen()` to find the location of an image on the screen by providing it an image as an argument
+- If you have taken for example a screenshot, you can use `pyautogui.locateOnScreen()` to **find the location of an image on the screen by providing it an image** as an argument
+
 ```python
 import pyautogui
 box = pyautogui.locateOnScreen('calculator.png')
@@ -224,17 +225,17 @@ print(box)
 
 ### ImageNotFoundException
 
-- NOTE: As of version 0.9.41, if the locate functions can’t find the provided image, they’ll raise `ImageNotFoundException` instead of returning None. 
+- NOTE: As of version 0.9.41, **if the locate functions can’t find the provided image**, they’ll raise `ImageNotFoundException` instead of returning None. 
 - [Source](https://pyautogui.readthedocs.io/en/latest/screenshot.html)
-- Note that the image on the screen must match the provided image perfectly in order to be recognized
-- if dealing with lower quality images, use optional `confidence` argument
+- Note that the **image on the screen must match the provided image perfectly** in order to be recognized
+- if dealing with **lower quality images, use** optional `confidence` argument
 
 ### confidence
 
 - The **optional `confidence` keyword argument** specifies the **accuracy** with which the function should locate the image on screen. This is helpful in case the function is not able to locate an image due to **negligible pixel differences**
-  - Note: You need to have [OpenCV](https://docs.opencv.org/4.x/db/dd1/tutorial_py_pip_install.html) (Open Source Computer Vision) installed for the confidence keyword to work. 
+  - Note: **You need to have [OpenCV](https://docs.opencv.org/4.x/db/dd1/tutorial_py_pip_install.html) (Open Source Computer Vision) installed for the confidence keyword to work.** 
   - usually via pip: `pip install opencv-python ` check docs for more options, 
-  - may need to upgrade wheel first - `python -m pip install --upgrade pip setuptools wheel`
+  - may need to **upgrade wheel first** - `python -m pip install --upgrade pip setuptools wheel`
 - On a 1920 x 1080 screen, the locate function calls take about 1 or 2 seconds. This may be too slow for action video games, but works for most purposes and applications.
 
 ```python
@@ -246,7 +247,7 @@ print(box)
 
 ## locateAllOnScreen()
 
-- If there are multiple matches for the image, the function `locateAllOnScreen()` will return a `Generator object`
+- If there are **multiple matches for the image**, the function `locateAllOnScreen()` will return a `Generator object`
 - Beyond scope of this book, [Python Generators - Visually Explained](https://www.youtube.com/watch?v=GWZf_B129zs)
 - Can be passed to `list()` function to return a `list of generator objects`
   - There will be one box object per location
@@ -283,7 +284,7 @@ except pyautogui.ImageNotFoundException:
 
 ## Window (Windows only)
 
-- Works only on windows as of version 1.0.0
+- Works **only on windows** as of version 1.0.0
 - Uses `PyGetWindow` package in `PyAutoGUI`
 
 ### Comparison of all window functions
@@ -299,8 +300,9 @@ except pyautogui.ImageNotFoundException:
 
 ### getActiveWindow()
 
-- Used to obtain the active window
+- Used to **obtain the active window**
 - Returns a `Window object`, which then can use to retrieve window attributes such as:
+
 	- `left`, `right`, `top`, `bottom` - **single int** for the **x- or y-**coordinate of the **window’s side**
 	- `topleft`, `topright`, `bottomleft`, `bottomright` -  **tuple** of **two ints** for the **(x, y) coordinate of the window’s corner**
 	- `midleft`, `midright`, `midtop`, `midbottom` - **tuple** of **two ints** for the **(x, y) coordinate** of the **middle of the window’s sides**
@@ -331,32 +333,29 @@ active_window.topleft
 
 | Method                    | Action                        | Return Value                                                  |
 | ------------------------------- | ----------------------------- | ------------------------------------------------------------- |
-| active_win.width                | Gets current width            | 1936 (int)                                                    |
-| active_win.topleft              | Gets window position          | Point(x=174, y=153)                                           |
-| active_win.width = 1000         | Sets/resizes width            | None (modifies in place)                                      |
-| active_window.title             | Gets window title             | '● pyautogui.md - Automate boring stuff - Visual Studio Code' |
-| active_window.size              | Gets window dimensions        | Size(width=1936, height=1048)                                 |
-| active_window.left              | Gets left edge position       | -8 (int)                                                      |
-| active_window.top               | Gets top edge position        | -8 (int)                                                      |
-| active_window.right             | Gets right edge position      | 1928 (int)                                                    |
-| active_window.bottom            | Gets bottom edge position     | 1040 (int)                                                    |
-| active_win.topleft = (800, 400) | Sets window position          | None (modifies in place)                                      |
-| active_win.isMaximized          | Checks if window is maximized | False (bool)                                               |
-| active_win.isMinimized          | Checks if window is minimized | False (bool)                                               |
-| active_win.isActive             | Checks if window is active    | True (bool)                                                |
-| active_win.maximize()           | Maximizes the window          | None                                                          |
-| active_win.restore()            | Restores from min/max         | None                                                          |
-| active_win.minimize()           | Minimizes the window          | None                                                          |
-| active_win.activate()           | Activates the window          | None                                                          |
-| active_win.close()              | Closes the window             | None                                                          |
+| `active_win.width`                | Gets current width            | 1936 (int)                                                    |
+| `active_win.topleft`              | Gets window position          | Point(x=174, y=153)                                           |
+| `active_win.width = 1000`         | Sets/resizes width            | None (modifies in place)                                      |
+| `active_window.title`             | Gets window title             | '● pyautogui.md - Automate boring stuff - Visual Studio Code' |
+| `active_window.size`              | Gets window dimensions        | Size(width=1936, height=1048)                                 |
+| `active_window.left`              | Gets left edge position       | -8 (int)                                                      |
+| `active_window.top`               | Gets top edge position        | -8 (int)                                                      |
+| `active_window.right`             | Gets right edge position      | 1928 (int)                                                    |
+| `active_window.bottom`            | Gets bottom edge position     | 1040 (int)                                                    |
+| `active_win.topleft = (800, 400)` | Sets window position          | None (modifies in place)                                      |
+| `active_win.isMaximized`          | Checks if window is maximized | False (bool)                                               |
+| `active_win.isMinimized`          | Checks if window is minimized | False (bool)                                               |
+| `active_win.isActive`             | Checks if window is active    | True (bool)                                                |
+| `active_win.maximize()`           | Maximizes the window          | None                                                          |
+| `active_win.restore()`            | Restores from min/max         | None                                                          |
+| `active_win.minimize()`           | Minimizes the window          | None                                                          |
+| `active_win.activate()`           | Activates the window          | None                                                          |
+| `active_win.close()`              | Closes the window             | None                                                          |
 
 
 #### Be careful with `close()` method as it may bypass any save message dialogues
 
-
-
 ## Keyboard
-
 
 ### Key Names
 
@@ -393,10 +392,10 @@ pyautogui.write(['a', 'b', 'left', 'left', 'X', 'Y'])
 
 ###  write()
 
-- This function sends virtual key presses to the computer
-- You want to set window as active before calling it
-- function will enter the full string instantly, you can use optional argument to add a short pause between each character (`int/float` of seconds)
-- It will automatically simulate holding down the `SHIFT` key
+- This function **sends virtual key presses** to the computer
+- You want to **set window as active before calling it**
+- function will **enter the full string instantly**, you can use optional argument to **add a short pause** between each character (`int/float` of seconds)
+- It will **automatically simulate holding down** the `SHIFT` **key**
 
 ```python
 pyautogui.click(100, 200); pyautogui.write('Hello, world!') # you can write on one line!
@@ -419,7 +418,7 @@ pyautogui.keyDown('shift'); pyautogui.press('4'); pyautogui.keyUp('shift')
 
 ### .hotkey()
 
-- hotkey or shortcut is a combination of key presses to invoke some application function
+- **hotkey or shortcut** is a **combination of key presses** to invoke some application function
 - One of the most common ones are CTRL+C on windows, or CTRL+ALT+DEL etc
 
 ```python
