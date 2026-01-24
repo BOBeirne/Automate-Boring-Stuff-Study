@@ -132,7 +132,7 @@ match.group(1)
 ``` python
 import re
 pattern = re.compile(r'\d{3}-\d{3}-\d{4}') # this regex has no groups
-pattern.findall('Cell: 415-555-9999 Work: 221-555-9999)
+pattern.findall('Cell: 415-555-9999 Work: 221-555-9999')
 ```
 
 ['415-555-9999', '221-551-9999']
@@ -142,7 +142,7 @@ pattern.findall('Cell: 415-555-9999 Work: 221-555-9999)
 ``` python
 import re
 pattern = re.compile(r'(\d{3})-(\d{3})-(\d{4})') # this regex has HAS groups
-pattern.findall('Cell: 415-555-9999 Work: 221-555-9999)
+pattern.findall('Cell: 415-555-9999 Work: 221-555-9999')
 ```
 
 [('415', '555', '9999'), ('221', '555', '9999')]
@@ -418,7 +418,7 @@ pattern.search('Eggs and spam and spam and spam')
 
 ``` python
 import re
-haRegex = re.compile(r'(Ha){3})
+haRegex = re.compile(r'(Ha){3}')
 match1 = haRegex.search('HaHaHa')
 match.group()
 ```
@@ -702,7 +702,7 @@ pattern = re.compile(r'''(
 * BUT you can get around it using pipe | (bitwise)
 
 ``` python
-regex = compile.('foo'\ re.IGNORECASE | re.DOTALL | re.VERBOSE)
+regex = re.compile(r'foo', re.IGNORECASE | re.DOTALL | re.VERBOSE)
 ```
 
 ## re.escape() method
