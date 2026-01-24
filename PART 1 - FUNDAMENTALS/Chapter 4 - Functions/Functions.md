@@ -148,17 +148,17 @@ outer_function()
 ```python
 def a():
 	print('a() starts')
-b()
-d()
+	b()
+	d()
 	print('a() returns')
 
 def b():
 	print('b() starts')
-c()
+	c()
 	print('b() returns')
 
 def c():
-print('c() starts')
+	print('c() starts')
 	print('c() returns')
 
 def d():
