@@ -95,7 +95,7 @@ You can **support Al** by buying his book or you can [Read it for free here](htt
   - [OCR](<PART 2 - PROJECTS/Chapter 22 -  OCR and NAPS2/OCR.md>)
   - [NAPS2](<PART 2 - PROJECTS/Chapter 22 -  OCR and NAPS2/NAPS2.md>)
 - Chapter 23 - Controlling Keyboard and Mouse
-  - [pyatutogui](<PART 2 - PROJECTS/Chapter 23 - Controlling keyboard and mouse/pyatutogui.md>)
+  - [pyautogui](<PART 2 - PROJECTS/Chapter 23 - Controlling keyboard and mouse/pyautogui.md>)
 - Chapter 24 - TTS and STT
   - [pyttsx3](<PART 2 - PROJECTS/Chapter 24 - TTS & STT/pyttsx3.md>)
   - [Whisper](<PART 2 - PROJECTS/Chapter 24 - TTS & STT/Whisper.md>)
