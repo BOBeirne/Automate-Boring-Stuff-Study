@@ -4,7 +4,7 @@
 - Can be also called an `array` in **other programming languages**
 - A **value**, which contains **multiple other values** in an **ordered sequence**
 - Lists are **mutable** (can have values changed, added and removed)
-- Uses **square brackets, witch commas separating each item** `[1,2,3,4]`
+- Uses **square brackets, with commas separating each item** `[1,2,3,4]`
 - You can initialize an **empty list** by simply using 2 square brackets `emptyList = []` 
 - You can get items out of list by calling it's **index number**
   - Index **starts from 0** (so 1st position is list[0], 2nd is list[1] and so on..)
@@ -51,10 +51,10 @@ print('sorting strings', spam)
 spam.sort(reverse=True)
 print('using reverse sorting', spam)
 ```
-## Sort ASCIIbetical 
+## Sort ASCIIbetical
 
 * uppercase comes first then lowercase
-* 
+
 ```python
 egg = ['cat', 'dog', 'Bat', 'Chicken', 'Zebra']
 egg.sort()
