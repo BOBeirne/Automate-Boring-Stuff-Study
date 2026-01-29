@@ -66,7 +66,7 @@ print('age' not in spam.keys())
 for k, v in spam.items():
     print('key: ' +str(k) + ', value: ' +str(v))
 ```
-## Use get() method to check if value is present in the list
+## Use get() method to check if key is present in the dictionary
 
 ```python
 print('My hair color is ' +str(spam.get('color', 0)))
@@ -110,17 +110,4 @@ dict_a = {'name': 'Alice', 'color': 'blue'}
 dict_b = {'color': 'red', 'food': 'tacos'}
 merged = dict_a | dict_b
 print(f"Merged dictionary: {merged}")
-```
-### **SET ONLY**
-
-```python
-set1 = {'cat', 'dog', 'mouse', 'bird'}
-set2 = {'dog', 'bird', 'fish', 'lizard'}
-```
-## The & operator finds the items that are in both sets
-
-```python
-common_items = set1 & set2
-print(f"Common items: {common_items}")
-Output: Common items: {'bird', 'dog'}
 ```
