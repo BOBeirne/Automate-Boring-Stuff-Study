@@ -13,7 +13,7 @@
 from pathlib import Path
 my_files = 'accounts.txt', 'details.csv', 'invite.docx'
 for filename in my_files:
-	print(Path(r'C:\\Users\\Al', filename))
+	print(Path(r'C:\Users\Al', filename))
 ```
 
 `C:\Users\Al\accounts.txt`
@@ -116,8 +116,8 @@ p.name
 # 'base.base'
 p.stem 
 # 'base'
-p.suffix 
-# 'base'
+p.suffix
+# '.base'
 ```
 
 ### p.parts
